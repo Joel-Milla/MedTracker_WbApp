@@ -1,11 +1,13 @@
 import Card from 'react-bootstrap/Card';
 
-function UserCard() {
+
+
+function UserCard(props: any) {
 	return (<>
 		<Card border="secondary" style={{ width: '18rem' }}>
-			<Card.Header>Header</Card.Header>
+			<Card.Header>{props.nombre}</Card.Header>
 			<Card.Body>
-				<Card.Title>Secondary Card Title</Card.Title>
+				<Card.Title>{props.celular}</Card.Title>
 				<Card.Text>
 					Some quick example text to build on the card title and make up the
 					bulk of the card's content.

@@ -1,11 +1,11 @@
 import './App.css'
-import Card from './Home/UserCard'
+import UserCard from './Home/UserCard'
 
 function App() {
 
   return (
     <>
-      <Card />
+      <UserCard nombre='Christopher' celular='8100000000' />
     </>
   )
 }
