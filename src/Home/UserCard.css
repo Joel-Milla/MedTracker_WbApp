@@ -1,5 +1,5 @@
 .card-container {
-	width: 18rem;
+	width: 100%;
 }
 
 .image-container {
@@ -8,7 +8,7 @@
 	border-radius: 50%;
 	overflow: hidden;
 	margin: auto;
-	margin-top: -35%;
+	margin-top: -25%;
 	position: relative;
 	z-index: 1;
 	border: 1px solid lightgrey;
