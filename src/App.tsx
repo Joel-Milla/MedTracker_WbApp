@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      <UserCard nombre='Christopher' celular='8100000000' />
+      <UserCard nombre='Christopher' celular='8100000000' edad='22' image='https://2.bp.blogspot.com/-Kk7woxfDqdQ/XGVk2AF36hI/AAAAAAACkqY/f8gnLoqiyysBuLcN_yV0Xf6S66Ea3wEsQCLcBGAs/s1600/thispersondoesnotexist-1.jpg' />
       <SymptomList />
     </>
   )

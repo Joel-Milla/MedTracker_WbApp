@@ -1,31 +1,25 @@
 import Card from 'react-bootstrap/Card';
+import './UserCard.css';
 
+interface UserCardProps {
+	nombre: string;
+	celular: string;
+	edad: string;
+	image: string;
+}
 
-
-function UserCard(props: any) {
+function UserCard(props: UserCardProps) {
 	return (<>
-		<Card key='light' style={{ width: '18rem' }} className="mb-2 bg-light">
+		<Card bg='light' key='Light' text='dark' className="mb-2 card-container">
+			<div className="image-container" >
+				<Card.Img variant="top" src={props.image} className='cardImage' />
+			</div>
 			<Card.Header>{props.nombre}</Card.Header>
 			<Card.Body>
-				<Card.Title>{props.celular}</Card.Title>
-				<Card.Text>
-					Some quick example text to build on the card title and make up the
-					bulk of the card's content.
-				</Card.Text>
+				<Card.Text><strong>Celular:</strong> {props.celular}</Card.Text>
+				<Card.Text><strong>Edad:</strong> {props.edad} años</Card.Text>
 			</Card.Body>
 		</Card>
-
-		<Card key='light' style={{ width: '18rem', backgroundColor: '#f8f9fa' }} className="mb-2">
-			<Card.Header>{props.nombre}</Card.Header>
-			<Card.Body>
-				<Card.Title>{props.celular}</Card.Title>
-				<Card.Text>
-					Some quick example text to build on the card title and make up the
-					bulk of the card's content.
-				</Card.Text>
-			</Card.Body>
-		</Card>
-
 		<br />
 	</>)
 }
