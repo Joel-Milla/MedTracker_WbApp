@@ -1,13 +1,12 @@
-import './App.css'
 import Card from './Home/UserCard'
-import SymptomList from './Dashboard/SymptomList'
+import Dashboard from './Dashboard/Dashboard'
 
 function App() {
 
   return (
     <>
       {/* <Card /> */}
-      <SymptomList />
+      <Dashboard />
     </>
   )
 }
