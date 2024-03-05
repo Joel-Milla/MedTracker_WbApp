@@ -1,17 +1,17 @@
 // Components
 import Title from "./Title/Title";
 import SymptomList from "./SymptomList/SymptomList";
+import Analysis from "./Analysis/Analysis";
 // Mock Data
-import USERS from "../assets/MockData/UsersData";
 
 function Dashboard() {
-    const user = USERS[1];
     return (
         <>
             <Title />
             <div className='container'>
-                <div className='row gx4'>
+                <div className='row gx4 mb-4'>
                     <SymptomList />
+                    <Analysis />
                 </div>
             </div>
         </>
