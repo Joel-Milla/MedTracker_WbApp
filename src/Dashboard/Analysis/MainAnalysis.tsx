@@ -1,14 +1,14 @@
 // Own styles
-import styles from "./Analysis.module.css"
+import styles from "./MainAnalysis.module.css"
 
-function Analysis() {
+function MainAnalysis() {
     return (
         <>
             <div className={`${styles.container} col col-md-6`}>
-
+                
             </div>
         </>
     )
 }
 
-export default Analysis
+export default MainAnalysis

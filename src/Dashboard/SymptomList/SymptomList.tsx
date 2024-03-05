@@ -2,6 +2,9 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 // Components
 import SymptomCard from './SymptomCard';
+// Own styles
+import styles from "./SymptomList.module.css"
+
 const SYMPTOMS = [
     {
         "189D70BE-CC59-45E7-8E41-E43CBC6CD8CD": {
@@ -92,7 +95,7 @@ function SymptomList() {
     return (
         <div className='col-12 col-md-3'>
             <h2>Datos de Salud</h2>
-            <ListGroup className='mb-4'>
+            <ListGroup className={styles.border}>
                 {SYMPTOMS.map( (symptoms) => 
                 <SymptomCard />)}
             </ListGroup>

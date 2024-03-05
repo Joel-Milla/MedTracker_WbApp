@@ -1,8 +1,7 @@
 // Components
 import Title from "./Title/Title";
 import SymptomList from "./SymptomList/SymptomList";
-import Analysis from "./Analysis/Analysis";
-// Mock Data
+import MainAnalysis from "./Analysis/MainAnalysis";
 
 function Dashboard() {
     return (
@@ -11,7 +10,7 @@ function Dashboard() {
             <div className='container'>
                 <div className='row gx4 mb-4'>
                     <SymptomList />
-                    <Analysis />
+                    <MainAnalysis />
                 </div>
             </div>
         </>
