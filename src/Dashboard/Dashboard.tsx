@@ -7,7 +7,7 @@ function Dashboard() {
     return (
         <>
             <Title />
-            <div className='container'>
+            <div className='container-fluid'>
                 <div className='row gx4 mb-4'>
                     <SymptomList />
                     <MainAnalysis />

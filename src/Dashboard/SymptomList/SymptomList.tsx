@@ -93,7 +93,7 @@ const SYMPTOMS = [
 ]
 function SymptomList() {
     return (
-        <div className='col-12 col-md-3'>
+        <div className='col-12 col-md-2'>
             <h2>Datos de Salud</h2>
             <ListGroup className={styles.border}>
                 {SYMPTOMS.map( (symptoms) => 

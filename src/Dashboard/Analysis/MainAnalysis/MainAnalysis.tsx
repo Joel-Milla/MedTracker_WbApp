@@ -1,11 +1,13 @@
+// Components
+import Graph from "../Graph/Graph"
 // Own styles
 import styles from "./MainAnalysis.module.css"
 
 function MainAnalysis() {
     return (
         <>
-            <div className={`${styles.container} col col-md-6`}>
-                
+            <div className={`${styles.container} col-12 col-md-8`}>
+                <Graph />
             </div>
         </>
     )

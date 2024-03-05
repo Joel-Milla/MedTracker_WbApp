@@ -190,11 +190,9 @@ function UserInformation() {
     const user = userData['joel@mail.com'];
     return (
         <>
-            <div className='col 3'>
+            <div className='col-12 col-md-2'>
+                <h2>{user.nombreCompleto}</h2>
                 <Card>
-                    <Card.Body>
-                        <Card.Title>{user.nombreCompleto}</Card.Title>
-                    </Card.Body>
                     <ListGroup className="list-group-flush">
                         <ListGroup.Item>
                             Antecedentes:
