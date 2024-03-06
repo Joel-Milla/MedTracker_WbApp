@@ -2,15 +2,17 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 // Components
 import SymptomCard from './SymptomCard';
+// Models
+import { SymptomsObject } from '../DashboardModels/dashboardModels';
 // Own styles
 import styles from "./SymptomList.module.css"
 
-const SYMPTOMS = [
+const SYMPTOMS: SymptomsObject[] = [
     {
         "189D70BE-CC59-45E7-8E41-E43CBC6CD8CD": {
             "fecha": "February 11, 2024 at 1:50:59 PM UTC-6",
             "color": "#007AFF",
-            "cuantitativo": false,
+            "cuantitativo": true,
             "unidades": "",
             "icon": "44.square.fill",
             "description": "6",
@@ -80,7 +82,7 @@ const SYMPTOMS = [
         "CA2F8094-E00C-4FDA-893E-271B6D1DA1A5": {
             "fecha": "January 18, 2024 at 5:12:27 PM UTC-6",
             "color": "#007AFF",
-            "cuantitativo": false,
+            "cuantitativo": true,
             "unidades": "",
             "icon": "plus.viewfinder",
             "description": "3",
@@ -96,8 +98,8 @@ function SymptomList() {
         <div className='col-12 col-md-2'>
             <h2>Datos de Salud</h2>
             <ListGroup className={styles.border}>
-                {SYMPTOMS.map( (symptoms) => 
-                <SymptomCard />)}
+                {SYMPTOMS.map( (symptom) => 
+                <SymptomCard symptom={Object.values(symptom)[0]}/>)}
             </ListGroup>
         </div>
     )
