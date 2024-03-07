@@ -27,6 +27,11 @@ export type RegisterObject = { [key: string]: Register };
 
 // Properties of symptom list
 export interface SymptomListProps {
+    symptoms: SymptomsObject[]
+}
+
+// Properties of symptom list
+export interface SymptomProps {
     symptom: Symptom
 }
 

@@ -2,11 +2,11 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 // Models
-import { SymptomListProps } from '../DashboardModels/dashboardModels';
+import { SymptomProps } from '../DashboardModels/dashboardModels';
 // Own styles
 import styles from "./SymptomCard.module.css"
 
-function SymptomCard(properties: SymptomListProps) {
+function SymptomCard(properties: SymptomProps) {
     const {symptom} = properties;
     // const symptomValues = Object.values(symptom)[0];
     return (
