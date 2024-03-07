@@ -191,8 +191,12 @@ function UserInformation() {
     return (
         <>
             <div className='col-12 col-md-2'>
-                <h2>{user.nombreCompleto}</h2>
+                <h2>Paciente</h2>
                 <Card>
+                    <Card.Body>
+                        <Card.Title>{user.nombreCompleto}</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">{user.email}</Card.Subtitle>
+                    </Card.Body>
                     <ListGroup className="list-group-flush">
                         <ListGroup.Item>
                             Antecedentes:
