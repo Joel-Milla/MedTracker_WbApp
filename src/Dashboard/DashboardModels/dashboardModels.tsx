@@ -12,9 +12,26 @@ export interface Symptom {
     "activo": boolean
 }
 
-// Symptom structure of object
-export type SymptomsObject = { [key: string]: Symptom };
+// Register model
+export interface Register {
+    "fecha": string,
+    "idSymptom": string,
+    "notas": string,
+    "cantidad": number,
+    "id": string
+}
 
+// Structure for multiple objects
+export type SymptomsObject = { [key: string]: Symptom };
+export type RegisterObject = { [key: string]: Register };
+
+// Properties of symptom list
 export interface SymptomListProps {
     symptom: Symptom
+}
+
+// Properties of graph
+export interface GraphProps {
+    symptom: Symptom,
+    registers: Register[]
 }
