@@ -1,17 +1,17 @@
-.card-container {
+/* .card-container {
 	width: 100%;
-}
+} */
 
 .image-container {
 	width: 105px;
 	height: 105px;
-	border-radius: 50%;
+	border-radius: 20%;
 	overflow: hidden;
 	margin: auto;
-	margin-top: -25%;
 	position: relative;
 	z-index: 1;
-	border: 1px solid lightgrey;
+	display: flex;
+	justify-content: center;
 }
 
 .card-image {

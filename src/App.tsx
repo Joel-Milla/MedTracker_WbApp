@@ -1,6 +1,4 @@
-import './App.css'
 import UserCardGrid from './Home/UserCardGrid'
-import SymptomList from './Dashboard/SymptomList'
 
 function App() {
   const imageLink = 'https://2.bp.blogspot.com/-wUD2SGHiBCg/XGVk3D2_6FI/AAAAAAACkqc/LWNsgSdN5YwQNqy7IsRj95GrjqauK5ZzACLcBGAs/s1600/thispersondoesnotexist-2.jpg'
@@ -21,7 +19,6 @@ function App() {
   return (
     <>
       <UserCardGrid users={users} />
-      <SymptomList />
     </>
   )
 }

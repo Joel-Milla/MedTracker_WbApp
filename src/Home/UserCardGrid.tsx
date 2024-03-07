@@ -1,6 +1,7 @@
 import UserCard from './UserCard'
-import UserCard2 from './UserCard2'
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Form } from 'react-bootstrap';
+import React, { useState } from 'react';
+import SearchBar from './SearchBar';
 
 interface UserData {
 	nombre: string;
@@ -11,13 +12,27 @@ interface UserData {
 
 function UserCardGrid(props: { users: UserData[] }) {
 	const users: UserData[] = props.users;
+	const [searchTerm, setSearchTerm] = useState('');
+
+	// Filtrar la lista de usuarios con base en el valor del campo de busqueda
+	const filteredUsers = users.filter(user =>
+		user.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+	);
+
+
 
 	return (
-		<Container>
+		<Container >
+			<SearchBar
+				title='Buscar paciente'
+				placeholder='Nombre del paciente'
+				setSearchTerm={setSearchTerm}
+				searchTerm={searchTerm}
+			/>
 			<Row>
-				{users.map((user, index) => (
+				{filteredUsers.map((user, index) => (
 					<Col sm={12} md={6} lg={4} key={index} className='mt-5'>
-						<UserCard2 {...user} />
+						<UserCard {...user} />
 					</Col>
 				))}
 			</Row>
