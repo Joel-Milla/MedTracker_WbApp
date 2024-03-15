@@ -1,19 +1,38 @@
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import { Row, Col } from 'react-bootstrap';
+import './UserCard.css';
 
-function UserCard() {
-	return (<>
-		<Card border="secondary" style={{ width: '18rem' }}>
-			<Card.Header>Header</Card.Header>
-			<Card.Body>
-				<Card.Title>Secondary Card Title</Card.Title>
-				<Card.Text>
-					Some quick example text to build on the card title and make up the
-					bulk of the card's content.
-				</Card.Text>
-			</Card.Body>
-		</Card>
-		<br />
-	</>)
+interface UserCardProps {
+	nombre: string;
+	celular: string;
+	edad: string;
+	image: string;
 }
 
-export default UserCard
+function UserCard(props: UserCardProps) {
+	return (
+		<Card bg='light' key='Light' text='dark' className="card-container">
+			<Card.Header className='text-center'>{props.nombre}</Card.Header>
+			<Card.Body>
+				<Row>
+					<Col xs={12} md={6} lg={6}>
+						<div className="image-container">
+							<Card.Img variant="top" src={props.image} className='cardImage' />
+						</div>
+					</Col>
+					<Col xs={12} md={6} lg={6}>
+						<Card.Text style={{ marginBottom: '-5px' }}>{props.celular}</Card.Text>
+						<Card.Text><em>Celular</em></Card.Text>
+						<Card.Text style={{ marginBottom: '-5px' }}>{props.edad} años</Card.Text>
+						<Card.Text><em>Edad</em></Card.Text>
+
+					</Col>
+					<Button variant="primary" className='mt-2'>Ver más</Button>
+				</Row>
+			</Card.Body>
+		</Card>
+	)
+}
+
+export default UserCard;
