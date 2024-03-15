@@ -1,30 +1,14 @@
 
 const DOCTOR_PATIENT = [
     {
-        "doctor@mail.com": {
-            "patients": [
-                {
-                    email: "doctor@mail.com",
-                    patients: [
-                        {
-                            email: "diego@mail.com",
-                            name: "diego",
-                        }
-
-                    ]
-                },
-                {
-                    email: "doctor@mail.com",
-                    patients: [
-                        {
-                            email: "joel@mail.com",
-                            name: "joel",
-                        }
-
-                    ]
-                }
-            ]
-        }
+        idDocFirebase: 'diego@mail.com',
+        email: 'diego@mail.com',
+        name: 'Diego'
+    },
+    {
+        idDocFirebase: 'joel@mail.com',
+        name: 'Joel',
+        email: 'joel@mail.com'
     }
 ];
 
