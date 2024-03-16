@@ -15,12 +15,18 @@ import Typography from '@mui/material/Typography';
 import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
 import MenuIcon from '@mui/icons-material/Menu';
 import Icon from '@mui/material/Icon';
-import InboxIcon from '@mui/icons-material/Inbox';
+
+// Icons
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
 
+// Router
+import { useNavigate } from 'react-router-dom';
+
+// Styles
 import './NavigationMenu.css';
 
 const drawerWidth = 240;
@@ -30,8 +36,9 @@ interface Props {
 	appBarVisibleOnMobile?: 'block' | 'none';
 	appBarVisibleOnDesktop: 'block' | 'none';
 	title: string;
-	selectedOption: 'Datos' | 'Análisis' | 'Notificaciones' | 'Perfil' | 'Ajustes';
+	selectedOption: number;
 }
+
 
 function NavigationMenu(props: Props) {
 	const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -52,12 +59,19 @@ function NavigationMenu(props: Props) {
 		}
 	};
 
+	let navigate = useNavigate();
+	const navigateTo = (pageTitle: string) => {
+		navigate(`/${pageTitle}`);
+	}
+
+	const titles = ['Pacientes', 'Análisis', 'Notificaciones', 'Perfil', 'Ajustes'];
+
 	const drawerItems = [
-		{ 'title': 'Datos', 'icon': InboxIcon, 'action': () => { } },
-		{ 'title': 'Análisis', 'icon': BarChartIcon, 'action': () => { } },
-		{ 'title': 'Notificaciones', 'icon': NotificationsIcon, 'action': () => { } },
-		{ 'title': 'Perfil', 'icon': AccountCircleIcon, 'action': () => { } },
-		{ 'title': 'Ajustes', 'icon': SettingsIcon, 'action': () => { } },
+		{ 'title': titles[0], 'icon': PeopleAltIcon, 'action': () => navigateTo(titles[0].toLowerCase()) },
+		{ 'title': titles[1], 'icon': BarChartIcon, 'action': () => navigateTo(titles[1].toLowerCase()) },
+		{ 'title': titles[2], 'icon': NotificationsIcon, 'action': () => navigateTo(titles[2].toLowerCase()) },
+		{ 'title': titles[3], 'icon': AccountCircleIcon, 'action': () => navigateTo(titles[3].toLowerCase()) },
+		{ 'title': titles[4], 'icon': SettingsIcon, 'action': () => navigateTo(titles[4].toLowerCase()) },
 	];
 
 	const drawer = (
@@ -72,7 +86,7 @@ function NavigationMenu(props: Props) {
 			<List>
 				{drawerItems.map((item, index) => (
 					<ListItem key={item.title} disablePadding>
-						<ListItemButton selected={item.title === props.selectedOption}>
+						<ListItemButton selected={item.title === titles[props.selectedOption]} onClick={item.action}>
 							<ListItemIcon>
 								{<item.icon />}
 							</ListItemIcon>

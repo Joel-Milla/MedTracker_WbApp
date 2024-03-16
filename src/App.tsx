@@ -1,14 +1,13 @@
-import NavigationMenu from './Global/NavigationMenu'
-import Dashboard from './Dashboard/Dashboard'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Pacientes from "./Pacientes/Pacientes";
 
 function App() {
   return (
-    <>
-      <NavigationMenu selectedOption='Datos' title='Mis pacientes' appBarVisibleOnDesktop='block' appBarVisibleOnMobile='block' >
-        <h1>Test</h1>
-      </NavigationMenu>
-      {/* <Dashboard /> */}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Pacientes />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
