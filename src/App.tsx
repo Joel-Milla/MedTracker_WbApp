@@ -1,3 +1,4 @@
+import NavigationMenu from './Global/NavigationMenu'
 import UserCardGrid from './Home/UserCardGrid'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <>
+      <NavigationMenu />
       <UserCardGrid users={users} />
     </>
   )
