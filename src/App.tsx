@@ -1,3 +1,4 @@
+import NavigationMenu from './Global/NavigationMenu'
 import UserCardGrid from './Home/UserCardGrid'
 import Dashboard from './Dashboard/Dashboard'
 
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <>
+      <NavigationMenu />
       <UserCardGrid users={users} />
       <Dashboard />
     </>
