@@ -29,7 +29,6 @@ import { useNavigate } from 'react-router-dom';
 // Styles
 import './NavigationMenu.css';
 
-const drawerWidth = 240;
 
 interface Props {
 	children?: React.ReactNode;
@@ -38,10 +37,13 @@ interface Props {
 	appBarVisibleOnDesktop?: 'block' | 'none';
 	title: string;
 	selectedOption: number;
+	drawerWidth?: number;
 }
 
 
 function NavigationMenu(props: Props) {
+	const drawerWidth = props.drawerWidth || 240;
+
 	const [mobileOpen, setMobileOpen] = React.useState(false);
 	const [isClosing, setIsClosing] = React.useState(false);
 
