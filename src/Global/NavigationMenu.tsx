@@ -5,22 +5,41 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
-import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
+import MenuIcon from '@mui/icons-material/Menu';
+import Icon from '@mui/material/Icon';
+
+// Icons
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import SettingsIcon from '@mui/icons-material/Settings';
+
+// Router
+import { useNavigate } from 'react-router-dom';
+
+// Styles
+import './NavigationMenu.css';
 
 const drawerWidth = 240;
 
 interface Props {
-
+	children?: React.ReactNode;
+	appBarVisibleOnMobile?: 'block' | 'none';
+	appBarVisibleOnTablet?: 'block' | 'none';
+	appBarVisibleOnDesktop?: 'block' | 'none';
+	title: string;
+	selectedOption: number;
 }
+
 
 function NavigationMenu(props: Props) {
 	const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -41,35 +60,43 @@ function NavigationMenu(props: Props) {
 		}
 	};
 
+	let navigate = useNavigate();
+	const navigateTo = (pageTitle: string) => {
+		navigate(`/${pageTitle}`);
+	}
+
+	const titles = ['Pacientes', 'Análisis', 'Notificaciones', 'Perfil', 'Ajustes'];
+
+	const drawerItems = [
+		{ 'title': titles[0], 'icon': PeopleAltIcon, 'action': () => navigateTo(titles[0].toLowerCase()) },
+		{ 'title': titles[1], 'icon': BarChartIcon, 'action': () => navigateTo(titles[1].toLowerCase()) },
+		{ 'title': titles[2], 'icon': NotificationsIcon, 'action': () => navigateTo(titles[2].toLowerCase()) },
+		{ 'title': titles[3], 'icon': AccountCircleIcon, 'action': () => navigateTo(titles[3].toLowerCase()) },
+		{ 'title': titles[4], 'icon': SettingsIcon, 'action': () => navigateTo(titles[4].toLowerCase()) },
+	];
+
 	const drawer = (
 		<div>
-			<Toolbar />
+			<Toolbar className='bg-primary'>
+				<Icon component={MedicalServicesIcon} className='icon-white' />
+				<Typography variant="h6" noWrap component="div" className='text-white'>
+					MedTracker
+				</Typography>
+			</Toolbar>
 			<Divider />
 			<List>
-				{['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-					<ListItem key={text} disablePadding>
-						<ListItemButton>
-							<ListItemIcon>
-								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+				{drawerItems.map((item, index) => (
+					<ListItem key={item.title} disablePadding>
+						<ListItemButton selected={item.title === titles[props.selectedOption]} onClick={item.action}>
+							<ListItemIcon className='icon-primary'>
+								{<item.icon />}
 							</ListItemIcon>
-							<ListItemText primary={text} />
+							<ListItemText primary={item.title} />
 						</ListItemButton>
 					</ListItem>
 				))}
 			</List>
 			<Divider />
-			<List>
-				{['All mail', 'Trash', 'Spam'].map((text, index) => (
-					<ListItem key={text} disablePadding>
-						<ListItemButton>
-							<ListItemIcon>
-								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-							</ListItemIcon>
-							<ListItemText primary={text} />
-						</ListItemButton>
-					</ListItem>
-				))}
-			</List>
 		</div>
 	);
 
@@ -81,7 +108,9 @@ function NavigationMenu(props: Props) {
 				sx={{
 					width: { sm: `calc(100% - ${drawerWidth}px)` },
 					ml: { sm: `${drawerWidth}px` },
+					display: { xs: props.appBarVisibleOnMobile, sm: props.appBarVisibleOnTablet, md: props.appBarVisibleOnDesktop },
 				}}
+				className='bg-primary'
 			>
 				<Toolbar>
 					<IconButton
@@ -94,13 +123,16 @@ function NavigationMenu(props: Props) {
 						<MenuIcon />
 					</IconButton>
 					<Typography variant="h6" noWrap component="div">
-						Responsive drawer
+						{props.title}
 					</Typography>
 				</Toolbar>
 			</AppBar>
 			<Box
 				component="nav"
-				sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+				sx={{
+					width: { sm: drawerWidth },
+					flexShrink: { sm: 0 }
+				}}
 				aria-label="mailbox folders"
 			>
 
@@ -132,37 +164,16 @@ function NavigationMenu(props: Props) {
 			</Box>
 			<Box
 				component="main"
-				sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+				sx={{ flexGrow: 1, p: 1, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
 			>
-				<Toolbar />
-				<Typography paragraph>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-					enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-					imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-					Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-					Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-					adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-					nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-					leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-					feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-					consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-					sapien faucibus et molestie ac.
-				</Typography>
-				<Typography paragraph>
-					Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-					eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-					neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-					tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-					sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-					tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-					gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-					et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-					tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-					eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-					posuere sollicitudin aliquam ultrices sagittis orci a.
-				</Typography>
+				<Toolbar
+					sx={{
+						display: { xs: props.appBarVisibleOnMobile, sm: props.appBarVisibleOnTablet, md: props.appBarVisibleOnDesktop },
+					}}
+				/>
+				{props.children}
 			</Box>
+
 		</Box>
 	);
 }
