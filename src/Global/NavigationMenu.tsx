@@ -34,7 +34,8 @@ const drawerWidth = 240;
 interface Props {
 	children?: React.ReactNode;
 	appBarVisibleOnMobile?: 'block' | 'none';
-	appBarVisibleOnDesktop: 'block' | 'none';
+	appBarVisibleOnTablet?: 'block' | 'none';
+	appBarVisibleOnDesktop?: 'block' | 'none';
 	title: string;
 	selectedOption: number;
 }
@@ -87,7 +88,7 @@ function NavigationMenu(props: Props) {
 				{drawerItems.map((item, index) => (
 					<ListItem key={item.title} disablePadding>
 						<ListItemButton selected={item.title === titles[props.selectedOption]} onClick={item.action}>
-							<ListItemIcon>
+							<ListItemIcon className='icon-primary'>
 								{<item.icon />}
 							</ListItemIcon>
 							<ListItemText primary={item.title} />
@@ -107,7 +108,7 @@ function NavigationMenu(props: Props) {
 				sx={{
 					width: { sm: `calc(100% - ${drawerWidth}px)` },
 					ml: { sm: `${drawerWidth}px` },
-					display: { xs: props.appBarVisibleOnMobile, sm: props.appBarVisibleOnDesktop },
+					display: { xs: props.appBarVisibleOnMobile, sm: props.appBarVisibleOnTablet, md: props.appBarVisibleOnDesktop },
 				}}
 				className='bg-primary'
 			>
@@ -167,7 +168,7 @@ function NavigationMenu(props: Props) {
 			>
 				<Toolbar
 					sx={{
-						display: { xs: props.appBarVisibleOnMobile, sm: props.appBarVisibleOnDesktop },
+						display: { xs: props.appBarVisibleOnMobile, sm: props.appBarVisibleOnTablet, md: props.appBarVisibleOnDesktop },
 					}}
 				/>
 				{props.children}
