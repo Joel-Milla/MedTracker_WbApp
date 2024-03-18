@@ -1,19 +1,14 @@
 // External libraries
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-// `NextUIProvider` component
-import { NextUIProvider } from "@nextui-org/react";
+// External css
+import 'bootstrap/dist/css/bootstrap.min.css';
 // Components
 import App from './App.tsx'
-// Import styles
-import './output.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <NextUIProvider>
-      <main className='light'>
-        <App />
-      </main>
-    </NextUIProvider>
+    <App />
   </React.StrictMode>,
 )
