@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 import colors from 'tailwindcss/colors';
 // tailwind.config.js for nextui
-const {nextui} = require("@nextui-org/react");
+const { nextui } = require("@nextui-org/react");
 
 export default {
   content: [
@@ -18,6 +18,35 @@ export default {
     current: 'currentColor',
     extend: {
       colors: {
+        // Own color
+        'persian-green': {
+          DEFAULT: '#009C8C',
+          50: '#55FFEE',
+          100: '#40FFEB',
+          200: '#17FFE7',
+          300: '#00EED5',
+          400: '#00C5B1',
+          500: '#009C8C',
+          600: '#00645A',
+          700: '#002C27',
+          800: '#000000',
+          900: '#000000',
+          950: '#000000'
+        },
+        'curious-blue': {
+          DEFAULT: '#19A7CE',
+          50: '#AAE5F5',
+          100: '#98DFF2',
+          200: '#73D4EE',
+          300: '#4FC8EA',
+          400: '#2BBDE5',
+          500: '#19A7CE',
+          600: '#137E9C',
+          700: '#0D566A',
+          800: '#072D38',
+          900: '#010506',
+          950: '#000000'
+        },
         // light mode
         tremor: {
           brand: {
@@ -137,5 +166,24 @@ export default {
   ],
   darkMode: "class",
   // [require('@headlessui/tailwindcss'), require('@tailwindcss/forms')]
-  plugins: [nextui()],
+  plugins: [nextui(
+    {
+      themes: {
+        light: {
+          colors: {
+            primary: {
+              DEFAULT: "#009C8C",
+            },
+          },
+        },
+        dark: {
+          colors: {
+            primary: {
+              DEFAULT: "#22c55e",
+            },
+          },
+        },
+      },
+    }
+  )],
 };
