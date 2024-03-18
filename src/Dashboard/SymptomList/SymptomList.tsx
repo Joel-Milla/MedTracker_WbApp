@@ -12,7 +12,7 @@ function SymptomList() {
                 aria-label="Actions"
                 onAction={(key) => alert(key)}
             >
-                {USERS.map((user) => {
+                {USERS.map((user: any) => {
                     return (
                         <ListboxItem key={user.id} color="primary" textValue={song.name}><TrackNextUI song={song} /></ListboxItem>
                     )
