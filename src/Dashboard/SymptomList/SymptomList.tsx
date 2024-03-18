@@ -1,29 +1,32 @@
-// External libraries
-import ListGroup from 'react-bootstrap/ListGroup';
+// External components
+import { Listbox, ListboxItem } from "@nextui-org/react";
 // Components
 import SymptomCard from './SymptomCard';
 // Models
-import { SymptomListProps } from '../DashboardModels/dashboardModels';
-// Own styles
-import styles from "./SymptomList.module.css"
+import { Symptom } from "../DashboardModels/dashboardModels";
+// Mock Data
+import USERS from "../../assets/MockData/UsersData";
 
-function SymptomList(properties: SymptomListProps) {
-    const { symptoms } = properties;
-    if (symptoms) {
-        return (
-            <div className='col-12 col-md-2'>
-                <h2>Datos de Salud</h2>
-                <ListGroup className={styles.border}>
-                    {symptoms.map( (symptom) => 
-                    <SymptomCard symptom={Object.values(symptom)[0]}/>)}
-                </ListGroup>
+function SymptomList() {
+    const currentUser = USERS[1];
+    return (
+        <>
+            <div className="shadow-xl rounded-lg max-w-96 p-2 mb-10">
+            <h1 className=" text-4xl text-b-curious-blue-800 mb-5">Datos de Salud</h1>
+                <Listbox
+                    aria-label="Actions"
+                    onAction={(key) => alert(key)} >
+                    {currentUser.symptoms.map((symptom: Symptom) => {
+                        return (
+                            <ListboxItem key={symptom.id} color="primary" textValue={symptom.nombre}>
+                                <SymptomCard symptom={symptom} />
+                            </ListboxItem>
+                        )
+                    })}
+                </Listbox>
             </div>
-        )
-    } else {
-        return (
-            <h1>Empty</h1>
-        )
-    }
+        </>
+    )
 }
 
 export default SymptomList;

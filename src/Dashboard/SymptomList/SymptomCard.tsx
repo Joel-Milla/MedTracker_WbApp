@@ -1,29 +1,32 @@
-// External libraries
-import ListGroup from 'react-bootstrap/ListGroup';
-import Card from 'react-bootstrap/Card';
+// External component
+import { Card, CardHeader, CardBody, Divider } from "@nextui-org/react";
 // Models
 import { SymptomProps } from '../DashboardModels/dashboardModels';
-// Own styles
-import styles from "./SymptomCard.module.css"
 
 function SymptomCard(properties: SymptomProps) {
-    const {symptom} = properties;
-    // const symptomValues = Object.values(symptom)[0];
+    const { symptom } = properties;
     return (
-        <ListGroup.Item>
-            <Card border="success">
-                <Card.Body>
-                    <Card.Title>{symptom.nombre}</Card.Title>
-                    <Card.Subtitle>{symptom.fecha}</Card.Subtitle>
-                    <div className={styles.text}>
-                        <div>{symptom.activo ? "Activo": "Desactivado"}</div>
-                        <div>|</div>
-                        <div>{symptom.cuantitativo ? "Cuantitativo": "Cualitativo"}</div>
+        <div className=" m-2">
+            <Card>
+                <CardHeader className=" grid grid-row-2">
+                    <h2 className=" text-sm text-persian-green-700">Feb 27</h2>
+                    <h1 className=" text-3xl">{symptom.nombre}</h1>
+                </CardHeader>
+                <Divider />
+                <CardBody>
+                    <div className="flex items-center space-x-4">
+                        <div>
+                            <p>{symptom.activo ? "Sintoma Activo" : "Sintoma Desactivado"}</p>
+                        </div>
+                        <Divider orientation="vertical" className="h-5 text-wrap" />
+                        <div>
+                            <p>{symptom.cuantitativo ? "Sintoma Cuantitativo" : "Sintoma Cualitativo"}</p>
+                        </div>
                     </div>
-                </Card.Body>
+                </CardBody>
             </Card>
-        </ListGroup.Item>
-    )
+        </div>
+    );
 }
 
 export default SymptomCard;
