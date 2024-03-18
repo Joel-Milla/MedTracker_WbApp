@@ -179,7 +179,7 @@ export default {
         dark: {
           colors: {
             primary: {
-              DEFAULT: "#22c55e",
+              DEFAULT: "#009C8C",
             },
           },
         },

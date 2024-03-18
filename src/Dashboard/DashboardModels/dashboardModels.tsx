@@ -1,6 +1,12 @@
+// Timestamp
+type Timestamp = {
+    seconds: number,
+    nanoseconds: number,
+}
 // Symptom model
 export interface Symptom {
-    "fecha": string,
+    "idDocFirebase": string,
+    "fecha": Timestamp,
     "color": string,
     "cuantitativo": boolean,
     "unidades": string,
