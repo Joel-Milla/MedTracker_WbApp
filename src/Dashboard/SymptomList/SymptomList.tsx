@@ -11,7 +11,7 @@ function SymptomList() {
     const currentUser = USERS[1];
     return (
         <>
-            <div className="border-2 border-persian-green-500 rounded-lg max-w-96 p-2 mb-10">
+            <div className="shadow-xl rounded-lg max-w-96 p-2 mb-10">
             <h1 className=" text-4xl text-b-curious-blue-800 mb-5">Datos de Salud</h1>
                 <Listbox
                     aria-label="Actions"
