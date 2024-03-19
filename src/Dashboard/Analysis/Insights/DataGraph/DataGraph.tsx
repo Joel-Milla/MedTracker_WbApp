@@ -6,9 +6,9 @@ function DataGraph() {
     return (
         <>
             <CategoryBar
-                values={[40, 30, 20, 10]}
-                colors={['emerald', 'yellow', 'orange', 'rose']}
-                markerValue={62}
+                values={[4200, 4800, 9000]}
+                colors={['yellow', 'orange', 'rose']}
+                markerValue={50}
             />
         </>
     )

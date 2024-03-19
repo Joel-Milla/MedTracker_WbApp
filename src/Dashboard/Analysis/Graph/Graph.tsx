@@ -401,35 +401,37 @@ const valueFormatter = (number: any) =>
 function Graph() {
     return (
         <>
-            <LineChart
-                data={data}
-                index="date"
-                categories={[
-                    'ETF Shares Vital',
-                    'Vitainvest Core',
-                    'iShares Tech Growth',
-                ]}
-                colors={['blue', 'violet', 'fuchsia']}
-                valueFormatter={valueFormatter}
-                yAxisWidth={55}
-                onValueChange={() => { }}
-                className="mt-6 hidden h-96 sm:block"
-            />
-            <LineChart
-                data={data}
-                index="date"
-                categories={[
-                    'ETF Shares Vital',
-                    'Vitainvest Core',
-                    'iShares Tech Growth',
-                ]}
-                colors={['blue', 'violet', 'fuchsia']}
-                valueFormatter={valueFormatter}
-                showYAxis={false}
-                showLegend={false}
-                startEndOnly={true}
-                className="mt-6 h-72 sm:hidden"
-            />
+            <div className='shadow-xl p-5'>
+                <LineChart
+                    data={data}
+                    index="date"
+                    categories={[
+                        'ETF Shares Vital',
+                        'Vitainvest Core',
+                        'iShares Tech Growth',
+                    ]}
+                    colors={['blue', 'violet', 'fuchsia']}
+                    valueFormatter={valueFormatter}
+                    yAxisWidth={55}
+                    onValueChange={() => { }}
+                    className="mt-6 hidden h-96 sm:block"
+                />
+                <LineChart
+                    data={data}
+                    index="date"
+                    categories={[
+                        'ETF Shares Vital',
+                        'Vitainvest Core',
+                        'iShares Tech Growth',
+                    ]}
+                    colors={['blue', 'violet', 'fuchsia']}
+                    valueFormatter={valueFormatter}
+                    showYAxis={false}
+                    showLegend={false}
+                    startEndOnly={true}
+                    className="mt-6 h-72 sm:hidden"
+                />
+            </div>
         </>
     );
 }

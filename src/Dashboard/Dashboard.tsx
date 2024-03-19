@@ -1,7 +1,7 @@
 // Components
 import Title from "./Title/Title";
 import Symptoms from "./Symptoms/Symptoms";
-import MainAnalysis from "./Analysis/MainAnalysis/MainAnalysis";
+import Analysis from "./Analysis/Analysis";
 
 function Dashboard() {
     return (
@@ -13,7 +13,7 @@ function Dashboard() {
                         <Symptoms />
                     </div>
                     <div className="col-span-9">
-                        <MainAnalysis />
+                        <Analysis />
                     </div>
                 </div>
             </div>
