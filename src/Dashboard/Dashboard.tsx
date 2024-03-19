@@ -1,6 +1,6 @@
 // Components
 import Title from "./Title/Title";
-import SymptomList from "./SymptomList/SymptomList";
+import Symptoms from "./Symptoms/Symptoms";
 import MainAnalysis from "./Analysis/MainAnalysis/MainAnalysis";
 
 function Dashboard() {
@@ -9,8 +9,8 @@ function Dashboard() {
             <div className='container mx-auto'>
                 <Title />
                 <div className="grid grid-cols-3 justify-center mx-auto mt-10">
-                    <div className=" col-span-1">
-                        <SymptomList />
+                    <div className="col-span-1">
+                        <Symptoms />
                     </div>
                     <div className="col-span-2">
                         <MainAnalysis />

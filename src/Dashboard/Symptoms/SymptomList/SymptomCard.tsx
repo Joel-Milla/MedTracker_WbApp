@@ -1,7 +1,7 @@
 // External component
 import { Card, CardHeader, CardBody, Divider } from "@nextui-org/react";
 // Models
-import { SymptomProps } from '../DashboardModels/dashboardModels';
+import { SymptomProps } from '../../DashboardModels/dashboardModels';
 
 function SymptomCard(properties: SymptomProps) {
     const { symptom } = properties;

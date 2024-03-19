@@ -27,13 +27,10 @@ export interface Register {
     "id": string
 }
 
-// Structure for multiple objects
-export type SymptomsObject = { [key: string]: Symptom };
-export type RegisterObject = { [key: string]: Register };
 
 // Properties of symptom list
 export interface SymptomListProps {
-    symptoms: SymptomsObject[]
+    symptoms: Symptom[]
 }
 
 // Properties of symptom list
