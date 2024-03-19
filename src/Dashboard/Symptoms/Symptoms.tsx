@@ -7,7 +7,7 @@ import SymptomList from "./SymptomList/SymptomList";
 function Symptoms() {
     return (
         <>
-            <Card className="p-3">
+            <Card className="p-3 flex justify-center">
                 <SearchBar />
                 <SymptomList />
             </Card>

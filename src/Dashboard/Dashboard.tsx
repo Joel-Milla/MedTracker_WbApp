@@ -8,11 +8,11 @@ function Dashboard() {
         <>
             <div className='container mx-auto'>
                 <Title />
-                <div className="grid grid-cols-3 justify-center mx-auto mt-10">
-                    <div className="col-span-1">
+                <div className="grid grid-cols-12  gap-3 justify-center mx-auto mt-10">
+                    <div className="col-span-3">
                         <Symptoms />
                     </div>
-                    <div className="col-span-2">
+                    <div className="col-span-9">
                         <MainAnalysis />
                     </div>
                 </div>

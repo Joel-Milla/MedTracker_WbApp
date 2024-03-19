@@ -16,14 +16,15 @@ function SearchBar() {
     })
 
     return (
-        <div className="flex w-full max-w-xs flex-col gap-2">
+        <div className="flex w-full flex-col gap-2">
             <Autocomplete
                 color="primary"
                 label="Buscar"
                 variant="bordered"
                 defaultItems={symptomValues}
                 placeholder="Escoge dato salud"
-                className="max-w-xs"
+                className="w-full"
+                fullWidth
             >
                 {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
             </Autocomplete>
