@@ -9,7 +9,7 @@ function Insights() {
         <>
             <Card
                 key="1"
-                className="p-4 grid grid-cols-4 w-full" >
+                className="p-4 grid grid-cols-4 w-full mb-10" >
                 <div className='col-span-2'>
                     <DataValues />
                 </div>
