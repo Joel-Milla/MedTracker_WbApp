@@ -8,17 +8,21 @@ function PersonalData() {
     return (
         <>
             <List className="mt-2">
+            <ListItem key="telefono">
+                    <span className='font-bold'>Informacion </span>
+                    <span className='font-bold'>Valores</span>
+                </ListItem>
                 <ListItem key="telefono">
                     <span>Telefono: </span>
-                    <span>{user.email}</span>
+                    <span>{user.telefono}</span>
                 </ListItem>
                 <ListItem key="sexo">
                     <span>Sexo: </span>
-                    <span>{user.email}</span>
+                    <span>{user.sexo}</span>
                 </ListItem>
                 <ListItem key="estatura">
                     <span>Estatura: </span>
-                    <span>{user.estatura}</span>
+                    <span>{user.estatura} metro</span>
                 </ListItem>
                 <ListItem key="nombreCompleto">
                     <span>Nombre Completo: </span>

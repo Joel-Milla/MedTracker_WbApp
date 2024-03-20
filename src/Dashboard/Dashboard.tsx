@@ -2,11 +2,12 @@
 import Title from "./Title/Title";
 import Symptoms from "./Symptoms/Symptoms";
 import Analysis from "./Analysis/Analysis";
+import UserInformation from "./UserInformation/UserInformation";
 
 function Dashboard() {
     return (
         <>
-            <div className='container mx-auto'>
+            <div className='container mx-auto mb-10'>
                 <Title />
                 <div className="grid grid-cols-12  gap-3 justify-center mx-auto mt-10">
                     <div className="col-span-3">
@@ -14,6 +15,7 @@ function Dashboard() {
                     </div>
                     <div className="col-span-9">
                         <Analysis />
+                        <UserInformation />
                     </div>
                 </div>
             </div>
