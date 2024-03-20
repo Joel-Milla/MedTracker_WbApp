@@ -7,7 +7,7 @@ import ClinicalInfo from "./ClinicalInfo/ClinicalInfo";
 function UserInformation() {
     return (
         <>
-            <Card className="grid grid-cols-12 mt-10 p-3 gap-4">
+            <Card className="grid grid-cols-12 mt-10 p-3 gap-7">
                 <div className="col-span-3">
                     <PersonalData />
                 </div>
