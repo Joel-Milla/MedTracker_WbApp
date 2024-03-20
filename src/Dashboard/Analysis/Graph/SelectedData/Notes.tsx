@@ -6,7 +6,7 @@ function Notes() {
         <>
             <Textarea
                 isReadOnly
-                label="Antecedentes"
+                label="Notas del dia"
                 variant="bordered"
                 labelPlacement="outside"
                 placeholder="Enter your description"

@@ -7,7 +7,7 @@ import Notes from './Notes';
 function SelectedData() {
     return (
         <>
-            <Card className="p-4">
+            {/* <Card className="p-4"> */}
                 <div className='grid grid-cols-12 gap-4 mt-6'>
                     <div className=' col-span-3'>
                         <Information />
@@ -16,7 +16,7 @@ function SelectedData() {
                         <Notes />
                     </div>
                 </div>
-            </Card>
+            {/* </Card> */}
         </>
     )
 }

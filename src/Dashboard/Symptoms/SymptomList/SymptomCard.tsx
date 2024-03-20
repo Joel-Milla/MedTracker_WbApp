@@ -9,8 +9,8 @@ function SymptomCard(properties: SymptomProps) {
         <div className=" m-2">
             <Card>
                 <CardHeader className=" grid grid-row-2">
-                    <h2 className=" text-sm text-persian-green-700">Feb 27</h2>
-                    <h1 className=" text-3xl">{symptom.nombre}</h1>
+                    <h2 className="text-tremor-default text-tremor-content">Ultimo Registro: Feb 27</h2>
+                    <h1 className=" text-tremor-metric font-semibold">{symptom.nombre}</h1>
                 </CardHeader>
                 <Divider />
                 <CardBody>
