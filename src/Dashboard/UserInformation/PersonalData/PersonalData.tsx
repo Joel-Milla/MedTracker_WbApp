@@ -8,7 +8,7 @@ function PersonalData() {
     return (
         <>
             <List className="mt-2">
-            <ListItem key="telefono">
+                <ListItem key="header">
                     <span className='font-bold'>Informacion </span>
                     <span className='font-bold'>Valores</span>
                 </ListItem>
