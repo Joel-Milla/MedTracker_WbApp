@@ -1,0 +1,17 @@
+.card-header {
+	display: "flex";
+}
+
+.avatar-paciente {
+	margin: 1rem;
+}
+
+.nombre-paciente {
+	font-weight: bold;
+}
+
+.fecha-registro {
+	font-size: 0.8rem;
+	font-style: italic;
+	color: gray;
+}

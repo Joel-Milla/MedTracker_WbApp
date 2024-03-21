@@ -1,4 +1,5 @@
 import NavigationMenu from '../Global/NavigationMenu'
+import TarjetaPaciente from './TarjetaPaciente'
 
 export default function Pacientes() {
 	return (
@@ -6,7 +7,7 @@ export default function Pacientes() {
 			<NavigationMenu
 				title="Pacientes"
 				selectedOption={0}>
-				<h1>TARJETASSS</h1>
+				<TarjetaPaciente nombre='Christopher Pedraza Pohlenz' fechaUltimoRegistro='27 febrero' />
 			</NavigationMenu>
 		</div>
 	)
