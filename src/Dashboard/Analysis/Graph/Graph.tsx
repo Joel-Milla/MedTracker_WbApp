@@ -1,18 +1,8 @@
+// External Components
+import { LineChart } from '@tremor/react';
+// Own components
+import SelectedData from './SelectedData/SelectedData';
 
-// 'use client';
-import {
-    LineChart,
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeaderCell,
-    TableRow,
-} from '@tremor/react';
-
-function classNames(...classes: any) {
-    return classes.filter(Boolean).join(' ');
-}
 
 const data = [
     {
@@ -359,77 +349,44 @@ const data = [
     },
 ];
 
-const summary = [
-    {
-        name: 'ETF Shares Vital',
-        value: '$21,349.36',
-        invested: '$19,698.65',
-        cashflow: '$14,033.74',
-        gain: '+$11,012.39',
-        realized: '+$177.48',
-        dividends: '+$490.97',
-        bgColor: 'bg-blue-500',
-        changeType: 'positive',
-    },
-    {
-        name: 'Vitainvest Core',
-        value: '$25,943.43',
-        invested: '$23,698.65',
-        cashflow: '$11,033.74',
-        gain: '+$3,012.39',
-        realized: '+$565.41',
-        dividends: '+$290.97',
-        bgColor: 'bg-violet-500',
-        changeType: 'positive',
-    },
-    {
-        name: 'iShares Tech Growth',
-        value: '$9,443.46',
-        invested: '$14,698.65',
-        cashflow: '$2,033.74',
-        gain: '-$5,012.39',
-        realized: '-$634.42',
-        dividends: '-$990.97',
-        bgColor: 'bg-fuchsia-500',
-        changeType: 'negative',
-    },
-];
-
 const valueFormatter = (number: any) =>
     `$${Intl.NumberFormat('us').format(number).toString()}`;
 
 function Graph() {
     return (
         <>
-            <LineChart
-                data={data}
-                index="date"
-                categories={[
-                    'ETF Shares Vital',
-                    'Vitainvest Core',
-                    'iShares Tech Growth',
-                ]}
-                colors={['blue', 'violet', 'fuchsia']}
-                valueFormatter={valueFormatter}
-                yAxisWidth={55}
-                onValueChange={() => { }}
-                className="mt-6 hidden h-96 sm:block"
-            />
-            <LineChart
-                data={data}
-                index="date"
-                categories={[
-                    'ETF Shares Vital',
-                    'Vitainvest Core',
-                    'iShares Tech Growth',
-                ]}
-                colors={['blue', 'violet', 'fuchsia']}
-                valueFormatter={valueFormatter}
-                showYAxis={false}
-                showLegend={false}
-                startEndOnly={true}
-                className="mt-6 h-72 sm:hidden"
-            />
+            <div className='shadow-xl p-5'>
+                <LineChart
+                    data={data}
+                    index="date"
+                    categories={[
+                        'ETF Shares Vital',
+                        'Vitainvest Core',
+                        'iShares Tech Growth',
+                    ]}
+                    colors={['blue', 'violet', 'fuchsia']}
+                    valueFormatter={valueFormatter}
+                    yAxisWidth={55}
+                    onValueChange={() => { }}
+                    className="mt-6 hidden h-96 sm:block"
+                />
+                <LineChart
+                    data={data}
+                    index="date"
+                    categories={[
+                        'ETF Shares Vital',
+                        'Vitainvest Core',
+                        'iShares Tech Growth',
+                    ]}
+                    colors={['blue', 'violet', 'fuchsia']}
+                    valueFormatter={valueFormatter}
+                    showYAxis={false}
+                    showLegend={false}
+                    startEndOnly={true}
+                    className="mt-6 h-72 sm:hidden"
+                />
+                <SelectedData />
+            </div>
         </>
     );
 }
