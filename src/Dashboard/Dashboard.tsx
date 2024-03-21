@@ -1,19 +1,21 @@
 // Components
-import Title from "./Title/Title";
-import SymptomList from "./SymptomList/SymptomList";
-import MainAnalysis from "./Analysis/MainAnalysis/MainAnalysis";
+import Title from "./Header/Header";
+import Symptoms from "./Symptoms/Symptoms";
+import Analysis from "./Analysis/Analysis";
+import UserInformation from "./UserInformation/UserInformation";
 
 function Dashboard() {
     return (
         <>
-            <div className='container mx-auto'>
+            <div className='container mx-auto mb-10'>
                 <Title />
-                <div className="grid grid-cols-3 justify-center mx-auto mt-10">
-                    <div className=" col-span-1">
-                        <SymptomList />
+                <div className="grid grid-cols-12 gap-3 justify-center mt-10">
+                    <div className="col-span-3">
+                        <Symptoms />
                     </div>
-                    <div className="col-span-2">
-                        <MainAnalysis />
+                    <div className="col-span-9">
+                        <Analysis />
+                        <UserInformation />
                     </div>
                 </div>
             </div>
