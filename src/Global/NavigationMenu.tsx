@@ -29,20 +29,30 @@ import { useNavigate } from 'react-router-dom';
 // Styles
 import './NavigationMenu.css';
 
+// Theme
+import { useTheme } from '@mui/material/styles';
+
 
 interface Props {
 	children?: React.ReactNode;
-	appBarVisibleOnMobile?: 'block' | 'none';
-	appBarVisibleOnTablet?: 'block' | 'none';
-	appBarVisibleOnDesktop?: 'block' | 'none';
+	appBarVisibleOnTablet?: boolean;
+	appBarVisibleOnDesktop?: boolean;
 	title: string;
 	selectedOption: number;
 	drawerWidth?: number;
 }
 
+NavigationMenu.defaultProps = {
+	appBarVisibleOnTablet: false,
+	appBarVisibleOnDesktop: false,
+	drawerWidth: 240
+};
+
 
 function NavigationMenu(props: Props) {
-	const drawerWidth = props.drawerWidth || 240;
+	const theme = useTheme();
+
+	const drawerWidth = props.drawerWidth;
 
 	const [mobileOpen, setMobileOpen] = React.useState(false);
 	const [isClosing, setIsClosing] = React.useState(false);
@@ -79,7 +89,7 @@ function NavigationMenu(props: Props) {
 
 	const drawer = (
 		<div>
-			<Toolbar className='bg-primary'>
+			<Toolbar sx={{ bgcolor: 'primary.main' }}>
 				<Icon component={MedicalServicesIcon} className='icon-white' />
 				<Typography variant="h6" noWrap component="div" className='text-white'>
 					MedTracker
@@ -90,7 +100,7 @@ function NavigationMenu(props: Props) {
 				{drawerItems.map((item, index) => (
 					<ListItem key={item.title} disablePadding>
 						<ListItemButton selected={item.title === titles[props.selectedOption]} onClick={item.action}>
-							<ListItemIcon className='icon-primary'>
+							<ListItemIcon sx={{ color: 'primary.main' }}>
 								{<item.icon />}
 							</ListItemIcon>
 							<ListItemText primary={item.title} />
@@ -110,7 +120,11 @@ function NavigationMenu(props: Props) {
 				sx={{
 					width: { sm: `calc(100% - ${drawerWidth}px)` },
 					ml: { sm: `${drawerWidth}px` },
-					display: { xs: props.appBarVisibleOnMobile, sm: props.appBarVisibleOnTablet, md: props.appBarVisibleOnDesktop },
+					display: {
+						xs: 'none',
+						sm: (props.appBarVisibleOnTablet ? 'block' : 'none'),
+						md: (props.appBarVisibleOnDesktop ? 'block' : 'none')
+					},
 				}}
 				className='bg-primary'
 			>
@@ -170,7 +184,11 @@ function NavigationMenu(props: Props) {
 			>
 				<Toolbar
 					sx={{
-						display: { xs: props.appBarVisibleOnMobile, sm: props.appBarVisibleOnTablet, md: props.appBarVisibleOnDesktop },
+						display: {
+							xs: 'none',
+							sm: (props.appBarVisibleOnTablet ? 'block' : 'none'),
+							md: (props.appBarVisibleOnDesktop ? 'block' : 'none')
+						},
 					}}
 				/>
 				{props.children}
