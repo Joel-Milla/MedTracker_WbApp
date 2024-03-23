@@ -16,3 +16,8 @@
 .icon-white {
 	color: #fff !important;
 }
+
+.content-box {
+	display: flex;
+	padding: 3rem;
+}

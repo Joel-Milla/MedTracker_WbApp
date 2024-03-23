@@ -33,11 +33,6 @@ import { useNavigate } from 'react-router-dom';
 // Styles
 import './NavigationMenu.css';
 
-// Theme
-import { useTheme } from '@mui/material/styles';
-import { SvgIcon } from '@mui/material';
-
-
 interface Props {
 	children?: React.ReactNode;
 	appBarVisibleOnTablet?: boolean;
@@ -55,8 +50,6 @@ NavigationMenu.defaultProps = {
 
 
 function NavigationMenu(props: Props) {
-	const theme = useTheme();
-
 	const drawerWidth = props.drawerWidth;
 
 	const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -123,8 +116,8 @@ function NavigationMenu(props: Props) {
 	);
 
 	return (
-		<Box sx={{ display: 'flex' }}>
-			<CssBaseline />
+		<Box className='content-box'>
+			< CssBaseline />
 			<AppBar
 				position="fixed"
 				sx={{
