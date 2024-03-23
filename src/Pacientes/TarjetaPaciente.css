@@ -1,9 +1,19 @@
 .card-header {
-	display: "flex";
+	display: flex;
+}
+
+.card-body {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 .avatar-paciente {
 	margin: 1rem;
+}
+
+.list-bullets {
+	height: 20px;
 }
 
 .nombre-paciente {
@@ -11,7 +21,5 @@
 }
 
 .fecha-registro {
-	font-size: 0.8rem;
-	font-style: italic;
 	color: gray;
 }
