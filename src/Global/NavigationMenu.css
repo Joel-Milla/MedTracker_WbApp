@@ -19,5 +19,6 @@
 
 .content-box {
 	display: flex;
+	/* padding: 3rem 12rem 3rem 12rem; */
 	padding: 3rem;
 }
