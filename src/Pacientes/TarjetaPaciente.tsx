@@ -16,7 +16,7 @@ interface TarjetaPacienteProps {
 
 function TarjetaPaciente(props: TarjetaPacienteProps) {
 	return (
-		<Card>
+		<Card className="tarjeta-paciente">
 			<CardHeader className="card-header">
 				<Avatar isBordered radius="lg" src={props.imagen} className="avatar-paciente" />
 				<div>
