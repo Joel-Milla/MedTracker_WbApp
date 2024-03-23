@@ -13,7 +13,7 @@ function SearchBar() {
 			defaultItems={data}
 			inputProps={{
 				classNames: {
-					input: "ml-1",
+					input: "ml-1 border-primary rounded-lg",
 					inputWrapper: "h-[48px]",
 				},
 			}}
@@ -33,8 +33,8 @@ function SearchBar() {
 					],
 				},
 			}}
-			aria-label="Select an employee"
-			placeholder="Enter employee name"
+			aria-label="Selecciona a un paciente"
+			placeholder="Ingresa un nombre"
 			popoverProps={{
 				offset: 10,
 				classNames: {

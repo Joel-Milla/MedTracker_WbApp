@@ -26,8 +26,8 @@ function TarjetaPaciente(props: TarjetaPacienteProps) {
 			</CardHeader>
 			<CardBody>
 				<List>
-					<ListItemElement icon={CircleIcon} text="Email registrado: " value={props.email} />
-					<ListItemElement icon={CircleIcon} text="Telefono celular: " value={props.celular} />
+					<ListItemElement icon={CircleIcon} text="Email: " value={props.email} />
+					<ListItemElement icon={CircleIcon} text="Teléfono: " value={props.celular} />
 				</List>
 				<Button color="primary">
 					<strong>Ver detalles</strong>

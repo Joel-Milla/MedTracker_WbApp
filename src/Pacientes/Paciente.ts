@@ -10,7 +10,7 @@ export interface Paciente {
 export const data: Paciente[] = [
 	{
 		id: 1,
-		imagen: "https://via.placeholder.com/150",
+		imagen: "https://i.pravatar.cc/150?img=1",
 		nombre: "Juan Perez",
 		fechaUltimoRegistro: "Ultimo registro: 12/10/2021",
 		email: "juan.perez@mail.com",
@@ -18,7 +18,7 @@ export const data: Paciente[] = [
 	},
 	{
 		id: 2,
-		imagen: "https://via.placeholder.com/150",
+		imagen: "https://i.pravatar.cc/150?img=2",
 		nombre: "Maria Garcia",
 		fechaUltimoRegistro: "Ultimo registro: 12/10/2021",
 		email: "maria.garcia@mail.com",
@@ -26,7 +26,7 @@ export const data: Paciente[] = [
 	},
 	{
 		id: 3,
-		imagen: "https://via.placeholder.com/150",
+		imagen: "https://i.pravatar.cc/150?img=3",
 		nombre: "Pedro Lopez",
 		fechaUltimoRegistro: "Ultimo registro: 12/10/2021",
 		email: "pedro.lopez@mail.com",
@@ -34,66 +34,66 @@ export const data: Paciente[] = [
 	},
 	{
 		id: 4,
-		imagen: "https://via.placeholder.com/150",
-		nombre: "Juan Perez",
+		imagen: "https://i.pravatar.cc/150?img=4",
+		nombre: "Gustavo Rodriguez",
 		fechaUltimoRegistro: "Ultimo registro: 12/10/2021",
-		email: "juan.perez@mail.com",
+		email: "gustavo.rodriguez@mail.com",
 		celular: "1234567890"
 	},
 	{
 		id: 5,
-		imagen: "https://via.placeholder.com/150",
-		nombre: "Maria Garcia",
+		imagen: "https://i.pravatar.cc/150?img=5",
+		nombre: "Ubaldo Sanchez",
 		fechaUltimoRegistro: "Ultimo registro: 12/10/2021",
-		email: "maria.garcia@mail.com",
+		email: "ubaldo.sanchez@mail.com",
 		celular: "0987654321"
 	},
 	{
 		id: 6,
-		imagen: "https://via.placeholder.com/150",
-		nombre: "Pedro Lopez",
+		imagen: "https://i.pravatar.cc/150?img=6",
+		nombre: "Natalia Perez",
 		fechaUltimoRegistro: "Ultimo registro: 12/10/2021",
-		email: "pedro.lopez@mail.com",
+		email: "natalia.perez@mail.com",
 		celular: "6789012345"
 	},
 	{
 		id: 7,
-		imagen: "https://via.placeholder.com/150",
-		nombre: "Juan Perez",
+		imagen: "https://i.pravatar.cc/150?img=7",
+		nombre: "Oscar Rodriguez",
 		fechaUltimoRegistro: "Ultimo registro: 12/10/2021",
-		email: "juan.perez@mail.com",
+		email: "oscar.rodriguez@mail.com",
 		celular: "1234567890"
 	},
 	{
 		id: 8,
-		imagen: "https://via.placeholder.com/150",
-		nombre: "Maria Garcia",
+		imagen: "https://i.pravatar.cc/150?img=8",
+		nombre: "Maria Polanco",
 		fechaUltimoRegistro: "Ultimo registro: 12/10/2021",
-		email: "maria.garcia@mail.com",
+		email: "maria.polanco@mail.com",
 		celular: "0987654321"
 	},
 	{
 		id: 9,
-		imagen: "https://via.placeholder.com/150",
-		nombre: "Pedro Lopez",
+		imagen: "https://i.pravatar.cc/150?img=9",
+		nombre: "Yolanda Lopez",
 		fechaUltimoRegistro: "Ultimo registro: 12/10/2021",
-		email: "pedro.lopez@mail.com",
+		email: "yolanda.lopez@mail.com",
 		celular: "6789012345"
 	},
 	{
 		id: 10,
-		imagen: "https://via.placeholder.com/150",
-		nombre: "Juan Perez",
+		imagen: "https://i.pravatar.cc/150?img=10",
+		nombre: "Tomas Benitez",
 		fechaUltimoRegistro: "Ultimo registro: 12/10/2021",
-		email: "juan.perez@mail.com",
+		email: "tomas.benitez@mail.com",
 		celular: "1234567890"
 	},
 	{
 		id: 11,
-		imagen: "https://via.placeholder.com/150",
-		nombre: "Maria Garcia",
+		imagen: "https://i.pravatar.cc/150?img=11",
+		nombre: "Rosa Garcia",
 		fechaUltimoRegistro: "Ultimo registro: 12/10/2021",
-		email: "maria.garcia@mail.com",
+		email: "rosa.garcia@mail.com",
 		celular: "0987654321"
 	},
 
