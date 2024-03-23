@@ -1,4 +1,6 @@
 import * as React from 'react';
+
+// MUI components
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -8,20 +10,22 @@ import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
+import Icon from '@mui/material/Icon';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
-import MenuIcon from '@mui/icons-material/Menu';
-import Icon from '@mui/material/Icon';
 
-// Icons
+// MUI Icons
+import MenuIcon from '@mui/icons-material/Menu';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
+
+// SVG Icon
+import MedTrackerIcon from "../assets/logo_medtracker.png";
 
 // Router
 import { useNavigate } from 'react-router-dom';
@@ -31,6 +35,7 @@ import './NavigationMenu.css';
 
 // Theme
 import { useTheme } from '@mui/material/styles';
+import { SvgIcon } from '@mui/material';
 
 
 interface Props {
@@ -45,7 +50,7 @@ interface Props {
 NavigationMenu.defaultProps = {
 	appBarVisibleOnTablet: false,
 	appBarVisibleOnDesktop: false,
-	drawerWidth: 240
+	drawerWidth: 300
 };
 
 
@@ -87,14 +92,19 @@ function NavigationMenu(props: Props) {
 		{ 'title': titles[4], 'icon': SettingsIcon, 'action': () => navigateTo(titles[4].toLowerCase()) },
 	];
 
+	const drawerStyles = {
+		display: { xs: 'none', sm: 'block' },
+		'& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, bgcolor: '#E0EFEF' }
+	};
+
 	const drawer = (
 		<div>
-			<Toolbar sx={{ bgcolor: 'primary.main' }}>
-				<Icon component={MedicalServicesIcon} className='icon-white' />
-				<Typography variant="h6" noWrap component="div" className='text-white'>
+			<div className='navbar-title'>
+				<img src={MedTrackerIcon} className='medtracker-icon' alt="MedTracker Icon" />
+				<Typography variant="h6" noWrap component="div" fontWeight="bold" sx={{ marginLeft: '1rem' }}>
 					MedTracker
 				</Typography>
-			</Toolbar>
+			</div>
 			<Divider />
 			<List>
 				{drawerItems.map((item, index) => (
@@ -161,8 +171,8 @@ function NavigationMenu(props: Props) {
 						keepMounted: true, // Better open performance on mobile.
 					}}
 					sx={{
+						...drawerStyles,
 						display: { xs: 'block', sm: 'none' },
-						'& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
 					}}
 				>
 					{drawer}
@@ -170,8 +180,8 @@ function NavigationMenu(props: Props) {
 				<Drawer
 					variant="permanent"
 					sx={{
+						...drawerStyles,
 						display: { xs: 'none', sm: 'block' },
-						'& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
 					}}
 					open
 				>
@@ -194,7 +204,7 @@ function NavigationMenu(props: Props) {
 				{props.children}
 			</Box>
 
-		</Box>
+		</Box >
 	);
 }
 

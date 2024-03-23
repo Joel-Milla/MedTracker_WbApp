@@ -14,6 +14,7 @@ export default function Pacientes() {
 					email='christopher@mail.com'
 					celular='5544332211'
 				/>
+
 			</NavigationMenu>
 		</div>
 	)

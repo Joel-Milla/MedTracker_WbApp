@@ -1,5 +1,16 @@
-.text-white {
-	color: #fff !important;
+.navbar-title {
+	display: flex;
+	margin: 2rem;
+	align-items: center;
+}
+
+.medtracker-icon {
+	height: 3rem;
+
+}
+
+.medtracker-title {
+	margin-left: 2rem;
 }
 
 .icon-white {
