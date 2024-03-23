@@ -6,12 +6,12 @@ import "./TarjetaPaciente.css";
 
 
 interface TarjetaPacienteProps {
+	id: number;
 	imagen: string;
 	nombre: string;
 	fechaUltimoRegistro: string;
 	email: string;
 	celular: string;
-	onClick?: () => void;
 }
 
 function TarjetaPaciente(props: TarjetaPacienteProps) {

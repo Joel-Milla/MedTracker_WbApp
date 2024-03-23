@@ -1,21 +1,18 @@
 import NavigationMenu from '../Global/NavigationMenu'
 import TarjetaPaciente from './TarjetaPaciente'
+import GridTarjetasPacientes from './GridTarjetasPacientes'
+import { Paciente, data } from './Paciente';
 
-export default function Pacientes() {
+function Pacientes() {
 	return (
 		<div>
 			<NavigationMenu
 				title="Pacientes"
 				selectedOption={0}>
-				<TarjetaPaciente
-					nombre='Christopher Pedraza Pohlenz'
-					fechaUltimoRegistro='27 febrero'
-					imagen='https://i.pravatar.cc/150?u=a04258114e29026302d'
-					email='christopher@mail.com'
-					celular='5544332211'
-				/>
-
+				<GridTarjetasPacientes pacientes={data} />
 			</NavigationMenu>
 		</div>
-	)
+	);
 }
+
+export default Pacientes;
