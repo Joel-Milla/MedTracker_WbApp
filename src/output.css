@@ -19061,10 +19061,6 @@ video {
     grid-column: span 9 / span 9;
   }
 
-  .md\:grid {
-    display: grid;
-  }
-
   .md\:grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
