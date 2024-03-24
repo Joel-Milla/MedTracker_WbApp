@@ -19167,6 +19167,10 @@ video {
     grid-column: span 9 / span 9;
   }
 
+  .lg\:grid {
+    display: grid;
+  }
+
   .lg\:max-w-\[200px\] {
     max-width: 200px;
   }
