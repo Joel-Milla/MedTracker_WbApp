@@ -9,11 +9,11 @@ function Insights() {
         <>
             <Card
                 key="1"
-                className="flex flex-col p-4 w-full mb-10 sm:grid sm:grid-cols-4" >
-                <div className='sm:col-span-2'>
+                className="grid grid-cols-4 p-4 w-full mb-10" >
+                <div className='col-span-2'>
                     <DataValues />
                 </div>
-                <div className='sm:col-span-2'>
+                <div className='col-span-2'>
                     <DataGraph />
                 </div>
             </Card>
