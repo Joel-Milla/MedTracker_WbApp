@@ -9,11 +9,11 @@ function Dashboard() {
         <>
             <div className='container mx-auto mb-10'>
                 <Title />
-                <div className="flex flex-col gap-3 justify-center mt-10 md:grid md:grid-cols-12">
-                    <div className="md:col-span-4 lg:col-span-3">
+                <div className="flex flex-col gap-3 justify-center mt-10 sm:grid sm:grid-cols-12">
+                    <div className="sm:col-span-5 md:col-span-4 lg:col-span-3">
                         <Symptoms />
                     </div>
-                    <div className="md:col-span-8 lg:col-span-9">
+                    <div className="sm:col-span-7 md:col-span-8 lg:col-span-9">
                         <Analysis />
                         <UserInformation />
                     </div>

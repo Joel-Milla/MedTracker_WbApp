@@ -829,10 +829,6 @@ video {
   margin: 0px;
 }
 
-.m-2 {
-  margin: 0.5rem;
-}
-
 .mx-0 {
   margin-left: 0px;
   margin-right: 0px;
@@ -906,11 +902,6 @@ video {
 .my-\[calc\(\(theme\(spacing\.7\)-theme\(spacing\.5\)\)\/2\)\] {
   margin-top: calc((1.75rem - 1.25rem) / 2);
   margin-bottom: calc((1.75rem - 1.25rem) / 2);
-}
-
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
 }
 
 .my-px {
@@ -1567,10 +1558,6 @@ video {
 
 .max-w-5xl {
   max-width: 64rem;
-}
-
-.max-w-96 {
-  max-width: 24rem;
 }
 
 .max-w-\[100px\] {
@@ -18910,6 +18897,10 @@ video {
 
   .sm\:block {
     display: block;
+  }
+
+  .sm\:grid {
+    display: grid;
   }
 
   .sm\:hidden {
