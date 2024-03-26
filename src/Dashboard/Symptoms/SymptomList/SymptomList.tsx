@@ -8,9 +8,11 @@ import { Symptom } from "../../DashboardModels/dashboardModels";
 import USERS from "../../../assets/MockData/UsersData";
 
 function SymptomList() {
+    // Obtain the current user
     const currentUser = USERS[1];
     return (
         <>
+        {/* Use a list to show all the symptoms as a list */}
             <Listbox
                 aria-label="Actions"
                 onAction={(key) => alert(key)} >

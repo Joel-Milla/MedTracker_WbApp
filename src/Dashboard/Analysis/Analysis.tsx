@@ -8,6 +8,7 @@ import Insights from "./Insights/Insights";
 function Analysis() {
     return (
         <>
+        {/* Divide analysis in two parts, the graph amd the insights that can be obtained from the data */}
             <Card className="p-3 flex justify-center">
                 <Graph />
                 <Divider>Diagnóstico</Divider>

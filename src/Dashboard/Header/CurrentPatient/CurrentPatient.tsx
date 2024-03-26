@@ -27,8 +27,10 @@ const names = [
 ]
 
 function CurrentPatient() {
+
     return (
         <>
+        {/* Use the autocomplete of nextUI to select from all the current users */}
             <Autocomplete
                 color="primary"
                 label="Escoge a un paciente"

@@ -2,6 +2,7 @@
 function DataValues() {
     return (
         <>
+        {/* Show the numeric values of min/mean/max of all the values of the chart */}
             <div className="grid grid-cols-3">
                 <div>
                     <p className="text-tremor-default text-tremor-content dark:text-dark-tremor-content">

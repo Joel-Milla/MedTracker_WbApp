@@ -351,6 +351,7 @@ const valueFormatter = (number: any) =>
 
 function Chart() {
     return (
+        // Use lineChart from tremoUI to show a graph
         <>
             <LineChart
                 data={data}

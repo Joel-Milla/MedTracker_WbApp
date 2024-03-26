@@ -7,6 +7,7 @@ import SymptomList from "./SymptomList/SymptomList";
 function Symptoms() {
     return (
         <>
+        {/* Search bar to select a symptom and all the list of symptoms */}
             <Card className="p-3 flex justify-center">
                 <SearchBar />
                 <SymptomList />

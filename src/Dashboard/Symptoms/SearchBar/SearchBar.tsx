@@ -6,7 +6,9 @@ import { Symptom } from "../../DashboardModels/dashboardModels";
 import USERS from "../../../assets/MockData/UsersData";
 
 function SearchBar() {
+    // Mock data to obtain the list of symptoms from user 1
     const symptoms: Symptom[] = USERS[1].symptoms;
+    // Conver the current symptoms to the required format to show them on automcplete
     const symptomValues = symptoms.map((symptom) => {
         return {
             label: symptom.nombre,
@@ -16,6 +18,7 @@ function SearchBar() {
     })
 
     return (
+        // Use autocomplete from nextui to show all the symtpoms
         <div className="flex w-full flex-col gap-2">
             <Autocomplete
                 color="primary"

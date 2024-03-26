@@ -6,6 +6,7 @@ import DataGraph from './DataGraph/DataGraph';
 
 function Insights() {
     return (
+        // Show the minimum value, the mean, and maximum value of all the data of the cart in two ways, on numeric values and on a graph
         <>
             <Card
                 key="1"

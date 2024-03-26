@@ -4,6 +4,7 @@ import { List, ListItem } from '@tremor/react';
 function Information() {
     return (
         <>
+        {/* Show a list of metadata of the symptom */}
         <h3 className='font-bold text-xl'>Valor Seleccionado</h3>
             <List className="mt-2">
                 <ListItem key="telefono">

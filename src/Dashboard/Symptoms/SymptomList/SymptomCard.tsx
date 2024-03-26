@@ -7,6 +7,7 @@ import BlueDot from "./BlueDot";
 function SymptomCard(properties: SymptomProps) {
     const { symptom } = properties;
     return (
+        // Use a card to show the current symptoms, the last register, and to know if the symptom is being tracked and its type
         <div className="mx-1 my-px">
             <Card>
                 <CardHeader className="grid grid-row-2">
@@ -17,6 +18,7 @@ function SymptomCard(properties: SymptomProps) {
                 <CardBody>
                     <div>
                         <div className="flex gap-1 items-center">
+                            {/* Show a blue dot to denote the different data */}
                             <BlueDot />
                             <p>{symptom.activo ? "Sintoma Activo" : "Sintoma Desactivado"}</p>
                         </div>

@@ -4,6 +4,7 @@ import { Badge } from '@tremor/react';
 function Title() {
     return (
         <>
+        {/* Show the title with a bage that says the current amount of symptoms shared */}
             <div className="flex gap-3">
                 <h3 className="text-xl">Datos Compartidos</h3>
                 <Badge size="xs">6</Badge>
