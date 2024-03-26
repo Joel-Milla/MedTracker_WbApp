@@ -1,4 +1,4 @@
-import NavigationMenu from '../Global/NavigationMenu'
+import NavigationMenu from '../GlobalNavigation/NavigationMenu'
 import TarjetaPaciente from './TarjetaPaciente'
 import GridTarjetasPacientes from './GridTarjetasPacientes'
 import { Paciente, data } from './Paciente';
