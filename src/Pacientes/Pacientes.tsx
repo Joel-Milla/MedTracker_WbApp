@@ -1,13 +1,21 @@
 import NavigationMenu from '../Global/NavigationMenu'
+import TarjetaPaciente from './TarjetaPaciente'
+import GridTarjetasPacientes from './GridTarjetasPacientes'
+import { Paciente, data } from './Paciente';
+import SearchBar from './SearchBar';
 
-export default function Pacientes() {
+function Pacientes() {
 	return (
 		<div>
 			<NavigationMenu
 				title="Pacientes"
-				selectedOption={0}>
-				<h1>TARJETASSS</h1>
+				selectedOption={0}
+			>
+				<SearchBar />
+				<GridTarjetasPacientes pacientes={data} />
 			</NavigationMenu>
 		</div>
-	)
+	);
 }
+
+export default Pacientes;

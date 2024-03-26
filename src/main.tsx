@@ -7,12 +7,17 @@ import { NextUIProvider } from "@nextui-org/react";
 import App from './App.tsx'
 // Import styles
 import './output.css'
+// Theme for MUI
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './theme';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <NextUIProvider>
       <main className='light'>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </main>
     </NextUIProvider>
   </React.StrictMode>,
