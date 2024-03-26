@@ -1,4 +1,6 @@
 import * as React from 'react';
+
+// MUI components
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -8,20 +10,22 @@ import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
+import Icon from '@mui/material/Icon';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
-import MenuIcon from '@mui/icons-material/Menu';
-import Icon from '@mui/material/Icon';
 
-// Icons
+// MUI Icons
+import MenuIcon from '@mui/icons-material/Menu';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
+
+// SVG Icon
+import MedTrackerIcon from "../assets/logo_medtracker.png";
 
 // Router
 import { useNavigate } from 'react-router-dom';
@@ -29,20 +33,24 @@ import { useNavigate } from 'react-router-dom';
 // Styles
 import './NavigationMenu.css';
 
-
 interface Props {
 	children?: React.ReactNode;
-	appBarVisibleOnMobile?: 'block' | 'none';
-	appBarVisibleOnTablet?: 'block' | 'none';
-	appBarVisibleOnDesktop?: 'block' | 'none';
+	appBarVisibleOnTablet?: boolean;
+	appBarVisibleOnDesktop?: boolean;
 	title: string;
 	selectedOption: number;
 	drawerWidth?: number;
 }
 
+NavigationMenu.defaultProps = {
+	appBarVisibleOnTablet: false,
+	appBarVisibleOnDesktop: false,
+	drawerWidth: 300
+};
+
 
 function NavigationMenu(props: Props) {
-	const drawerWidth = props.drawerWidth || 240;
+	const drawerWidth = props.drawerWidth;
 
 	const [mobileOpen, setMobileOpen] = React.useState(false);
 	const [isClosing, setIsClosing] = React.useState(false);
@@ -77,20 +85,25 @@ function NavigationMenu(props: Props) {
 		{ 'title': titles[4], 'icon': SettingsIcon, 'action': () => navigateTo(titles[4].toLowerCase()) },
 	];
 
+	const drawerStyles = {
+		display: { xs: 'none', sm: 'block' },
+		'& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, bgcolor: '#E0EFEF' }
+	};
+
 	const drawer = (
 		<div>
-			<Toolbar className='bg-primary'>
-				<Icon component={MedicalServicesIcon} className='icon-white' />
-				<Typography variant="h6" noWrap component="div" className='text-white'>
+			<div className='navbar-title'>
+				<img src={MedTrackerIcon} className='medtracker-icon' alt="MedTracker Icon" />
+				<Typography variant="h6" noWrap component="div" fontWeight="bold" sx={{ marginLeft: '1rem' }}>
 					MedTracker
 				</Typography>
-			</Toolbar>
+			</div>
 			<Divider />
 			<List>
 				{drawerItems.map((item, index) => (
 					<ListItem key={item.title} disablePadding>
 						<ListItemButton selected={item.title === titles[props.selectedOption]} onClick={item.action}>
-							<ListItemIcon className='icon-primary'>
+							<ListItemIcon sx={{ color: 'primary.main' }}>
 								{<item.icon />}
 							</ListItemIcon>
 							<ListItemText primary={item.title} />
@@ -103,14 +116,18 @@ function NavigationMenu(props: Props) {
 	);
 
 	return (
-		<Box sx={{ display: 'flex' }}>
-			<CssBaseline />
+		<Box className='content-box'>
+			< CssBaseline />
 			<AppBar
 				position="fixed"
 				sx={{
 					width: { sm: `calc(100% - ${drawerWidth}px)` },
 					ml: { sm: `${drawerWidth}px` },
-					display: { xs: props.appBarVisibleOnMobile, sm: props.appBarVisibleOnTablet, md: props.appBarVisibleOnDesktop },
+					display: {
+						xs: 'none',
+						sm: (props.appBarVisibleOnTablet ? 'block' : 'none'),
+						md: (props.appBarVisibleOnDesktop ? 'block' : 'none')
+					},
 				}}
 				className='bg-primary'
 			>
@@ -147,8 +164,8 @@ function NavigationMenu(props: Props) {
 						keepMounted: true, // Better open performance on mobile.
 					}}
 					sx={{
+						...drawerStyles,
 						display: { xs: 'block', sm: 'none' },
-						'& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
 					}}
 				>
 					{drawer}
@@ -156,8 +173,8 @@ function NavigationMenu(props: Props) {
 				<Drawer
 					variant="permanent"
 					sx={{
+						...drawerStyles,
 						display: { xs: 'none', sm: 'block' },
-						'& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
 					}}
 					open
 				>
@@ -170,13 +187,17 @@ function NavigationMenu(props: Props) {
 			>
 				<Toolbar
 					sx={{
-						display: { xs: props.appBarVisibleOnMobile, sm: props.appBarVisibleOnTablet, md: props.appBarVisibleOnDesktop },
+						display: {
+							xs: 'none',
+							sm: (props.appBarVisibleOnTablet ? 'block' : 'none'),
+							md: (props.appBarVisibleOnDesktop ? 'block' : 'none')
+						},
 					}}
 				/>
 				{props.children}
 			</Box>
 
-		</Box>
+		</Box >
 	);
 }
 

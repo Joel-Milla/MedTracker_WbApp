@@ -11,19 +11,17 @@ function SymptomList() {
     const currentUser = USERS[1];
     return (
         <>
-            {/* <div className="shadow-xl rounded-lg max-w-96 p-2 mb-10"> */}
-                <Listbox
-                    aria-label="Actions"
-                    onAction={(key) => alert(key)} >
-                    {currentUser.symptoms.map((symptom: Symptom) => {
-                        return (
-                            <ListboxItem key={symptom.id} color="primary" textValue={symptom.nombre}>
-                                <SymptomCard symptom={symptom} />
-                            </ListboxItem>
-                        )
-                    })}
-                </Listbox>
-            {/* </div> */}
+            <Listbox
+                aria-label="Actions"
+                onAction={(key) => alert(key)} >
+                {currentUser.symptoms.map((symptom: Symptom) => {
+                    return (
+                        <ListboxItem key={symptom.id} color="primary" textValue={symptom.nombre}>
+                            <SymptomCard symptom={symptom} />
+                        </ListboxItem>
+                    )
+                })}
+            </Listbox>
         </>
     )
 }

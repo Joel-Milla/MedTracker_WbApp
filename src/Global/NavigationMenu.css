@@ -1,15 +1,24 @@
-.bg-primary {
-	background-color: #009C8C !important;
+.navbar-title {
+	display: flex;
+	margin: 2rem;
+	align-items: center;
 }
 
-.text-white {
-	color: #fff !important;
+.medtracker-icon {
+	height: 3rem;
+
+}
+
+.medtracker-title {
+	margin-left: 2rem;
 }
 
 .icon-white {
 	color: #fff !important;
 }
 
-.icon-primary {
-	color: #009C8C !important;
+.content-box {
+	display: flex;
+	/* padding: 3rem 12rem 3rem 12rem; */
+	padding: 3rem;
 }
