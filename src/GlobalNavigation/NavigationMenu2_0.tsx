@@ -1,5 +1,5 @@
 // External components
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation  } from 'react-router-dom';
 // ************** MUI ************
 // External components
 import Drawer from '@mui/material/Drawer';
@@ -21,6 +21,10 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import MedTrackerIcon from "../assets/logo_medtracker.svg";
 
 function NavigationMenu2_0() {
+    // The location is used to know which is the current path. this works to show that 'Pacientes' is selected on the root path.
+    const location = useLocation(); // Hook to get current location
+    const isSelected = location.pathname === '/' || location.pathname === '/pacientes';
+
     // Width and type of display to be applied to both the drawer and the box depending on the size of the screen
     // xs-0px, sm-600px, md-900px, lg-1200px, xl-1536px 
     const responsiveWidth = { md: 180, lg: 250 }
@@ -51,7 +55,7 @@ function NavigationMenu2_0() {
                     {/* Use navlink to redirect the user when clicking the button and apply style when the user is on the redirected path. Use w-full to manually expand the buttons to occupy full width of parent element. */}
                     <NavLink
                         to='pacientes'
-                        className={({ isActive }) => `${isActive ? selectedMenuStyles : 'w-full'}`} // set the width of the link to occupy 100% of the parent
+                        className={({ isActive }) => `${(isActive || isSelected) ? selectedMenuStyles : 'w-full'}`} // set the width of the link to occupy 100% of the parent
                     >
                         <ListItemButton>
                             <ListItemIcon>
