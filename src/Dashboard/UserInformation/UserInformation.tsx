@@ -15,8 +15,8 @@ function UserInformation() {
                     {/* Show delimiter */}
                     <DelimiterPersianGreen />
                 </div>
-                <div className="flex gap-4">
-                    <div className="w-1/4">
+                <div className="flex flex-col gap-4 md:flex-row">
+                    <div className="md:w-1/2 2xl:w-1/3">
                         <PersonalData />
                     </div>
                     <div className="w-full">
