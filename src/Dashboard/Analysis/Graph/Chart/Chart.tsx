@@ -354,6 +354,8 @@ const valueFormatter = (number: any) =>
 function Chart() {
     return (
         // Use lineChart from tremoUI to show a graph
+        // There are two different components of charts, one where the graph shows for mobile devices and the other that shows for larger screens. 
+        // Throws a warning of 'width(0) and height(0)' because the chart is hidden and has no width of xy axis.
         <>
             <LineChart
                 data={data}
@@ -369,6 +371,21 @@ function Chart() {
                 onValueChange={() => { }}
                 className="mt-6 hidden h-96 sm:block"
             />
+            <LineChart
+                data={data}
+                index="date"
+                categories={[
+                    'ETF Shares Vital',
+                    'Vitainvest Core',
+                    'iShares Tech Growth',
+                ]}
+                colors={['blue', 'violet', 'fuchsia']}
+                valueFormatter={valueFormatter}
+                showYAxis={false}
+                showLegend={false}
+                startEndOnly={true}
+                className="mt-6 h-72 sm:hidden" />
+
         </>
     );
 }
