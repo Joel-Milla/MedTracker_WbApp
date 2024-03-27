@@ -16,8 +16,8 @@ function SelectedData() {
                     <DelimiterPersianGreen />
                 </div>
                 {/* Use flex to show the items together*/}
-                <div className='flex gap-4'>
-                    <div className='w-1/3'>
+                <div className='flex flex-col gap-4 md:flex-row'>
+                    <div className='md:w-1/2 2xl:w-1/3'>
                         <Information />
                     </div>
                     {/* Full width to occupy the available space */}
