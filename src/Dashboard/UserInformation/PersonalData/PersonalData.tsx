@@ -7,7 +7,8 @@ function PersonalData() {
     const user = USERS[1];
     return (
         <>
-            <List className="mt-2">
+        {/* Use listItem of tremor and show the metadata of the user */}
+            <List className="">
                 <ListItem key="header">
                     <span className='font-bold'>Informacion </span>
                     <span className='font-bold'>Valores</span>
