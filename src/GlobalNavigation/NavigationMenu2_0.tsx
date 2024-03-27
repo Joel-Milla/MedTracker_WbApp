@@ -9,7 +9,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 // MUI Icons
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
@@ -44,7 +43,7 @@ function NavigationMenu2_0() {
                     {/* Use navlink to redirect the user when clicking the button and apply style when the user is on the redirected path. Use w-full to manually expand the buttons to occupy full width of parent element. */}
                     <NavLink
                         to='pacientes'
-                        className={({ isActive }) => `${isActive ? selectedMenuStyles : 'w-full'}`}
+                        className={({ isActive }) => `${isActive ? selectedMenuStyles : 'w-full'}`} // set the width of the link to occupy 100% of the parent
                     >
                         <ListItemButton>
                             <ListItemIcon>

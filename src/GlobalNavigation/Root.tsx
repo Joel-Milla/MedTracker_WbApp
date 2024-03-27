@@ -4,8 +4,10 @@ import { Outlet } from "react-router-dom";
 function Root() {
     return (
         <>
-            <NavigationMenu2_0 />
-            <Outlet />
+            <div className="flex">
+                <NavigationMenu2_0 />
+                <Outlet />
+            </div>
         </>
     );
 }
