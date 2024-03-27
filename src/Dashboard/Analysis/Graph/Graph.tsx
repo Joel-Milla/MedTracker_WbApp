@@ -1,18 +1,18 @@
 // Own components
-import Chart from './Chart/Chart';
-import SelectedData from './SelectedData/SelectedData';
+import ModalButton from './Chart/ModalButton';
+import Data from './Data/Data';
 
 function Graph() {
     return (
         <>
             {/* Show two things on the graph, the chart and then the selected data when the user click on the graph */}
             <div>
-                <h1 className="text-4xl font-semibold">Test6t</h1>
-                <div>
-                    <Chart />
+                <div className='flex justify-between'>
+                    <h1 className="text-4xl font-semibold">Test6t</h1>
+                    <ModalButton />
                 </div>
-                <div className='mt-6'>
-                    <SelectedData />
+                <div>
+                    <Data />
                 </div>
             </div>
         </>

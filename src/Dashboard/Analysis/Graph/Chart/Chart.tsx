@@ -1,6 +1,7 @@
 // External Components
 import { LineChart } from '@tremor/react';
 
+
 // Mock data
 const data = [
     {

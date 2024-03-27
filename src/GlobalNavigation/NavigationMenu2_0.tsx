@@ -111,7 +111,9 @@ function NavigationMenu2_0() {
     );
 
     return (
-        <Box>
+        <Box
+            sx={{zIndex: '40'}} // Use a z index to show the modal view of the chart above the navigation menu.
+        >
             {/* Inside this box, show a drawer which is a wrapper that serves as a navBar to span the entire height and to be fixed. Inside the drawer contains the view that shows the logo and the buttons */}
             <Box
                 // Accessibility
