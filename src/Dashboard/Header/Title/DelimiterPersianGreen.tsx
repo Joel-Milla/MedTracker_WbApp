@@ -3,7 +3,7 @@
 function DelimiterPersianGreen() {
     return (
         <>
-            <div className="border-b-1 border-persian-green-500 w-full "></div>
+            <div className="w-full border-b-1 border-persian-green-500 "></div>
         </>
     );
 }

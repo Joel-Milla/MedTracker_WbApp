@@ -15,10 +15,13 @@ function SymptomList() {
         {/* Use a list to show all the symptoms as a list */}
             <Listbox
                 aria-label="Actions"
-                onAction={(key) => alert(key)} >
+            >
+                {/* Map the current users to a listBox */}
                 {currentUser.symptoms.map((symptom: Symptom) => {
                     return (
+                        // Set the key, value and color of the item
                         <ListboxItem key={symptom.id} color="primary" textValue={symptom.nombre}>
+                            {/* Show a symptom card as the value */}
                             <SymptomCard symptom={symptom} />
                         </ListboxItem>
                     )

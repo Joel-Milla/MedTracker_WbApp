@@ -34,16 +34,12 @@ function CurrentPatient() {
         <Autocomplete
                 color="primary"
                 label="Buscar"
-                // variant="bordered" // This element makes the search bar transparent
+                variant="bordered" // This element makes the search bar transparent
                 defaultItems={names}
                 placeholder="Escoge dato salud"
             >
-                {names.map((name) => (
-                  // Set the autocomplete item with the mock data
-                    <AutocompleteItem key={name.value} value={name.value}>
-                        {name.label}
-                    </AutocompleteItem>
-                ))}
+              {/* Map the names as an item to be shown and selected */}
+                {(name) => <AutocompleteItem key={name.value}>{name.label}</AutocompleteItem>}
             </Autocomplete>
         </>
     )

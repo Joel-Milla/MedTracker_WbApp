@@ -8,7 +8,7 @@ import USERS from "../../../assets/MockData/UsersData";
 function SearchBar() {
     // Mock data to obtain the list of symptoms from user 1
     const symptoms: Symptom[] = USERS[1].symptoms;
-    // Conver the current symptoms to the required format to show them on automcplete
+    // Convert the current symptoms to the required format to show them on automcplete
     const symptomValues = symptoms.map((symptom) => {
         return {
             label: symptom.nombre,
@@ -19,19 +19,16 @@ function SearchBar() {
 
     return (
         // Use autocomplete from nextui to show all the symtpoms
-        <div className="flex w-full flex-col gap-2">
-            <Autocomplete
-                color="primary"
-                label="Buscar"
-                variant="bordered"
-                defaultItems={symptomValues}
-                placeholder="Escoge dato salud"
-                className="w-full"
-                fullWidth
-            >
-                {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
-            </Autocomplete>
-        </div>
+        <Autocomplete
+            color="primary"
+            label="Buscar"
+            variant="bordered"
+            defaultItems={symptomValues}
+            placeholder="Escoge dato de salud"
+        >
+            {/* Map the default items to an autocomplete item to be shown */}
+            {(symptom) => <AutocompleteItem key={symptom.value}>{symptom.label}</AutocompleteItem>}
+        </Autocomplete>
     );
 }
 
