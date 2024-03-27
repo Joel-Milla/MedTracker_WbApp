@@ -10,11 +10,11 @@ function Insights() {
         <>
             <Card
             // Flex to have the items together, and margin bottom to have white space at the end
-                className="flex gap-4 w-full p-4 mb-5" >
-                <div className='w-1/2'>
+                className="flex flex-col gap-4 p-4 mb-5 lg:flex-row" >
+                <div className='lg:w-1/2'>
                     <DataValues />
                 </div>
-                <div className='w-1/2'>
+                <div className='lg:w-1/2'>
                     <DataGraph />
                 </div>
             </Card>
