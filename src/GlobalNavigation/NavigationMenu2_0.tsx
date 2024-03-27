@@ -21,19 +21,29 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import MedTrackerIcon from "../assets/logo_medtracker.svg";
 
 function NavigationMenu2_0() {
+    // Width and type of display to be applied to both the drawer and the box depending on the size of the screen
+    // xs-0px, sm-600px, md-900px, lg-1200px, xl-1536px 
+    const responsiveWidth = { md: 180, lg: 250 }
+    const responsiveDisplay = { xs: 'none', sm: 'none', md: 'block' } // From medium to greater, show it as a block
+
     // Styles to apply to the Draw container, to the selected menus icons of the selected menus.
     const drawerStyles = {
         display: { xs: 'none', sm: 'block' },
-        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 250, bgcolor: '#E0EFEF' }
+        // Change the size of the mui drapper depending on the size of the screen
+        '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
+            width: responsiveWidth,
+            bgcolor: '#E0EFEF'
+        }
     };
     const selectedMenuStyles = 'bg-persian-green-500 text-white w-full';
 
     // Drawer list contains the view of the logo and all the navigations titles of the dashboard
     const DrawerList = (
         <>
-            {/* The div contains the logo and the title of the navigation bar. Use flex to align Items center and to align image */}
-            <div className='flex justify-center items-center gap-4 p-5'>
-                <img src={MedTrackerIcon} alt="MedTracker logo" className='w-1/3'/>
+            {/* The div contains the logo and the title of the navigation bar. Use flex to align Items center and to align image. Show logo together when greater than 1280px */}
+            <div className='flex flex-col justify-center items-center gap-4 p-2 xl:flex-row'>
+                <img src={MedTrackerIcon} alt="MedTracker logo" className='w-1/3 xl:w-1/5' />
                 <h2 className='text-2xl font-bold'>MedTracker</h2>
             </div>
             <Divider />
@@ -47,7 +57,7 @@ function NavigationMenu2_0() {
                     >
                         <ListItemButton>
                             <ListItemIcon>
-                                <PeopleAltIcon/>
+                                <PeopleAltIcon />
                             </ListItemIcon>
                             <ListItemText primary="Pacientes" />
                         </ListItemButton>
@@ -112,7 +122,7 @@ function NavigationMenu2_0() {
 
     return (
         <Box
-            sx={{zIndex: '40'}} // Use a z index to show the modal view of the chart above the navigation menu.
+            sx={{ zIndex: '40' }} // Use a z index to show the modal view of the chart above the navigation menu.
         >
             {/* Inside this box, show a drawer which is a wrapper that serves as a navBar to span the entire height and to be fixed. Inside the drawer contains the view that shows the logo and the buttons */}
             <Box
@@ -120,7 +130,7 @@ function NavigationMenu2_0() {
                 component="nav"
                 // sx serves to change the style of the box
                 sx={{
-                    width: { sm: 250 },
+                    width: responsiveWidth,
                     flexShrink: { sm: 0 }
                 }}
                 aria-label="mailbox folders"
@@ -130,7 +140,7 @@ function NavigationMenu2_0() {
                     variant="permanent"
                     sx={{
                         ...drawerStyles,
-                        display: { xs: 'none', sm: 'block' },
+                        display: responsiveDisplay,
                     }}
                     open
                 >
