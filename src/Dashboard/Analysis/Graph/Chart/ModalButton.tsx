@@ -13,7 +13,7 @@ function ModalButton() {
 
     return (
         <>
-        {/* Show a button that handles when user click the button to open the graph and show the chart when the modal is open */}
+            {/* Show a button that handles when user click the button to open the graph and show the chart when the modal is open */}
             <div>
                 <Button
                     key="full modal"
@@ -26,6 +26,7 @@ function ModalButton() {
                 size="full"
                 isOpen={isOpen}
                 onClose={onClose}
+                scrollBehavior="inside"
             >
                 <ModalContent>
                     {(onClose) => (
