@@ -5,10 +5,14 @@ import SelectedData from './SelectedData/SelectedData';
 function Graph() {
     return (
         <>
-        {/* Show two things on the graph, the chart and then the selected data when the user click on the graph */}
-            <div className='shadow-xl p-5'>
-                <Chart />
-                <SelectedData />
+            {/* Show two things on the graph, the chart and then the selected data when the user click on the graph */}
+            <div>
+                <div>
+                    <Chart />
+                </div>
+                <div className='mt-6'>
+                    <SelectedData />
+                </div>
             </div>
         </>
     );

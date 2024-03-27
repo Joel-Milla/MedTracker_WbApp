@@ -9,7 +9,7 @@ function Analysis() {
     return (
         <>
         {/* Divide analysis in two parts, the graph amd the insights that can be obtained from the data */}
-            <Card className="p-3 flex justify-center">
+            <Card className="flex p-3">
                 <Graph />
                 <Divider>Diagnóstico</Divider>
                 <Insights />

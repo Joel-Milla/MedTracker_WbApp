@@ -1,6 +1,7 @@
 // External Components
 import { LineChart } from '@tremor/react';
 
+// Mock data
 const data = [
     {
         date: 'Aug 01',
@@ -366,21 +367,6 @@ function Chart() {
                 yAxisWidth={55}
                 onValueChange={() => { }}
                 className="mt-6 hidden h-96 sm:block"
-            />
-            <LineChart
-                data={data}
-                index="date"
-                categories={[
-                    'ETF Shares Vital',
-                    'Vitainvest Core',
-                    'iShares Tech Growth',
-                ]}
-                colors={['blue', 'violet', 'fuchsia']}
-                valueFormatter={valueFormatter}
-                showYAxis={false}
-                showLegend={false}
-                startEndOnly={true}
-                className="mt-6 h-72 sm:hidden"
             />
         </>
     );
