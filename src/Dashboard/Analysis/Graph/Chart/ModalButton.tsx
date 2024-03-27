@@ -1,7 +1,7 @@
 // External Components
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 // Own components
-import Chart from '../Chart/Chart';
+import Data from '../Data/Data';
 
 function ModalButton() {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -32,7 +32,7 @@ function ModalButton() {
                         <>
                             <ModalHeader className="flex flex-col gap-1">Test6t</ModalHeader>
                             <ModalBody>
-                                <Chart />
+                                <Data />
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="danger" onPress={onClose}>
