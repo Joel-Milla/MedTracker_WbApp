@@ -28,8 +28,6 @@ function NavigationMenu2_0() {
 
     // Styles to apply to the Draw container, to the selected menus icons of the selected menus.
     const drawerStyles = {
-        display: { xs: 'none', sm: 'block' },
-        // Change the size of the mui drapper depending on the size of the screen
         '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
             width: responsiveWidth,
