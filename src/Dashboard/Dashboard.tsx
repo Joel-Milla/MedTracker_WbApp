@@ -8,13 +8,17 @@ function Dashboard() {
     return (
         <>
         {/* Show the three main parts of the dashboard, the title that contains the current user, the list of symptoms with the graph to see the symptom selected and then the current information of the user.  */}
+        {/* Container to limit the size, mx-auto to center the div and marginBottom of 10 to have white space at the end */}
             <div className='container mx-auto mb-10'>
                 <Header />
-                <div className="flex flex-col gap-3 justify-center mt-10 sm:grid sm:grid-cols-12">
-                    <div className="sm:col-span-5 md:col-span-4 lg:col-span-3">
+                {/* Flex to have them in same row and have it expanded full parent size*/}
+                <div className="flex gap-3 w-full mt-5">
+                    {/* Limit the width of symptoms to 1/4 of the parent size */}
+                    <div className="w-1/4"> 
                         <Symptoms />
                     </div>
-                    <div className="sm:col-span-7 md:col-span-8 lg:col-span-9">
+                    {/* Expand the dashboard the all the available width */}
+                    <div className="w-full">
                         <Analysis />
                         <UserInformation />
                     </div>
