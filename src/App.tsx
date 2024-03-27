@@ -10,8 +10,11 @@ import Dashboard from "./Dashboard/Dashboard";
 const appRouter = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Root />}>
     <Route index element={<Pacientes />} />
-    <Route path='Pacientes' element={<Pacientes />} />
-    <Route path='Dashboard' element={<Dashboard />} />
+    <Route path='pacientes' element={<Pacientes />} />
+    <Route path='dashboard' element={<Dashboard />} />
+    <Route path='notificaciones' element={<Pacientes />} />
+    <Route path='perfil' element={<Dashboard />} />
+    <Route path='ajustes' element={<Pacientes />} />
   </Route>
 ))
 

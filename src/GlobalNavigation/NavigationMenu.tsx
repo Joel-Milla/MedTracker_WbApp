@@ -2,8 +2,8 @@ import * as React from 'react';
 
 // MUI components
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
@@ -201,4 +201,4 @@ function NavigationMenu(props: Props) {
 	);
 }
 
-export default NavigationMenu;
+// export default NavigationMenu;
