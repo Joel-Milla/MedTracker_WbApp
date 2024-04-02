@@ -7,8 +7,7 @@ function Graph() {
         <>
             {/* Show two things on the graph, the chart and then the selected data when the user click on the graph */}
             <div>
-                <div className='flex justify-between'>
-                    <h1 className="text-4xl font-semibold">Test6t</h1>
+                <div className='flex justify-end'>
                     <ModalButton />
                 </div>
                 <div>

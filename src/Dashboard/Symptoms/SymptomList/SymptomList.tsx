@@ -13,7 +13,7 @@ function SymptomList() {
     // Obtain the current user
     const symptoms = useSelector((state: RootState) => state.user.symptoms);
     // Save the selected key and its initial state
-    const initialSelection = symptoms.length > 0 ? new Set([symptoms[0].id]) : new Set([]);
+    const initialSelection = symptoms.length > 0 ? new Set([]) : new Set([]);
     const [selectedKeys, setSelectedKeys] = useState(initialSelection);
     // Use this hook to dispatch actions to redux
     const dispatch = useDispatch();
@@ -33,6 +33,7 @@ function SymptomList() {
                 selectionMode="multiple"
                 selectedKeys={selectedKeys}
                 onSelectionChange={handleSelectionChange}
+                disallowEmptySelection={false}
             >
                 {/* Map the current users to a listBox */}
                 {symptoms.map((symptom) => {

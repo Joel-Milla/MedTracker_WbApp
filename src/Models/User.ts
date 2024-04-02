@@ -50,7 +50,7 @@ export const mockUser: User = {
             },
             "notificacion": "",
             "cuantitativo": false,
-            "nombre": "Test6t",
+            "nombre": "Test1",
             "icon": "44.square.fill"
         },
         {
@@ -65,7 +65,7 @@ export const mockUser: User = {
             "id": "1E284C31-33F0-4112-B9C0-0C43AED4EBE6",
             "description": "Cuant",
             "notificacion": "",
-            "nombre": "Test8",
+            "nombre": "Test2",
             "activo": false,
             "color": "#007AFF"
         },
@@ -83,11 +83,11 @@ export const mockUser: User = {
             "unidades": "",
             "cuantitativo": false,
             "description": "12",
-            "nombre": "Test7"
+            "nombre": "Test3"
         },
         {
             "idDocFirebase": "36FEEA09-3A63-4A48-B595-B9CCA47A3C40",
-            "nombre": "Test5",
+            "nombre": "Test4",
             "icon": "plus.viewfinder",
             "description": "5",
             "cuantitativo": false,
@@ -109,12 +109,12 @@ export const mockUser: User = {
                 "seconds": 1705619554,
                 "nanoseconds": 98453000
             },
-            "nombre": "Test4",
+            "nombre": "Test5",
             "icon": "plus.viewfinder",
             "unidades": "",
             "color": "#007AFF",
             "notificacion": "",
-            "description": "Test4",
+            "description": "Test5",
             "activo": false
         },
         {
@@ -125,7 +125,7 @@ export const mockUser: User = {
                 "nanoseconds": 256026000
             },
             "unidades": "",
-            "nombre": "Test3",
+            "nombre": "Test6",
             "description": "3",
             "color": "#007AFF",
             "icon": "plus.viewfinder",
@@ -135,71 +135,71 @@ export const mockUser: User = {
         }
     ],
     "registers": [
-        {
-            "idDocFirebase": "3D42F5A7-6B6F-4633-BB0F-56F443F81060",
-            "id": "3D42F5A7-6B6F-4633-BB0F-56F443F81060",
-            "notas": "",
-            "cantidad": 0,
-            "idSymptom": "189D70BE-CC59-45E7-8E41-E43CBC6CD8CD",
-            "fecha": {
-                "seconds": 1707681092,
-                "nanoseconds": 183495000
-            }
-        },
-        {
-            "idDocFirebase": "6A35B7B9-35B3-40AF-B20A-906A4FFA6D8B",
-            "fecha": {
-                "seconds": 1708993739,
-                "nanoseconds": 216163000
+        ...Array.from({ length: 15 }, (_, i) => ({
+            idDocFirebase: `Register_Test1_${i}`,
+            id: `Register_Test1_${i}`,
+            notas: `Register_Test1_${i}`,
+            cantidad: i * 5, // Example value
+            idSymptom: "189D70BE-CC59-45E7-8E41-E43CBC6CD8CD", // Symptom ID
+            fecha: {
+                seconds: 1707681092 + i * 86400, // Example timestamp
+                nanoseconds: 183495000,
             },
-            "cantidad": 43,
-            "idSymptom": "1E284C31-33F0-4112-B9C0-0C43AED4EBE6",
-            "id": "6A35B7B9-35B3-40AF-B20A-906A4FFA6D8B",
-            "notas": ""
-        },
-        {
-            "idDocFirebase": "6EF2B458-5639-4520-9E6F-7609292788B2",
-            "cantidad": 0,
-            "idSymptom": "CA2F8094-E00C-4FDA-893E-271B6D1DA1A5",
-            "id": "6EF2B458-5639-4520-9E6F-7609292788B2",
-            "fecha": {
-                "seconds": 1706124960,
-                "nanoseconds": 0
+        })),
+        ...Array.from({ length: 15 }, (_, i) => ({
+            idDocFirebase: `Register_Test2_${i}`,
+            id: `Register_Test2_${i}`,
+            notas: `Register_Test2_${i}`,
+            cantidad: 10 + i * 5, // Example value
+            idSymptom: "1E284C31-33F0-4112-B9C0-0C43AED4EBE6", // Symptom ID
+            fecha: {
+                seconds: 1707681092 + i * 86400, // Example timestamp
+                nanoseconds: 183495000,
             },
-            "notas": ""
-        },
-        {
-            "idDocFirebase": "7C8825EC-2BDB-402A-880E-8665265DAF58",
-            "id": "7C8825EC-2BDB-402A-880E-8665265DAF58",
-            "notas": "",
-            "cantidad": 58.72657012939453,
-            "idSymptom": "1FC6C98A-D827-413A-8183-FD25A0771810",
-            "fecha": {
-                "seconds": 1708993676,
-                "nanoseconds": 188878000
-            }
-        },
-        {
-            "idDocFirebase": "DE3A88E3-DBE0-4095-B65B-ABB432BE4392",
-            "cantidad": 0,
-            "idSymptom": "36FEEA09-3A63-4A48-B595-B9CCA47A3C40",
-            "id": "DE3A88E3-DBE0-4095-B65B-ABB432BE4392",
-            "fecha": {
-                "seconds": 1707681021,
-                "nanoseconds": 180688000
+        })),
+        ...Array.from({ length: 15 }, (_, i) => ({
+            idDocFirebase: `Register_Test3_${i}`,
+            id: `Register_Test3_${i}`,
+            notas: `Register_Test3_${i}`,
+            cantidad: 20 + i * 5, // Example value
+            idSymptom: "1FC6C98A-D827-413A-8183-FD25A0771810", // Symptom ID
+            fecha: {
+                seconds: 1707681092 + i * 86400, // Example timestamp
+                nanoseconds: 183495000,
             },
-            "notas": ""
-        },
-        {
-            "idDocFirebase": "EDA9D89C-6C36-4DC7-86DC-53BE3D25B334",
-            "idSymptom": "44E5A71C-198B-489D-9CA7-F68F04044C36",
-            "fecha": {
-                "seconds": 1707506340,
-                "nanoseconds": 0
+        })),
+        ...Array.from({ length: 15 }, (_, i) => ({
+            idDocFirebase: `Register_Test4_${i}`,
+            id: `Register_Test4_${i}`,
+            notas: `Register_Test4_${i}`,
+            cantidad: 30 + i * 5, // Example value
+            idSymptom: "36FEEA09-3A63-4A48-B595-B9CCA47A3C40", // Symptom ID
+            fecha: {
+                seconds: 1707681092 + i * 86400, // Example timestamp
+                nanoseconds: 183495000,
             },
-            "notas": "",
-            "cantidad": 0,
-            "id": "EDA9D89C-6C36-4DC7-86DC-53BE3D25B334"
-        }
+        })),
+        ...Array.from({ length: 15 }, (_, i) => ({
+            idDocFirebase: `Register_Test5_${i}`,
+            id: `Register_Test5_${i}`,
+            notas: `Register_Test5_${i}`,
+            cantidad: 40 + i * 5, // Example value
+            idSymptom: "44E5A71C-198B-489D-9CA7-F68F04044C36", // Symptom ID
+            fecha: {
+                seconds: 1707681092 + i * 86400, // Example timestamp
+                nanoseconds: 183495000,
+            },
+        })),
+        ...Array.from({ length: 15 }, (_, i) => ({
+            idDocFirebase: `Register_Test6_${i}`,
+            id: `Register_Test6_${i}`,
+            notas: `Register_Test6_${i}`,
+            cantidad: 50 + i * 5, // Example value
+            idSymptom: "CA2F8094-E00C-4FDA-893E-271B6D1DA1A5", // Symptom ID
+            fecha: {
+                seconds: 1707681092 + i * 86400, // Example timestamp
+                nanoseconds: 183495000,
+            },
+        })),
     ]
 };
