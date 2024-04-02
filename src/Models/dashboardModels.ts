@@ -1,5 +1,5 @@
 // Timestamp
-type Timestamp = {
+export type Timestamp = {
     seconds: number,
     nanoseconds: number,
 }
@@ -20,7 +20,8 @@ export interface Symptom {
 
 // Register model
 export interface Register {
-    "fecha": string,
+    "idDocFirebase": string,
+    "fecha": Timestamp,
     "idSymptom": string,
     "notas": string,
     "cantidad": number,
