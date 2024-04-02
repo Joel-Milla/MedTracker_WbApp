@@ -323,7 +323,7 @@ const data = [
         'iShares Tech Growth': 5577.1,
     },
     {
-        date: 'Sep 23',
+        date: 'Dic 31',
         'ETF Shares Vital': 14328.3,
         'Vitainvest Core': 10036.1,
         'iShares Tech Growth': 5439.2,

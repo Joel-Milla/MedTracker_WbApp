@@ -1,11 +1,13 @@
+// External libaries
+import { useState } from "react";
 // External components
 import { Listbox, ListboxItem } from "@nextui-org/react";
-// Components
-import SymptomCard from './SymptomCard';
 // Redux connection
 import { RootState } from "../../../state/store";
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+// Components
+import SymptomCard from './SymptomCard';
+import { setSelectedSymptoms } from "../../../state/uiSlice";
 
 function SymptomList() {
     // Obtain the current user
@@ -13,11 +15,14 @@ function SymptomList() {
     // Save the selected key and its initial state
     const initialSelection = symptoms.length > 0 ? new Set([symptoms[0].id]) : new Set([]);
     const [selectedKeys, setSelectedKeys] = useState(initialSelection);
+    // Use this hook to dispatch actions to redux
+    const dispatch = useDispatch();
 
 
     // Handles the selectedKeys based on the selection
     const handleSelectionChange = (keys: Set<string> | any) => {
         setSelectedKeys(new Set(keys));
+        dispatch(setSelectedSymptoms(keys));
     };
     return (
         <>
@@ -28,7 +33,6 @@ function SymptomList() {
                 selectionMode="multiple"
                 selectedKeys={selectedKeys}
                 onSelectionChange={handleSelectionChange}
-                shouldHighlightOnFocus={true}
             >
                 {/* Map the current users to a listBox */}
                 {symptoms.map((symptom) => {
@@ -38,7 +42,6 @@ function SymptomList() {
                         key={symptom.id} 
                         color="primary" 
                         textValue={symptom.nombre}
-                        shouldHighlightOnFocus={true}
                         >
                             {/* Show a symptom card as the value */}
                             <SymptomCard

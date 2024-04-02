@@ -1,18 +1,24 @@
 // External libaries
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+// Define the initial state and its type
+const initialSymptoms: string[] = [];
 export const uiSlice = createSlice({
     name: 'ui',
     initialState: {
-        selectedSymptomId: "189D70BE-CC59-45E7-8E41-E43CBC6CD8CD",
+        initialSymptoms: initialSymptoms,
     },
     reducers: {
-        selectSymptom: (state, action) => {
-            state.selectedSymptomId = action.payload;
+        setSelectedSymptoms: (state, action: PayloadAction<Set<string>>) => {
+            const symptomsId = []
+            for (const symptomId of action.payload) {
+                symptomsId.push(symptomId);
+            }
+            state.initialSymptoms = symptomsId;
         },
     },
 });
 
-export const { selectSymptom } = uiSlice.actions;
+export const { setSelectedSymptoms } = uiSlice.actions;
 
 export default uiSlice.reducer;
