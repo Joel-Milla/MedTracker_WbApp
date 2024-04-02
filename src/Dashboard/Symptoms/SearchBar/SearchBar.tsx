@@ -1,7 +1,7 @@
 // External Components
 import { Autocomplete, AutocompleteItem } from "@nextui-org/react";
 // Models of data
-import { Symptom } from "../../DashboardModels/dashboardModels";
+import { Symptom } from "../../../Models/dashboardModels";
 // Mock Data
 import USERS from "../../../assets/MockData/UsersData";
 

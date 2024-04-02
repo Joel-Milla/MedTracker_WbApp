@@ -1,6 +1,9 @@
-// External libraries
+// External libraries of react
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+// Import external libarries for use of redux
+import { Provider } from 'react-redux'; // Connect redux with react
+import { store } from './state/store.ts';
 // `NextUIProvider` component
 import { NextUIProvider } from "@nextui-org/react";
 // Components
@@ -16,7 +19,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <NextUIProvider>
       <main className='light'>
         <ThemeProvider theme={theme}>
-          <App />
+          <Provider store={store}>
+            <App />
+          </Provider>
         </ThemeProvider>
       </main>
     </NextUIProvider>

@@ -3,7 +3,7 @@ import { Listbox, ListboxItem } from "@nextui-org/react";
 // Components
 import SymptomCard from './SymptomCard';
 // Models
-import { Symptom } from "../../DashboardModels/dashboardModels";
+import { Symptom } from "../../../Models/dashboardModels";
 // Mock Data
 import USERS from "../../../assets/MockData/UsersData";
 
