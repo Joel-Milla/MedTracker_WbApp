@@ -27,20 +27,3 @@ export interface Register {
     "cantidad": number,
     "id": string
 }
-
-
-// Properties of symptom list
-export interface SymptomListProps {
-    symptoms: Symptom[]
-}
-
-// Properties of symptom list
-export interface SymptomProps {
-    symptom: Symptom
-}
-
-// Properties of graph
-export interface GraphProps {
-    symptom: Symptom,
-    registers: Register[]
-}

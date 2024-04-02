@@ -1,7 +1,7 @@
 // External libaries
 import { createSlice } from "@reduxjs/toolkit";
 // Import mock data
-import { mockData } from "../Models/PatientsModel";
+import { mockData } from "../Models/Patients";
 
 export const patientsSlice = createSlice({
     name: 'patients',

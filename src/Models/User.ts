@@ -1,7 +1,7 @@
 // Import own created types/models
-import { Timestamp } from "./dashboardModels"
-import { Symptom } from "./dashboardModels"
-import { Register } from "./dashboardModels"
+import { Timestamp } from "./Symptom_Register"
+import { Symptom } from "./Symptom_Register"
+import { Register } from "./Symptom_Register"
 
 export interface User {
     idDocFirebase: String,

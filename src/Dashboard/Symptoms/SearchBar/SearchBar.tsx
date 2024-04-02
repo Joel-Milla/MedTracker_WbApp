@@ -1,13 +1,12 @@
 // External Components
 import { Autocomplete, AutocompleteItem } from "@nextui-org/react";
-// Models of data
-import { Symptom } from "../../../Models/dashboardModels";
-// Mock Data
-import USERS from "../../../assets/MockData/UsersData";
+// Redux connection
+import { RootState } from "../../../state/store";
+import { useSelector } from "react-redux";
 
 function SearchBar() {
     // Mock data to obtain the list of symptoms from user 1
-    const symptoms: Symptom[] = USERS[1].symptoms;
+    const symptoms = useSelector((state: RootState) => state.user.symptoms);
     // Convert the current symptoms to the required format to show them on automcplete
     const symptomValues = symptoms.map((symptom) => {
         return {

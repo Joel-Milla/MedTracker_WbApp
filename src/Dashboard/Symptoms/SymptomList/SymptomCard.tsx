@@ -1,12 +1,11 @@
 // External component
 import { Card, CardHeader, CardBody, Divider } from "@nextui-org/react";
 // Models
-import { SymptomProps } from '../../../Models/dashboardModels';
+import { Symptom } from '../../../Models/Symptom_Register';
 import BlueDot from "./BlueDot";
 
-function SymptomCard(properties: SymptomProps) {
-    // Symptom that was passed in
-    const { symptom } = properties;
+// Receives a symptoms to show in a list
+function SymptomCard({ symptom }: {symptom: Symptom}) {
     return (
         // Use a card to show the current symptoms, the last register, and to know if the symptom is being tracked and its type
         // Use margin of 1px to show the borders of the card
