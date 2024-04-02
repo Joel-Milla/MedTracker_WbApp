@@ -4,17 +4,17 @@ import { Symptom } from "./Symptom_Register"
 import { Register } from "./Symptom_Register"
 
 export interface User {
-    idDocFirebase: String,
-    arregloDoctor: String[],
-    email: String,
-    rol: String,
-    sexo: String,
-    antecedentes: String,
-    nombreCompleto: String,
+    idDocFirebase: string,
+    arregloDoctor: string[],
+    email: string,
+    rol: string,
+    sexo: string,
+    antecedentes: string,
+    nombreCompleto: string,
     fechaNacimiento: Timestamp,
-    telefono: String,
-    estatura: String,
-    id: String,
+    telefono: string,
+    estatura: string,
+    id: string,
     symptoms: Symptom[],
     registers: Register[],
 }
@@ -27,7 +27,7 @@ export const mockUser: User = {
     "email": "joel@mail.com",
     "rol": "Paciente",
     "sexo": "Masculino",
-    "antecedentes": "5",
+    "antecedentes": "Hello, my name is Joel",
     "nombreCompleto": "Joel",
     "fechaNacimiento": {
         "seconds": 1038005760,
