@@ -2,7 +2,8 @@
 import { LineChart } from '@tremor/react';
 // Redux connection
 import { RootState } from '../../../../state/store';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedDataPoint } from '../../../../state/uiSlice'; // Action to save a data point
 // Types/models
 import { Register, Symptom } from '../../../../Models/Symptom_Register';
 // Utils functions
@@ -34,16 +35,19 @@ const createData = (registers: Register[], symptoms: Symptom[], selectedSymptoms
 
             // Add the data to the object when it doesnt have that date string
             if (!existingData) {
+                // When no symptom exists, adds the symptom to the data point and add the note of the day
                 const symptomData = {
                     longDate: date,
                     date: stringDate,
                     [symptomName]: register.cantidad,
+                    [`${symptomName}_note`]: register.notas,
                 }
                 dateDataMap.set(stringDate, symptomData);
             } else {
-                // Add to the existing object the symptom and the amount
+                // Add to the existing object the symptom, the amount and the notes of that day
                 const amount = register.cantidad;
                 existingData[symptomName] = amount;
+                existingData[`${symptomName}_note`] = register.notas;
             }
         }
     }
@@ -67,16 +71,25 @@ function Chart() {
     // Obtain the current user data
     const symptoms = useSelector((state: RootState) => state.user.symptoms);
     // Get the current selected sypmtoms
-    const selectedSymptoms = useSelector((state: RootState) => state.ui.initialSymptoms);
+    const selectedSymptoms = useSelector((state: RootState) => state.ui.selectedSymptoms);
     const selectedSymptomNames = selectedSymptoms.map((symptomId) => getSymptomName(symptoms, symptomId));
+    
+    // Logic to update information on app
+    // Use this hook to dispatch actions to redux
+    const dispatch = useDispatch();
+
+    // Function that handles when a user clicks a data point on the chart to save it globally
+    const handleOnValueChange = (dataPoint: any) => {
+        console.log(dataPoint);
+        dispatch(setSelectedDataPoint(dataPoint));
+    }
+    
 
     // Obtain and map the new data
     const data = createData(registers, symptoms, selectedSymptoms);
-
+    
     // Define all the possible colors
     const colors = ['red', 'cyan', 'amber', 'purple', 'lime', 'violet', 'orange', 'teal', 'yellow', 'indigo', 'green', 'pink', 'emerald', 'rose', 'sky', 'fuchsia', 'blue', 'stone', 'zinc', 'neutral']
-
-
     return (
         // Use lineChart from tremoUI to show a graph
         // There are two different components of charts, one where the graph shows for mobile devices and the other that shows for larger screens. 
@@ -89,7 +102,7 @@ function Chart() {
                 categories={selectedSymptomNames}
                 colors={colors}
                 yAxisWidth={55}
-                onValueChange={(v) => {console.log(v)}}
+                onValueChange={handleOnValueChange}
                 className="mt-6 hidden h-96 sm:block"
             />
             {/* Mobile chart */}

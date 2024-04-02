@@ -1,19 +1,23 @@
+// Redux connection
+import { RootState } from '../../../../state/store';
+import { useSelector } from "react-redux";
+// External components
 import { Textarea } from "@nextui-org/react";
 
 function Notes() {
-    // Mock data
-    const placeholder = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nParturient montes nascetur ridiculus mus mauris vitae. Vitae sapien pellentesque habitant morbi tristique. Fermentum iaculis eu non diam. A erat nam at lectus. Quam vulputate dignissim suspendisse in."
+    // Obtain the selected data point
+    const selectedDataPoint = useSelector((state: RootState) => state.ui.selectedDataPoint);
     return (
         <>
-        {/* Show in a textarea of nextui the notes of the current date */}
+            {/* Show in a textarea of nextui the notes of the current date */}
             <Textarea
                 isReadOnly
                 label="Notas del dia"
                 variant="bordered"
                 labelPlacement="outside"
-                placeholder="Enter your description"
+                placeholder={selectedDataPoint.note}
                 color="primary"
-                defaultValue={placeholder}
+                defaultValue={selectedDataPoint.note}
             />
         </>
     )
