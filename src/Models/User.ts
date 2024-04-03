@@ -41,7 +41,7 @@ export const mockUser: User = {
             "idDocFirebase": "189D70BE-CC59-45E7-8E41-E43CBC6CD8CD",
             "id": "189D70BE-CC59-45E7-8E41-E43CBC6CD8CD",
             "unidades": "",
-            "description": "6",
+            "description": "Numero de pasos que he dado",
             "color": "#007AFF",
             "activo": false,
             "fecha": {
@@ -50,7 +50,7 @@ export const mockUser: User = {
             },
             "notificacion": "",
             "cuantitativo": false,
-            "nombre": "Test1",
+            "nombre": "Pasos diarios",
             "icon": "44.square.fill"
         },
         {
@@ -65,7 +65,7 @@ export const mockUser: User = {
             "id": "1E284C31-33F0-4112-B9C0-0C43AED4EBE6",
             "description": "Cuant",
             "notificacion": "",
-            "nombre": "Test2",
+            "nombre": "Fatiga",
             "activo": false,
             "color": "#007AFF"
         },
@@ -83,7 +83,7 @@ export const mockUser: User = {
             "unidades": "",
             "cuantitativo": false,
             "description": "12",
-            "nombre": "Test3"
+            "nombre": "Peso"
         },
         {
             "idDocFirebase": "36FEEA09-3A63-4A48-B595-B9CCA47A3C40",
@@ -135,70 +135,71 @@ export const mockUser: User = {
         }
     ],
     "registers": [
-        ...Array.from({ length: 15 }, (_, i) => ({
+        // Use an array function to generate an array of x length with mock data
+        ...Array.from({ length: 365 }, (_, i) => ({
             idDocFirebase: `Register_Test1_${i}`,
             id: `Register_Test1_${i}`,
-            notas: `Register_Test1_${i}`,
-            cantidad: i * 5, // Example value
+            notas: 'Numero de pasos diarios',
+            cantidad: Math.floor(Math.random() * 10000), // Example value
             idSymptom: "189D70BE-CC59-45E7-8E41-E43CBC6CD8CD", // Symptom ID
             fecha: {
-                seconds: 1707681092 + i * 86400, // Example timestamp
-                nanoseconds: 183495000,
+                seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                nanoseconds: 0,
             },
         })),
-        ...Array.from({ length: 15 }, (_, i) => ({
+        ...Array.from({ length: 365 }, (_, i) => ({
             idDocFirebase: `Register_Test2_${i}`,
             id: `Register_Test2_${i}`,
-            notas: `Register_Test2_${i}`,
-            cantidad: 10 + i * 5, // Example value
+            notas: `Fatiga durante el dia`,
+            cantidad: Math.floor(Math.random() * 100), // Example value
             idSymptom: "1E284C31-33F0-4112-B9C0-0C43AED4EBE6", // Symptom ID
             fecha: {
-                seconds: 1707681092 + i * 86400, // Example timestamp
-                nanoseconds: 183495000,
+                seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                nanoseconds: 0,
             },
         })),
-        ...Array.from({ length: 15 }, (_, i) => ({
+        ...Array.from({ length: 365 }, (_, i) => ({
             idDocFirebase: `Register_Test3_${i}`,
             id: `Register_Test3_${i}`,
-            notas: `Register_Test3_${i}`,
-            cantidad: 20 + i * 5, // Example value
+            notas: `Peso`,
+            cantidad: Math.floor(Math.random() * (60 - 55 + 1)) + 55, // Example value
             idSymptom: "1FC6C98A-D827-413A-8183-FD25A0771810", // Symptom ID
             fecha: {
-                seconds: 1707681092 + i * 86400, // Example timestamp
-                nanoseconds: 183495000,
+                seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                nanoseconds: 0,
             },
         })),
-        ...Array.from({ length: 15 }, (_, i) => ({
+        ...Array.from({ length: 365 }, (_, i) => ({
             idDocFirebase: `Register_Test4_${i}`,
             id: `Register_Test4_${i}`,
             notas: `Register_Test4_${i}`,
-            cantidad: 30 + i * 5, // Example value
+            cantidad: Math.floor(Math.random() * 60), // Example value
             idSymptom: "36FEEA09-3A63-4A48-B595-B9CCA47A3C40", // Symptom ID
             fecha: {
-                seconds: 1707681092 + i * 86400, // Example timestamp
-                nanoseconds: 183495000,
+                seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                nanoseconds: 0,
             },
         })),
-        ...Array.from({ length: 15 }, (_, i) => ({
+        ...Array.from({ length: 365 }, (_, i) => ({
             idDocFirebase: `Register_Test5_${i}`,
             id: `Register_Test5_${i}`,
             notas: `Register_Test5_${i}`,
-            cantidad: 40 + i * 5, // Example value
+            cantidad: Math.floor(Math.random() * 60), // Example value
             idSymptom: "44E5A71C-198B-489D-9CA7-F68F04044C36", // Symptom ID
             fecha: {
-                seconds: 1707681092 + i * 86400, // Example timestamp
-                nanoseconds: 183495000,
+                seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                nanoseconds: 0,
             },
         })),
-        ...Array.from({ length: 15 }, (_, i) => ({
+        ...Array.from({ length: 365 }, (_, i) => ({
             idDocFirebase: `Register_Test6_${i}`,
             id: `Register_Test6_${i}`,
             notas: `Register_Test6_${i}`,
-            cantidad: 50 + i * 5, // Example value
+            cantidad: Math.floor(Math.random() * 60), // Example value
             idSymptom: "CA2F8094-E00C-4FDA-893E-271B6D1DA1A5", // Symptom ID
             fecha: {
-                seconds: 1707681092 + i * 86400, // Example timestamp
-                nanoseconds: 183495000,
+                seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                nanoseconds: 0,
             },
         })),
     ]
