@@ -7,13 +7,19 @@ import UserInformation from "./UserInformation/UserInformation";
 function Dashboard() {
     return (
         <>
-            <div className='container mx-auto mb-10'>
+        {/* Show the three main parts of the dashboard, the title that contains the current user, the list of symptoms with the graph to see the symptom selected and then the current information of the user.  */}
+        {/* Container to limit the size, mx-auto to center the div and marginBottom of 10 to have white space at the end */}
+        {/* Add padding for display to not cover fully the view */}
+            <div className='container mx-auto mb-10 p-3'>
                 <Header />
-                <div className="flex flex-col gap-3 justify-center mt-10 sm:grid sm:grid-cols-12">
-                    <div className="sm:col-span-5 md:col-span-4 lg:col-span-3">
+                {/* Flex to have them in same row and have it expanded full parent size*/}
+                <div className="flex flex-col gap-3 mt-5 md:flex-row">
+                    {/* Responsive width depending on screen size */}
+                    <div className="md:w-1/3 2xl:w-1/4"> 
                         <Symptoms />
                     </div>
-                    <div className="sm:col-span-7 md:col-span-8 lg:col-span-9">
+                    {/* Expand the dashboard the all the available width */}
+                    <div className="w-full">
                         <Analysis />
                         <UserInformation />
                     </div>

@@ -1,26 +1,32 @@
+// Redux connection
+import { RootState } from '../../../../state/store';
+import { useSelector } from "react-redux";
 // External components
 import { List, ListItem } from '@tremor/react';
 
 function Information() {
+    // Obtain the selected data point
+    const selectedDataPoint = useSelector((state: RootState) => state.ui.selectedDataPoint);
+
     return (
         <>
-        <h3 className='font-bold text-xl'>Valor Seleccionado</h3>
-            <List className="mt-2">
+            {/* Show a list of metadata of the symptom */}
+            <List className="">
                 <ListItem key="telefono">
                     <span className='font-bold'>Informacion </span>
                     <span className='font-bold'>Valores</span>
                 </ListItem>
                 <ListItem key="sintoma">
                     <span>Sintoma: </span>
-                    <span>Test6t</span>
+                    <span>{selectedDataPoint.symptomName}</span>
                 </ListItem>
                 <ListItem key="fecha">
                     <span>Fecha: </span>
-                    <span>28 de Febrero</span>
+                    <span>{selectedDataPoint.date}</span>
                 </ListItem>
                 <ListItem key="valor">
                     <span>Valor: </span>
-                    <span>42</span>
+                    <span>{selectedDataPoint.amount}</span>
                 </ListItem>
             </List>
         </>

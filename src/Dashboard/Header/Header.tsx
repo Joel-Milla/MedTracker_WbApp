@@ -4,11 +4,14 @@ import Title from "./Title/Title";
 
 function Header() {
   return (
-    <div className="grid grid-cols-12 gap-3 mt-8">
-      <div className="col-span-12 sm:col-span-5 md:col-span-4 lg:col-span-3">
+    // Flex to expand the div 100% of container and align items as a column with multiple rows
+    <div className="flex flex-col">
+      {/* Add margins to clearly define the current user. Set same width as symptoms list based on screen size*/}
+      <div className="md:w-1/3 2xl:w-1/4 mt-5 mb-9">
         <CurrentPatient />
       </div>
-      <div className=" col-span-full">
+      {/* Because of flex properties, expand the full width of container */}
+      <div>
         <Title />
       </div>
     </div>

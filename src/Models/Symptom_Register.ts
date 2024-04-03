@@ -1,5 +1,5 @@
 // Timestamp
-type Timestamp = {
+export type Timestamp = {
     seconds: number,
     nanoseconds: number,
 }
@@ -20,26 +20,10 @@ export interface Symptom {
 
 // Register model
 export interface Register {
-    "fecha": string,
+    "idDocFirebase": string,
+    "fecha": Timestamp,
     "idSymptom": string,
     "notas": string,
     "cantidad": number,
     "id": string
-}
-
-
-// Properties of symptom list
-export interface SymptomListProps {
-    symptoms: Symptom[]
-}
-
-// Properties of symptom list
-export interface SymptomProps {
-    symptom: Symptom
-}
-
-// Properties of graph
-export interface GraphProps {
-    symptom: Symptom,
-    registers: Register[]
 }

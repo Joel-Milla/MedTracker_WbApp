@@ -7,7 +7,9 @@ import SymptomList from "./SymptomList/SymptomList";
 function Symptoms() {
     return (
         <>
-            <Card className="p-3 flex justify-center">
+        {/* Search bar to select a symptom and all the list of symptoms */}
+        {/* Use caard element to add border and shadow around section and use flex to align items as a column with multiple rows with a padding around elements*/}
+            <Card className="flex flex-col p-3">
                 <SearchBar />
                 <SymptomList />
             </Card>
