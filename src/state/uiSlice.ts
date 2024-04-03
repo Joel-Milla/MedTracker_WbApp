@@ -1,7 +1,7 @@
 // External libaries
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-// Define the initial state and its type
+// Define the initial state that the values will have in each UI
 const selectedSymptoms: string[] = [];
 const selectedDataPoint: any = {
     symptomName: "",
@@ -9,12 +9,14 @@ const selectedDataPoint: any = {
     amount: "",
     note: "",
 };
+const selectedDataFilter: string = "30d";
 export const uiSlice = createSlice({
     name: 'ui',
     initialState: {
         // Selected symptoms are the symptomst that the doctor selects on the dasboard
         selectedSymptoms: selectedSymptoms,
         selectedDataPoint: selectedDataPoint,
+        selectedDataFilter: selectedDataFilter,
     },
     reducers: {
         // Receive as payload a set that contains all the keys of the selected symptoms on the list (which are the symptoms ids)
@@ -30,7 +32,6 @@ export const uiSlice = createSlice({
             const date = action.payload.date;
             const amount = action.payload[symptomName];
             const note = action.payload[`${symptomName}_note`];
-            console.log('note: ', note);
             const dataPoint = {
                 symptomName,
                 date,
@@ -39,9 +40,14 @@ export const uiSlice = createSlice({
             };
             state.selectedDataPoint = dataPoint;
         },
+        setSelectedDataFilter: (state, action: PayloadAction<string>) => {
+            state.selectedDataFilter = action.payload;
+        },
     },
 });
 
-export const { setSelectedSymptoms, setSelectedDataPoint } = uiSlice.actions;
+// Export all the actions that are generated from the reducer
+export const { setSelectedSymptoms, setSelectedDataPoint, setSelectedDataFilter } = uiSlice.actions;
 
+// Export the reducer created
 export default uiSlice.reducer;
