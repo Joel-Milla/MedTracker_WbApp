@@ -1,13 +1,15 @@
 // External components
 import { List, ListItem } from '@tremor/react';
-// Mock Data
-import USERS from "../../../assets/MockData/UsersData";
+// Redux connection
+import { RootState } from "../../../state/store";
+import { useSelector } from "react-redux";
 
 function PersonalData() {
-    const user = USERS[1];
+    const user = useSelector((state: RootState) => state.user);
     return (
         <>
-            <List className="mt-2">
+        {/* Use listItem of tremor and show the metadata of the user */}
+            <List className="">
                 <ListItem key="header">
                     <span className='font-bold'>Informacion </span>
                     <span className='font-bold'>Valores</span>
