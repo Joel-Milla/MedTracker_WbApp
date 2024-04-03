@@ -2,8 +2,8 @@
 import { Timestamp } from "../Models/Symptom_Register";
 
 // Date Functions handling
-// Returns a Date object from timestamp
 export function timestampToDate(timestamp: Timestamp): Date {
+    // Returns a Date object from timestamp
     // Convert seconds to milliseconds and add nanoseconds converted to milliseconds
     const date = new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000);
     return date;
