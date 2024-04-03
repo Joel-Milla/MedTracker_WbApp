@@ -1,6 +1,7 @@
 // Own components
-import TabBar from '../Chart/TabBar';
+import DateFiltering from '../Chart/DateFiltering';
 import Chart from '../Chart/Chart';
+import ChartFiltering from '../Chart/ChartFiltering';
 import SelectedData from '../SelectedData/SelectedData';
 
 function Data() {
@@ -8,8 +9,9 @@ function Data() {
         <>
         {/* Show the chart and the selected data together. Add also a margin top of the selected data between the view and the chart */}
             <div>
-                <TabBar />
+                <DateFiltering />
                 <Chart />
+                <ChartFiltering />
             </div>
             <div className='mt-6'>
                 <SelectedData />

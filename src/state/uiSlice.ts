@@ -9,14 +9,16 @@ const selectedDataPoint: any = {
     amount: "",
     note: "",
 };
-const selectedDataFilter: string = "30d";
+const selectedDateFilter: string = "30d";
+const selectedChart: string = "line";
 export const uiSlice = createSlice({
     name: 'ui',
     initialState: {
         // Selected symptoms are the symptomst that the doctor selects on the dasboard
         selectedSymptoms: selectedSymptoms,
         selectedDataPoint: selectedDataPoint,
-        selectedDataFilter: selectedDataFilter,
+        selectedDateFilter: selectedDateFilter,
+        selectedChart: selectedChart,
     },
     reducers: {
         // Receive as payload a set that contains all the keys of the selected symptoms on the list (which are the symptoms ids)
@@ -46,14 +48,17 @@ export const uiSlice = createSlice({
                 state.selectedDataPoint = dataPoint;
             }
         },
-        setSelectedDataFilter: (state, action: PayloadAction<string>) => {
-            state.selectedDataFilter = action.payload;
+        setSelectedDateFilter: (state, action: PayloadAction<string>) => {
+            state.selectedDateFilter = action.payload;
+        },
+        setSelectedChart: (state, action: PayloadAction<string>) => {
+            state.selectedChart = action.payload;
         },
     },
 });
 
 // Export all the actions that are generated from the reducer
-export const { setSelectedSymptoms, setSelectedDataPoint, setSelectedDataFilter } = uiSlice.actions;
+export const { setSelectedSymptoms, setSelectedDataPoint, setSelectedDateFilter, setSelectedChart } = uiSlice.actions;
 
 // Export the reducer created
 export default uiSlice.reducer;

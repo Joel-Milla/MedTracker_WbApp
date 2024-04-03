@@ -1,15 +1,15 @@
 // Redux connection
 import { RootState } from "../../../../state/store";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedDataFilter } from "../../../../state/uiSlice"; // Action to save the 
+import { setSelectedChart } from "../../../../state/uiSlice"; // Action to save the 
 // External components
 import { Tabs, Tab } from "@nextui-org/react";
 import { Key, useState } from "react";
 
 
-function TabBar() {
+function ChartFiltering() {
     // Initial state
-    const initialSelection = useSelector((state: RootState) => state.ui.selectedDataFilter);
+    const initialSelection = useSelector((state: RootState) => state.ui.selectedChart);
     // Values that will handle the change of selected tabs
     const [selectedTab, setSelectedTabs] = useState(initialSelection);
     // Use this hook to dispatch actions to redux
@@ -19,23 +19,19 @@ function TabBar() {
     const handleSelectionChange = (key: Key) => {
         const selectedKeyTab = key.toString();
         setSelectedTabs(selectedKeyTab);
-        dispatch(setSelectedDataFilter(selectedKeyTab));
+        dispatch(setSelectedChart(selectedKeyTab));
     };
 
     // This are the titles that are displayed as tab items
     const titles = [
         {
-            id: "30d",
-            label: "Últimos 30 días",
+            id: "line",
+            label: "Gráfica de línea",
         },
         {
-            id: "6m",
-            label: "Últimos 6 meses",
+            id: "bar",
+            label: "Gráfica de barras",
         },
-        {
-            id: "todos",
-            label: "Todos los registros",
-        }
     ]
     return (
         <>
@@ -55,4 +51,4 @@ function TabBar() {
     )
 }
 
-export default TabBar;
+export default ChartFiltering;

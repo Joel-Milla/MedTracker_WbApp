@@ -1,5 +1,5 @@
 // External Components
-import { LineChart } from '@tremor/react';
+import { LineChart, BarChart } from '@tremor/react';
 // Redux connection
 import { RootState } from '../../../../state/store';
 import { useDispatch, useSelector } from "react-redux";
@@ -18,11 +18,11 @@ const getSymptomName = (symptoms: Symptom[], idSymptom: string): string => {
 }
 
 // Obtain a list of symptoms after being filtered by date
-const filterRegisters = (registers: Register[], key: string): Register[] => {
+const filterRegisters = (registers: Register[], selectedDateFilter: string): Register[] => {
     // Array that will contain the filtered symptoms
     const filteredRegisters: Register[] = [];
 
-    if (key == '30d') {
+    if (selectedDateFilter == '30d') {
         // Data used for comparison
         const thirtyDaysAgo = new Date();
         thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
@@ -36,7 +36,7 @@ const filterRegisters = (registers: Register[], key: string): Register[] => {
         }
 
         return filteredRegisters;
-    } else if (key == '6m') {
+    } else if (selectedDateFilter == '6m') {
         // Data used for comparison
         const today = new Date();
         const sixMonthsAgo = new Date(today);
@@ -53,14 +53,14 @@ const filterRegisters = (registers: Register[], key: string): Register[] => {
         return filteredRegisters;
     }
     return registers;
-} 
+}
 
 // Return a map that has the date as a string and 
-const createData = (registers: Register[], symptoms: Symptom[], selectedSymptoms: string[], selectedTab: string): any[] => {
+const createData = (registers: Register[], symptoms: Symptom[], selectedSymptoms: string[], selectedDateFilter: string): any[] => {
     // Initialize a map that has the date as string and a value of any
     const dateDataMap = new Map<string, any>();
     // Obtain the registers filter
-    const filteredRegisters = filterRegisters(registers, selectedTab);
+    const filteredRegisters = filterRegisters(registers, selectedDateFilter);
 
     // Obtain a map that has the date as a string as key and values of the symptoms
     for (const register of filteredRegisters) {
@@ -107,8 +107,9 @@ const createData = (registers: Register[], symptoms: Symptom[], selectedSymptoms
 
 
 function Chart() {
-    // Obtain the selected tab of TabBar.tsx
-    const selectedTab = useSelector((state: RootState) => state.ui.selectedDataFilter);
+    // Obtain the selected tab of DateFilter and the type of graph
+    const selectedDateFilter = useSelector((state: RootState) => state.ui.selectedDateFilter);
+    const selectedChart = useSelector((state: RootState) => state.ui.selectedChart);
     // Obtain the current user data
     const registers = useSelector((state: RootState) => state.user.registers);
     // Obtain the current user data
@@ -128,43 +129,78 @@ function Chart() {
 
 
     // Obtain and map the new data
-    const data = createData(registers, symptoms, selectedSymptoms, selectedTab);
+    const data = createData(registers, symptoms, selectedSymptoms, selectedDateFilter);
 
     // Define all the possible colors
-    const colors = ['red', 'cyan', 'amber', 'purple', 'lime', 'violet', 'orange', 'teal', 'yellow', 'indigo', 'green', 'pink', 'emerald', 'rose', 'sky', 'fuchsia', 'blue', 'stone', 'zinc', 'neutral']
-    return (
-        // Use lineChart from tremoUI to show a graph
-        // There are two different components of charts, one where the graph shows for mobile devices and the other that shows for larger screens. 
-        // Throws a warning of 'width(0) and height(0)' because the chart is hidden and has no width of xy axis.
-        <>
-            {/* PC chart */}
-            <LineChart
-                data={data}
-                index="date" // Tells which piece of data is used for xaxis
-                categories={selectedSymptomNames} // what category values are used to show in the chart
-                colors={colors}
-                onValueChange={handleOnValueChange}
-                className="mt-6 hidden h-96 sm:block"
-                noDataText='No hay datos registrados'
-                showAnimation={true}
-                enableLegendSlider={true}
-                showGridLines={true}
-            />
-            {/* Mobile chart */}
-            <LineChart
-                data={data}
-                index="date"
-                categories={selectedSymptomNames}
-                colors={colors}
-                showYAxis={false}
-                showLegend={false}
-                startEndOnly={true}
-                className="mt-6 h-72 sm:hidden"
-                noDataText='No hay datos registrados'
-            />
+    const colors = ['red', 'cyan', 'amber', 'purple', 'lime', 'violet', 'orange', 'teal', 'yellow', 'indigo', 'green', 'pink', 'emerald', 'rose', 'sky', 'fuchsia', 'blue', 'stone', 'zinc', 'neutral'];
 
-        </>
-    );
+    // Render depending on the selection of the user a bar chart or line chart
+    if (selectedChart == 'line') {
+        return (
+            // Use lineChart from tremoUI to show a graph
+            // There are two different components of charts, one where the graph shows for mobile devices and the other that shows for larger screens. 
+            // Throws a warning of 'width(0) and height(0)' because the chart is hidden and has no width of xy axis.
+            <>
+                {/* PC chart */}
+                <LineChart
+                    data={data}
+                    index="date" // Tells which piece of data is used for xaxis
+                    categories={selectedSymptomNames} // what category values are used to show in the chart
+                    colors={colors}
+                    onValueChange={handleOnValueChange}
+                    className="mt-6 hidden h-96 sm:block"
+                    noDataText='No hay datos registrados'
+                    showAnimation={true}
+                    enableLegendSlider={true}
+                    showGridLines={true}
+                />
+                {/* Mobile chart */}
+                <LineChart
+                    data={data}
+                    index="date"
+                    categories={selectedSymptomNames}
+                    colors={colors}
+                    showYAxis={false}
+                    showLegend={false}
+                    startEndOnly={true}
+                    className="mt-6 h-72 sm:hidden"
+                    noDataText='No hay datos registrados'
+                />
+
+            </>
+        );
+    } else if (selectedChart == 'bar') {
+
+        return (
+            <>
+                {/* PC chart */}
+                <BarChart
+                    data={data}
+                    index="date" // Tells which piece of data is used for xaxis
+                    categories={selectedSymptomNames} // what category values are used to show in the chart
+                    colors={colors}
+                    onValueChange={handleOnValueChange}
+                    className="mt-6 hidden h-96 sm:block"
+                    noDataText='No hay datos registrados'
+                    showAnimation={true}
+                    enableLegendSlider={true}
+                    showGridLines={true}
+                />
+                {/* Mobile chart */}
+                <BarChart
+                    data={data}
+                    index="date"
+                    categories={selectedSymptomNames}
+                    colors={colors}
+                    showYAxis={false}
+                    showLegend={false}
+                    startEndOnly={true}
+                    className="mt-6 h-72 sm:hidden"
+                    noDataText='No hay datos registrados'
+                />
+            </>
+        )
+    }
 }
 
 export default Chart;
