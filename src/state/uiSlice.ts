@@ -20,7 +20,7 @@ export const uiSlice = createSlice({
     },
     reducers: {
         // Receive as payload a set that contains all the keys of the selected symptoms on the list (which are the symptoms ids)
-        setSelectedSymptoms: (state, action: PayloadAction<Set<string>>) => {
+        setSelectedSymptoms: (state, action: PayloadAction<string[]>) => {
             const symptomsId = []
             for (const symptomId of action.payload) {
                 symptomsId.push(symptomId);
@@ -28,17 +28,23 @@ export const uiSlice = createSlice({
             state.selectedSymptoms = symptomsId;
         },
         setSelectedDataPoint: (state, action: PayloadAction<any>) => {
-            const symptomName = action.payload.categoryClicked;
-            const date = action.payload.date;
-            const amount = action.payload[symptomName];
-            const note = action.payload[`${symptomName}_note`];
-            const dataPoint = {
-                symptomName,
-                date,
-                amount,
-                note,
-            };
-            state.selectedDataPoint = dataPoint;
+            // Handle both cases when the user selects a point and when it is unslected
+            if (action.payload == null) {
+                state.selectedDataPoint = {}
+            } else {
+                // Save the important data into the object
+                const symptomName = action.payload.categoryClicked;
+                const date = action.payload.date;
+                const amount = action.payload[symptomName];
+                const note = action.payload[`${symptomName}_note`];
+                const dataPoint = {
+                    symptomName,
+                    date,
+                    amount,
+                    note,
+                };
+                state.selectedDataPoint = dataPoint;
+            }
         },
         setSelectedDataFilter: (state, action: PayloadAction<string>) => {
             state.selectedDataFilter = action.payload;
