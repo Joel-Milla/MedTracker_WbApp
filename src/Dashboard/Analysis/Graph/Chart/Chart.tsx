@@ -9,6 +9,7 @@ import { Register, Symptom } from '../../../../Models/Symptom_Register';
 // Utils functions
 import { timestampToDate, dateToString } from '../../../../Utils/Utils';
 
+// Obtain the name of a symptom based on its id
 const getSymptomName = (symptoms: Symptom[], idSymptom: string): string => {
     // Obtain the symptom that matched
     const symptom: Symptom | undefined = symptoms.find((symptom) => symptom.id == idSymptom);
@@ -16,14 +17,54 @@ const getSymptomName = (symptoms: Symptom[], idSymptom: string): string => {
     return symptomName;
 }
 
+// Obtain a list of symptoms after being filtered by date
+const filterRegisters = (registers: Register[], key: string): Register[] => {
+    // Array that will contain the filtered symptoms
+    const filteredRegisters: Register[] = [];
+
+    if (key == '30d') {
+        // Data used for comparison
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+        // Validate if the register is in the range
+        for (const register of registers) {
+            const date = timestampToDate(register.fecha);
+            if (date >= thirtyDaysAgo) {
+                filteredRegisters.push(register);
+            }
+        }
+
+        return filteredRegisters;
+    } else if (key == '6m') {
+        // Data used for comparison
+        const today = new Date();
+        const sixMonthsAgo = new Date(today);
+        sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+
+        // Validate if the register is in the range
+        for (const register of registers) {
+            const date = timestampToDate(register.fecha);
+            if (date >= sixMonthsAgo) {
+                filteredRegisters.push(register);
+            }
+        }
+
+        return filteredRegisters;
+    }
+    return registers;
+} 
+
 // Return a map that has the date as a string and 
-const createData = (registers: Register[], symptoms: Symptom[], selectedSymptoms: string[]): any[] => {
+const createData = (registers: Register[], symptoms: Symptom[], selectedSymptoms: string[], selectedTab: string): any[] => {
     // Initialize a map that has the date as string and a value of any
     const dateDataMap = new Map<string, any>();
+    // Obtain the registers filter
+    const filteredRegisters = filterRegisters(registers, selectedTab);
 
     // Obtain a map that has the date as a string as key and values of the symptoms
-    for (const register of registers) {
-        // First check if the register is selected
+    for (const register of filteredRegisters) {
+        // First check if the register has valid symptom
         if (selectedSymptoms.includes(register.idSymptom)) {
             // Obtain the date and transform it to string
             const date = timestampToDate(register.fecha);
@@ -66,6 +107,8 @@ const createData = (registers: Register[], symptoms: Symptom[], selectedSymptoms
 
 
 function Chart() {
+    // Obtain the selected tab of TabBar.tsx
+    const selectedTab = useSelector((state: RootState) => state.ui.selectedDataFilter);
     // Obtain the current user data
     const registers = useSelector((state: RootState) => state.user.registers);
     // Obtain the current user data
@@ -73,21 +116,20 @@ function Chart() {
     // Get the current selected sypmtoms
     const selectedSymptoms = useSelector((state: RootState) => state.ui.selectedSymptoms);
     const selectedSymptomNames = selectedSymptoms.map((symptomId) => getSymptomName(symptoms, symptomId));
-    
+
     // Logic to update information on app
     // Use this hook to dispatch actions to redux
     const dispatch = useDispatch();
 
     // Function that handles when a user clicks a data point on the chart to save it globally
     const handleOnValueChange = (dataPoint: any) => {
-        console.log(dataPoint);
         dispatch(setSelectedDataPoint(dataPoint));
     }
-    
+
 
     // Obtain and map the new data
-    const data = createData(registers, symptoms, selectedSymptoms);
-    
+    const data = createData(registers, symptoms, selectedSymptoms, selectedTab);
+
     // Define all the possible colors
     const colors = ['red', 'cyan', 'amber', 'purple', 'lime', 'violet', 'orange', 'teal', 'yellow', 'indigo', 'green', 'pink', 'emerald', 'rose', 'sky', 'fuchsia', 'blue', 'stone', 'zinc', 'neutral']
     return (
@@ -98,12 +140,15 @@ function Chart() {
             {/* PC chart */}
             <LineChart
                 data={data}
-                index="date"
-                categories={selectedSymptomNames}
+                index="date" // Tells which piece of data is used for xaxis
+                categories={selectedSymptomNames} // what category values are used to show in the chart
                 colors={colors}
-                yAxisWidth={55}
                 onValueChange={handleOnValueChange}
                 className="mt-6 hidden h-96 sm:block"
+                noDataText='No hay datos registrados'
+                showAnimation={true}
+                enableLegendSlider={true}
+                showGridLines={true}
             />
             {/* Mobile chart */}
             <LineChart
@@ -114,7 +159,9 @@ function Chart() {
                 showYAxis={false}
                 showLegend={false}
                 startEndOnly={true}
-                className="mt-6 h-72 sm:hidden" />
+                className="mt-6 h-72 sm:hidden"
+                noDataText='No hay datos registrados'
+            />
 
         </>
     );
