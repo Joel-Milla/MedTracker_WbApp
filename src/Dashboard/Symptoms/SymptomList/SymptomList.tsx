@@ -21,8 +21,9 @@ function SymptomList() {
 
     // Handles the selectedKeys based on the selection
     const handleSelectionChange = (keys: Set<string> | any) => {
+        const keysArray: string[] = Array.from(keys); // Convert Set to Array
         setSelectedKeys(new Set(keys));
-        dispatch(setSelectedSymptoms(keys));
+        dispatch(setSelectedSymptoms(keysArray)); // pass an array of strings because the data passed to a store must be serializable, meaning it can be transformed to JSON/XML/etc. A set is not serializable.
     };
     return (
         <>
@@ -39,10 +40,10 @@ function SymptomList() {
                 {symptoms.map((symptom) => {
                     return (
                         // Set the key, value and color of the item
-                        <ListboxItem 
-                        key={symptom.id} 
-                        color="primary" 
-                        textValue={symptom.nombre}
+                        <ListboxItem
+                            key={symptom.id}
+                            color="primary"
+                            textValue={symptom.nombre}
                         >
                             {/* Show a symptom card as the value */}
                             <SymptomCard
