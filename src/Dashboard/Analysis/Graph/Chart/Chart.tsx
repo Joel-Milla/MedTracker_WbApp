@@ -170,7 +170,6 @@ function Chart() {
             </>
         );
     } else if (selectedChart == 'bar') {
-
         return (
             <>
                 {/* PC chart */}
