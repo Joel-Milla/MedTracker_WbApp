@@ -19,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <NextUIProvider>
       <main className='light'>
         <ThemeProvider theme={theme}>
+          {/* The provider is used so the store is available throughout the app */}
           <Provider store={store}>
             <App />
           </Provider>

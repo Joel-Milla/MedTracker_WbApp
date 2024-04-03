@@ -1,11 +1,11 @@
-import NavigationMenu2_0 from "./NavigationMenu2_0";
+import NavigationMenu from "./NavigationMenu";
 import { Outlet } from "react-router-dom";
 
 function Root() {
     return (
         <>
             <div className="flex">
-                <NavigationMenu2_0 />
+                <NavigationMenu />
                 <Outlet />
             </div>
         </>
