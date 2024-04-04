@@ -104,8 +104,9 @@ function Chart() {
                     curveType='monotone'
                     noDataText='No hay datos registrados'
                     colors={colors}
-                    className="mt-6 hidden h-96 sm:block"
+                    className="hidden h-96 sm:block"
                     showAnimation={true}
+                    yAxisWidth={55}
                 />
                 {/* Mobile chart */}
                 <AreaChart
@@ -116,7 +117,7 @@ function Chart() {
                     curveType='monotone'
                     noDataText='No hay datos registrados'
                     colors={colors}
-                    className="mt-6 h-72 sm:hidden"
+                    className="h-72 sm:hidden"
                     showYAxis={false}
                     startEndOnly={true}
                 />
@@ -134,8 +135,9 @@ function Chart() {
                     onValueChange={handleOnValueChange}
                     noDataText='No hay datos registrados'
                     colors={colors}
-                    className="mt-6 hidden h-96 sm:block"
+                    className="hidden h-96 sm:block"
                     showAnimation={true}
+                    yAxisWidth={55}
                 />
                 {/* Mobile chart */}
                 <BarChart
@@ -145,7 +147,7 @@ function Chart() {
                     onValueChange={handleOnValueChange}
                     noDataText='No hay datos registrados'
                     colors={colors}
-                    className="mt-6 h-72 sm:hidden"
+                    className="h-72 sm:hidden"
                     showYAxis={false}
                     startEndOnly={true}
                 />
