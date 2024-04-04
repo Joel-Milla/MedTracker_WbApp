@@ -26,14 +26,14 @@ function SearchBar() {
             //     },
             // }}
             aria-label="Selecciona a un paciente"
-            // popoverProps={{
-            //     offset: 10,
-            //     classNames: {
-            //         base: "rounded-large",
-            //         content:
-            //             "p-1 border-small border-default-100 bg-background",
-            //     },
-            // }}
+        // popoverProps={{
+        //     offset: 10,
+        //     classNames: {
+        //         base: "rounded-large",
+        //         content:
+        //             "p-1 border-small border-default-100 bg-background",
+        //     },
+        // }}
         >
             {(item) => (
                 <AutocompleteItem key={item.id} textValue={item.nombre}>
@@ -43,7 +43,11 @@ function SearchBar() {
                                 alt={item.nombre}
                                 className="flex-shrink-0"
                                 size="sm"
-                                src={item.imagen}
+                                src=''
+                                // Show the initials of the name
+                                name={item.nombre}
+                                showFallback
+                                color='primary'
                             />
                             <div className="flex flex-col">
                                 <span className="text-small">

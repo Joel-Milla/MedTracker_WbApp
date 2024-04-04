@@ -26,7 +26,7 @@ function TarjetaPaciente(props: TarjetaPacienteProps) {
                 <Avatar
                     isBordered
                     radius="lg"
-                    src={props.imagen}
+                    src=''
                     className="m-4"
                     // Show the initials of the name
                     name={props.nombre}
