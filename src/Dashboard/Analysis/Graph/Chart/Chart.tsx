@@ -1,5 +1,5 @@
 // External Components
-import { LineChart, BarChart } from '@tremor/react';
+import { LineChart, BarChart, AreaChart  } from '@tremor/react';
 // Redux connection
 import { RootState } from '../../../../state/store';
 import { useDispatch, useSelector } from "react-redux";
@@ -7,15 +7,7 @@ import { setSelectedDataPoint } from '../../../../state/uiSlice'; // Action to s
 // Types/models
 import { Register, Symptom } from '../../../../Models/Symptom_Register';
 // Utils functions
-import { timestampToDate, dateToString } from '../../../../Utils/Utils';
-
-// Obtain the name of a symptom based on its id
-const getSymptomName = (symptoms: Symptom[], idSymptom: string): string => {
-    // Obtain the symptom that matched
-    const symptom: Symptom | undefined = symptoms.find((symptom) => symptom.id == idSymptom);
-    const symptomName = symptom?.nombre ?? 'Sin definir'
-    return symptomName;
-}
+import { timestampToDate, dateToString, getSymptomName } from '../../../../Utils/Utils';
 
 // Obtain a list of symptoms after being filtered by date
 const filterRegisters = (registers: Register[], selectedDateFilter: string): Register[] => {
@@ -112,7 +104,6 @@ function Chart() {
     const selectedChart = useSelector((state: RootState) => state.ui.selectedChart);
     // Obtain the current user data
     const registers = useSelector((state: RootState) => state.user.registers);
-    // Obtain the current user data
     const symptoms = useSelector((state: RootState) => state.user.symptoms);
     // Get the current selected sypmtoms
     const selectedSymptoms = useSelector((state: RootState) => state.ui.selectedSymptoms);
@@ -142,7 +133,7 @@ function Chart() {
             // Throws a warning of 'width(0) and height(0)' because the chart is hidden and has no width of xy axis.
             <>
                 {/* PC chart */}
-                <LineChart
+                <AreaChart 
                     data={data}
                     index="date" // Tells which piece of data is used for xaxis
                     categories={selectedSymptomNames} // what category values are used to show in the chart
@@ -153,6 +144,8 @@ function Chart() {
                     showAnimation={true}
                     enableLegendSlider={true}
                     showGridLines={true}
+                    // curveType='monotone'
+                    // curveType='natural'
                 />
                 {/* Mobile chart */}
                 <LineChart
