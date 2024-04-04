@@ -8,7 +8,6 @@ import {
     List,
 } from "@mui/material";
 // Own components
-import "./TarjetaPaciente.css";
 import BlueDot from "../Dashboard/Symptoms/SymptomList/BlueDot";
 
 interface TarjetaPacienteProps {
@@ -22,17 +21,17 @@ interface TarjetaPacienteProps {
 
 function TarjetaPaciente(props: TarjetaPacienteProps) {
     return (
-        <Card className="tarjeta-paciente">
-            <CardHeader className="card-header">
+        <Card className=' p-2'>
+            <CardHeader className="flex">
                 <Avatar
                     isBordered
                     radius="lg"
                     src={props.imagen}
-                    className="avatar-paciente"
+                    className="m-4"
                 />
                 <div>
-                    <p className="nombre-paciente">{props.nombre}</p>
-                    <p className="fecha-registro">
+                    <p className="text-xl font-bold">{props.nombre}</p>
+                    <p className="text-base text-gray-400  ">
                         {props.fechaUltimoRegistro}
                     </p>
                 </div>
