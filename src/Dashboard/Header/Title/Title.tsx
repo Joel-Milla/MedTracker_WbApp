@@ -1,11 +1,9 @@
-// Redux connection
-import { RootState } from "../../../state/store";
-import { useSelector } from "react-redux";
 // External Components
 import { Badge } from "@tremor/react";
 // Own Components
 import DelimiterPersianGreen from "./DelimiterPersianGreen";
 
+// Interface to define what values the title is receiving
 interface TitleProps {
     titulo: string;
     badge: number;
