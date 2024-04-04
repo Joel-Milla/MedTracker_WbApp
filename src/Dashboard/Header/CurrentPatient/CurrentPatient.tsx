@@ -24,7 +24,7 @@ function CurrentPatient() {
         label="Buscar"
         variant="bordered" // This element makes the search bar transparent
         defaultItems={names}
-        defaultSelectedKey={selectedUser}
+        defaultSelectedKey={selectedUser} //Show the selected user
         placeholder="Escoge al usuario"
       >
         {/* Map the names as an item to be shown and selected */}
