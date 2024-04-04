@@ -35,18 +35,35 @@ function ChartFiltering() {
     ]
     return (
         <>
-            <Tabs
-                variant='bordered'
-                aria-label="Tabs variants"
-                color="primary"
-                // Handle the change of data
-                selectedKey={selectedTab}
-                onSelectionChange={handleSelectionChange}
-            >
-                {/* Traverse all the titles and dispaly them as tab items */}
-                {titles.map((title) =>
-                    <Tab key={title.id} title={title.label} />)}
-            </Tabs>
+            <div className="hidden md:block">
+                <Tabs
+                    variant='bordered'
+                    aria-label="Tabs variants"
+                    color="primary"
+                    // Handle the change of data
+                    selectedKey={selectedTab}
+                    onSelectionChange={handleSelectionChange}
+                >
+                    {/* Traverse all the titles and dispaly them as tab items */}
+                    {titles.map((title) =>
+                        <Tab key={title.id} title={title.label} />)}
+                </Tabs>
+            </div>
+            <div className="block md:hidden">
+                <Tabs
+                    variant='bordered'
+                    aria-label="Tabs variants"
+                    color="primary"
+                    size="sm"
+                    // Handle the change of data
+                    selectedKey={selectedTab}
+                    onSelectionChange={handleSelectionChange}
+                >
+                    {/* Traverse all the titles and dispaly them as tab items */}
+                    {titles.map((title) =>
+                        <Tab key={title.id} title={title.label} />)}
+                </Tabs>
+            </div>
         </>
     )
 }

@@ -39,7 +39,7 @@ function DateFiltering() {
     ]
     return (
         <>
-            <div className=" hidden md:block">
+            <div className="hidden md:block">
                 <Tabs
                     variant='bordered'
                     aria-label="Tabs variants"
@@ -53,7 +53,7 @@ function DateFiltering() {
                         <Tab key={title.id} title={title.label} />)}
                 </Tabs>
             </div>
-            <div className=" block md:hidden">
+            <div className="block md:hidden">
                 <Tabs
                     variant='bordered'
                     aria-label="Tabs variants"
