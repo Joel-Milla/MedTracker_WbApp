@@ -1,5 +1,5 @@
 // External Components
-import { LineChart, BarChart, AreaChart  } from '@tremor/react';
+import { BarChart, AreaChart  } from '@tremor/react';
 // Redux connection
 import { RootState } from '../../../../state/store';
 import { useDispatch, useSelector } from "react-redux";
@@ -123,7 +123,8 @@ function Chart() {
     const data = createData(registers, symptoms, selectedSymptoms, selectedDateFilter);
 
     // Define all the possible colors
-    const colors = ['red', 'cyan', 'amber', 'purple', 'lime', 'violet', 'orange', 'teal', 'yellow', 'indigo', 'green', 'pink', 'emerald', 'rose', 'sky', 'fuchsia', 'blue', 'stone', 'zinc', 'neutral'];
+    // The first two colors are the medTracker colors, this works after modifying the tailwind.config inside the safelist
+    const colors = ['#009C8C', '#19A7CE', 'red', 'amber', 'cyan', 'purple', 'lime', 'violet', 'orange', 'teal', 'yellow', 'indigo', 'green', 'pink', 'emerald', 'rose', 'sky', 'fuchsia', 'blue', 'stone', 'zinc', 'neutral'];
 
     // Render depending on the selection of the user a bar chart or line chart
     if (selectedChart == 'line') {
@@ -137,27 +138,25 @@ function Chart() {
                     data={data}
                     index="date" // Tells which piece of data is used for xaxis
                     categories={selectedSymptomNames} // what category values are used to show in the chart
-                    colors={colors}
                     onValueChange={handleOnValueChange}
-                    className="mt-6 hidden h-96 sm:block"
+                    curveType='monotone'
                     noDataText='No hay datos registrados'
+                    colors={colors}
+                    className="mt-6 hidden h-96 sm:block"
                     showAnimation={true}
-                    enableLegendSlider={true}
-                    showGridLines={true}
-                    // curveType='monotone'
-                    // curveType='natural'
                 />
                 {/* Mobile chart */}
-                <LineChart
+                <AreaChart
                     data={data}
                     index="date"
                     categories={selectedSymptomNames}
-                    colors={colors}
-                    showYAxis={false}
-                    showLegend={false}
-                    startEndOnly={true}
-                    className="mt-6 h-72 sm:hidden"
+                    onValueChange={handleOnValueChange}
+                    curveType='monotone'
                     noDataText='No hay datos registrados'
+                    colors={colors}
+                    className="mt-6 h-72 sm:hidden"
+                    showYAxis={false}
+                    startEndOnly={true}
                 />
 
             </>
@@ -166,29 +165,27 @@ function Chart() {
         return (
             <>
                 {/* PC chart */}
-                <BarChart
+                <BarChart 
                     data={data}
                     index="date" // Tells which piece of data is used for xaxis
                     categories={selectedSymptomNames} // what category values are used to show in the chart
-                    colors={colors}
                     onValueChange={handleOnValueChange}
-                    className="mt-6 hidden h-96 sm:block"
                     noDataText='No hay datos registrados'
+                    colors={colors}
+                    className="mt-6 hidden h-96 sm:block"
                     showAnimation={true}
-                    enableLegendSlider={true}
-                    showGridLines={true}
                 />
                 {/* Mobile chart */}
                 <BarChart
                     data={data}
                     index="date"
                     categories={selectedSymptomNames}
-                    colors={colors}
-                    showYAxis={false}
-                    showLegend={false}
-                    startEndOnly={true}
-                    className="mt-6 h-72 sm:hidden"
+                    onValueChange={handleOnValueChange}
                     noDataText='No hay datos registrados'
+                    colors={colors}
+                    className="mt-6 h-72 sm:hidden"
+                    showYAxis={false}
+                    startEndOnly={true}
                 />
             </>
         )
