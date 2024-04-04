@@ -12,6 +12,7 @@ const selectedDataPoint: any = {
 const selectedDateFilter: string = "30d";
 const selectedChart: string = "line";
 const searchText: string ="";
+const patientSearchText: string = "";
 export const uiSlice = createSlice({
     name: 'ui',
     initialState: {
@@ -21,6 +22,7 @@ export const uiSlice = createSlice({
         selectedDateFilter: selectedDateFilter,
         selectedChart: selectedChart,
         searchText: searchText,
+        patientSearchText: patientSearchText,
     },
     reducers: {
         // Receive as payload a set that contains all the keys of the selected symptoms on the list (which are the symptoms ids)
@@ -57,13 +59,18 @@ export const uiSlice = createSlice({
             state.selectedChart = action.payload;
         },
         setSearchText: (state, action: PayloadAction<string>) => {
-            state.searchText = action.payload;
-        }
+            // Convert to lowercase to avoid problems of casing
+            state.searchText = action.payload.toLocaleLowerCase();
+        },
+        setPatientSearchText: (state, action: PayloadAction<string>) => {
+            // Convert to lowercase to avoid problems of casing
+            state.patientSearchText = action.payload.toLocaleLowerCase();
+        },
     },
 });
 
 // Export all the actions that are generated from the reducer
-export const { setSelectedSymptoms, setSelectedDataPoint, setSelectedDateFilter, setSelectedChart, setSearchText } = uiSlice.actions;
+export const { setSelectedSymptoms, setSelectedDataPoint, setSelectedDateFilter, setSelectedChart, setSearchText, setPatientSearchText } = uiSlice.actions;
 
 // Export the reducer created
 export default uiSlice.reducer;

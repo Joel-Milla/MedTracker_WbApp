@@ -39,7 +39,7 @@ function SymptomList() {
             >
                 {/* First filter if the symptoms includes the search text and then show them on the view */}
                 {symptoms
-                .filter((symptom) => symptom.nombre.toLowerCase().includes(searchText.toLowerCase())) // checks that both strings are lowercase to compare them right
+                .filter((symptom) => symptom.nombre.toLowerCase().includes(searchText)) // checks that both strings are lowercase to compare them right
                 .map((symptom) => {
                     return (
                         // Set the key, value and color of the item
