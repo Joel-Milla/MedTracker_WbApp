@@ -1,13 +1,13 @@
+// External components for routing
+import { Link } from 'react-router-dom';
+// External components
 import { Button, Card, CardBody, CardHeader, Avatar } from "@nextui-org/react";
 import CircleIcon from "@mui/icons-material/Circle";
 import {
     ListItem,
-    ListItemIcon,
-    ListItemText,
     List,
-    Typography,
 } from "@mui/material";
-
+// Own components
 import "./TarjetaPaciente.css";
 import BlueDot from "../Dashboard/Symptoms/SymptomList/BlueDot";
 
@@ -50,9 +50,12 @@ function TarjetaPaciente(props: TarjetaPacienteProps) {
                         value={props.celular}
                     />
                 </List>
-                <Button color="primary">
-                    <strong>Ver detalles</strong>
-                </Button>
+                <Link to='/dashboard'>
+                    {/* Add full width to span all the button even when are inside a link */}
+                    <Button color="primary" fullWidth>
+                        <strong>Ver detalles</strong>
+                    </Button>
+                </Link>
             </CardBody>
         </Card>
     );
