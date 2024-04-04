@@ -2,6 +2,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 // Define the initial state that the values will have in each UI
+const selectedUser: string = "joel@mail.com"
 const selectedSymptoms: string[] = [];
 const selectedDataPoint: any = {
     symptomName: "",
@@ -16,7 +17,8 @@ const patientSearchText: string = "";
 export const uiSlice = createSlice({
     name: 'ui',
     initialState: {
-        // Selected symptoms are the symptomst that the doctor selects on the dasboard
+        // Selection of data that the user makes
+        selectedUser: selectedUser,
         selectedSymptoms: selectedSymptoms,
         selectedDataPoint: selectedDataPoint,
         selectedDateFilter: selectedDateFilter,
@@ -25,6 +27,9 @@ export const uiSlice = createSlice({
         patientSearchText: patientSearchText,
     },
     reducers: {
+        setSelectedUser: (state, action: PayloadAction<string>) => {
+            state.selectedUser = action.payload;
+        },
         // Receive as payload a set that contains all the keys of the selected symptoms on the list (which are the symptoms ids)
         setSelectedSymptoms: (state, action: PayloadAction<string[]>) => {
             const symptomsId = []
@@ -70,7 +75,7 @@ export const uiSlice = createSlice({
 });
 
 // Export all the actions that are generated from the reducer
-export const { setSelectedSymptoms, setSelectedDataPoint, setSelectedDateFilter, setSelectedChart, setSearchText, setPatientSearchText } = uiSlice.actions;
+export const { setSelectedUser, setSelectedSymptoms, setSelectedDataPoint, setSelectedDateFilter, setSelectedChart, setSearchText, setPatientSearchText } = uiSlice.actions;
 
 // Export the reducer created
 export default uiSlice.reducer;

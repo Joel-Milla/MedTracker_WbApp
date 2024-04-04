@@ -5,8 +5,11 @@ import { RootState } from "../../../state/store";
 import { useSelector } from "react-redux";
 
 function CurrentPatient() {
-  // Obtain the current users
+  // Obtain the current users and selected user
   const patients = useSelector((state: RootState) => state.patients);
+  const selectedUser = useSelector((state: RootState) => state.ui.selectedUser);
+
+  // Transform data into format require by autocomplete
   const names = patients.map(patient => {
     return {
       value: patient.email,
@@ -21,6 +24,7 @@ function CurrentPatient() {
         label="Buscar"
         variant="bordered" // This element makes the search bar transparent
         defaultItems={names}
+        defaultSelectedKey={selectedUser}
         placeholder="Escoge al usuario"
       >
         {/* Map the names as an item to be shown and selected */}
