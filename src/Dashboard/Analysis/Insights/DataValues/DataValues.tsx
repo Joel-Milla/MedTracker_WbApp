@@ -2,16 +2,21 @@
 import { RootState } from '../../../../state/store';
 import { useSelector } from "react-redux";
 // Import util functions
-import { getSymptomName, getInisightsValues } from "../../../../Utils/Utils";
+import { getSymptomName, getInisightsValues, filterRegistersByDate } from "../../../../Utils/Utils";
 
 function DataValues({symptom}: {symptom: string}) {
     // Obtain the current user data
     const registers = useSelector((state: RootState) => state.user.registers);
     const symptoms = useSelector((state: RootState) => state.user.symptoms);
+    // Obtain the selected tab of DateFilter
+    const selectedDateFilter = useSelector((state: RootState) => state.ui.selectedDateFilter);
 
-    // Obtain the values to display on insights from the utils function
+    // Filter the registers by date
+    const filteredRegisters = filterRegistersByDate(registers, selectedDateFilter);
+
+    // Obtain the values to display on insights from the utils function by using the fitlered insights
     const symptomName = getSymptomName(symptoms, symptom);
-    const {min, mean, max} = getInisightsValues(registers, symptom);
+    const {min, mean, max} = getInisightsValues(filteredRegisters, symptom);
     return (
         <>
             {/* Show the numeric values of min/mean/max of all the values of the chart */}

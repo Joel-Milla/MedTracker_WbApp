@@ -7,52 +7,14 @@ import { setSelectedDataPoint } from '../../../../state/uiSlice'; // Action to s
 // Types/models
 import { Register, Symptom } from '../../../../Models/Symptom_Register';
 // Utils functions
-import { timestampToDate, dateToString, getSymptomName } from '../../../../Utils/Utils';
-
-// Obtain a list of symptoms after being filtered by date
-const filterRegisters = (registers: Register[], selectedDateFilter: string): Register[] => {
-    // Array that will contain the filtered symptoms
-    const filteredRegisters: Register[] = [];
-
-    if (selectedDateFilter == '30d') {
-        // Data used for comparison
-        const thirtyDaysAgo = new Date();
-        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-
-        // Validate if the register is in the range
-        for (const register of registers) {
-            const date = timestampToDate(register.fecha);
-            if (date >= thirtyDaysAgo) {
-                filteredRegisters.push(register);
-            }
-        }
-
-        return filteredRegisters;
-    } else if (selectedDateFilter == '6m') {
-        // Data used for comparison
-        const today = new Date();
-        const sixMonthsAgo = new Date(today);
-        sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
-
-        // Validate if the register is in the range
-        for (const register of registers) {
-            const date = timestampToDate(register.fecha);
-            if (date >= sixMonthsAgo) {
-                filteredRegisters.push(register);
-            }
-        }
-
-        return filteredRegisters;
-    }
-    return registers;
-}
+import { timestampToDate, dateToString, getSymptomName, filterRegistersByDate } from '../../../../Utils/Utils';
 
 // Return a map that has the date as a string and 
 const createData = (registers: Register[], symptoms: Symptom[], selectedSymptoms: string[], selectedDateFilter: string): any[] => {
     // Initialize a map that has the date as string and a value of any
     const dateDataMap = new Map<string, any>();
     // Obtain the registers filter
-    const filteredRegisters = filterRegisters(registers, selectedDateFilter);
+    const filteredRegisters = filterRegistersByDate(registers, selectedDateFilter);
 
     // Obtain a map that has the date as a string as key and values of the symptoms
     for (const register of filteredRegisters) {

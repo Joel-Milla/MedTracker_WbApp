@@ -20,7 +20,7 @@ export function dateToString(date: Date): string {
 }
 
 // Obtain the name of a symptom based on its id
-export const getSymptomName = (symptoms: Symptom[], idSymptom: string): string => {
+export function getSymptomName(symptoms: Symptom[], idSymptom: string): string {
     // Obtain the symptom that matched
     const symptom: Symptom | undefined = symptoms.find((symptom) => symptom.id == idSymptom);
     const symptomName = symptom?.nombre ?? 'Sin definir'
@@ -28,7 +28,7 @@ export const getSymptomName = (symptoms: Symptom[], idSymptom: string): string =
 }
 
 // Obtain the min, mean, max value of a given symptom inside the registers
-export const getInisightsValues = (registers: Register[], idSymptom: string): {min: number, mean: number, max: number} => {
+export function getInisightsValues(registers: Register[], idSymptom: string): {min: number, mean: number, max: number} {
     let min = Infinity;
     let sum = 0;
     let max = 0;
@@ -62,4 +62,42 @@ export const getInisightsValues = (registers: Register[], idSymptom: string): {m
         max,
     };
 
+}
+
+// Obtain a list of symptoms after being filtered by date
+export function filterRegistersByDate(registers: Register[], selectedDateFilter: string): Register[] {
+    // Array that will contain the filtered symptoms
+    const filteredRegisters: Register[] = [];
+
+    if (selectedDateFilter == '30d') {
+        // Data used for comparison
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+        // Validate if the register is in the range
+        for (const register of registers) {
+            const date = timestampToDate(register.fecha);
+            if (date >= thirtyDaysAgo) {
+                filteredRegisters.push(register);
+            }
+        }
+
+        return filteredRegisters;
+    } else if (selectedDateFilter == '6m') {
+        // Data used for comparison
+        const today = new Date();
+        const sixMonthsAgo = new Date(today);
+        sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+
+        // Validate if the register is in the range
+        for (const register of registers) {
+            const date = timestampToDate(register.fecha);
+            if (date >= sixMonthsAgo) {
+                filteredRegisters.push(register);
+            }
+        }
+
+        return filteredRegisters;
+    }
+    return registers;
 }
