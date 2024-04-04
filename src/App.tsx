@@ -16,7 +16,7 @@ const appRouter = createBrowserRouter(createRoutesFromElements(
     <Route path='perfil' element={<Dashboard />} />
     <Route path='ajustes' element={<Pacientes />} />
   </Route>
-))
+));
 
 function App() {
   return (
@@ -24,4 +24,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
