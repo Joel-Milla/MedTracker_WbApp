@@ -124,7 +124,7 @@ function Chart() {
 
     // Define all the possible colors
     // The first two colors are the medTracker colors, this works after modifying the tailwind.config inside the safelist
-    const colors = ['#009C8C', '#19A7CE', 'red', 'amber', 'cyan', 'purple', 'lime', 'violet', 'orange', 'teal', 'yellow', 'indigo', 'green', 'pink', 'emerald', 'rose', 'sky', 'fuchsia', 'blue', 'stone', 'zinc', 'neutral'];
+    const colors = ['#009C8C', 'red', '#19A7CE', 'amber', 'cyan', 'purple', 'lime', 'violet', 'orange', 'teal', 'yellow', 'indigo', 'green', 'pink', 'emerald', 'rose', 'sky', 'fuchsia', 'blue', 'stone', 'zinc', 'neutral'];
 
     // Render depending on the selection of the user a bar chart or line chart
     if (selectedChart == 'line') {
