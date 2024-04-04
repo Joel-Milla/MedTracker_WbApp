@@ -28,6 +28,10 @@ function TarjetaPaciente(props: TarjetaPacienteProps) {
                     radius="lg"
                     src={props.imagen}
                     className="m-4"
+                    // Show the initials of the name
+                    name={props.nombre}
+                    showFallback
+                    color='primary'
                 />
                 <div>
                     <p className="text-xl font-bold">{props.nombre}</p>
