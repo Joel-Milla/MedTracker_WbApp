@@ -1,4 +1,4 @@
-// External components
+// External components for routing
 import { NavLink, useLocation  } from 'react-router-dom';
 // ************** MUI ************
 // External components

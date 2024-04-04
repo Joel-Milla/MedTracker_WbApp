@@ -1,14 +1,13 @@
+// External components for routing
+import { Link } from 'react-router-dom';
+// External components
 import { Button, Card, CardBody, CardHeader, Avatar } from "@nextui-org/react";
 import CircleIcon from "@mui/icons-material/Circle";
 import {
     ListItem,
-    ListItemIcon,
-    ListItemText,
     List,
-    Typography,
 } from "@mui/material";
-
-import "./TarjetaPaciente.css";
+// Own components
 import BlueDot from "../Dashboard/Symptoms/SymptomList/BlueDot";
 
 interface TarjetaPacienteProps {
@@ -22,17 +21,21 @@ interface TarjetaPacienteProps {
 
 function TarjetaPaciente(props: TarjetaPacienteProps) {
     return (
-        <Card className="tarjeta-paciente">
-            <CardHeader className="card-header">
+        <Card className=' p-2'>
+            <CardHeader className="flex">
                 <Avatar
                     isBordered
                     radius="lg"
-                    src={props.imagen}
-                    className="avatar-paciente"
+                    src=''
+                    className="m-4"
+                    // Show the initials of the name
+                    name={props.nombre}
+                    showFallback
+                    color='primary'
                 />
                 <div>
-                    <p className="nombre-paciente">{props.nombre}</p>
-                    <p className="fecha-registro">
+                    <p className="text-xl font-bold">{props.nombre}</p>
+                    <p className="text-base text-gray-400  ">
                         {props.fechaUltimoRegistro}
                     </p>
                 </div>
@@ -50,9 +53,12 @@ function TarjetaPaciente(props: TarjetaPacienteProps) {
                         value={props.celular}
                     />
                 </List>
-                <Button color="primary">
-                    <strong>Ver detalles</strong>
-                </Button>
+                <Link to='/dashboard'>
+                    {/* Add full width to span all the button even when are inside a link */}
+                    <Button color="primary" fullWidth>
+                        <strong>Ver detalles</strong>
+                    </Button>
+                </Link>
             </CardBody>
         </Card>
     );

@@ -1,7 +1,21 @@
+// Redux connection
+import { useDispatch } from "react-redux";
+import { setPatientSearchText } from "../state/uiSlice";
+// Own components
 import { Autocomplete, AutocompleteItem, Avatar } from "@nextui-org/react";
+// Mock data
 import { data } from "./Paciente";
 
 function SearchBar() {
+    // Use this hook to dispatch actions to redux
+    const dispatch = useDispatch();
+
+    // Handle the change of search text
+    const handleInputChange = (text: string) => {
+        console.log(text);
+        dispatch(setPatientSearchText(text));
+    }
+
     return (
         <Autocomplete
             color="primary"
@@ -9,6 +23,8 @@ function SearchBar() {
             variant="bordered" // This element makes the search bar transparent
             placeholder="Escoge al usuario"
             defaultItems={data}
+            onKeyDown={(e: any) => e.continuePropagation()} // stops an error from loggin on the console about 'stopPropagation'.
+            onInputChange={handleInputChange}
             // listboxProps={{
             //     hideSelectedIcon: true,
             //     itemClasses: {
@@ -26,14 +42,14 @@ function SearchBar() {
             //     },
             // }}
             aria-label="Selecciona a un paciente"
-            // popoverProps={{
-            //     offset: 10,
-            //     classNames: {
-            //         base: "rounded-large",
-            //         content:
-            //             "p-1 border-small border-default-100 bg-background",
-            //     },
-            // }}
+        // popoverProps={{
+        //     offset: 10,
+        //     classNames: {
+        //         base: "rounded-large",
+        //         content:
+        //             "p-1 border-small border-default-100 bg-background",
+        //     },
+        // }}
         >
             {(item) => (
                 <AutocompleteItem key={item.id} textValue={item.nombre}>
@@ -43,7 +59,11 @@ function SearchBar() {
                                 alt={item.nombre}
                                 className="flex-shrink-0"
                                 size="sm"
-                                src={item.imagen}
+                                src=''
+                                // Show the initials of the name
+                                name={item.nombre}
+                                showFallback
+                                color='primary'
                             />
                             <div className="flex flex-col">
                                 <span className="text-small">
