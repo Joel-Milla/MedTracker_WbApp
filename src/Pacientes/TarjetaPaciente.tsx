@@ -26,9 +26,10 @@ function TarjetaPaciente(props: TarjetaPacienteProps) {
     const [readyToNavigate, setReadyToNavigate] = useState(false);
     const navigate = useNavigate();
 
-    
+
     // Function to handle the onPress of the button
     const handleOnPress = () => {
+        // Set the current user to show it on the graph
         dispatch(setSelectedUser(props.email));
         dispatch(setPatientData(props.email));
 
@@ -56,7 +57,7 @@ function TarjetaPaciente(props: TarjetaPacienteProps) {
                 <div>
                     <p className="text-xl font-bold">{props.name}</p>
                     <p className="text-base text-gray-400  ">
-                       Ultimo registro: {props.ultimoRegistro}
+                        Ultimo registro: {props.ultimoRegistro}
                     </p>
                 </div>
             </CardHeader>
@@ -74,14 +75,14 @@ function TarjetaPaciente(props: TarjetaPacienteProps) {
                     />
                 </List>
                 {/* <Link to='/dashboard'> */}
-                    {/* Add full width to span all the button even when are inside a link */}
-                    <Button
-                        color="primary" 
-                        fullWidth
-                        onPress={handleOnPress}
-                        >
-                        <strong>Ver detalles</strong>
-                    </Button>
+                {/* Add full width to span all the button even when are inside a link */}
+                <Button
+                    color="primary"
+                    fullWidth
+                    onPress={handleOnPress}
+                >
+                    <strong>Ver detalles</strong>
+                </Button>
                 {/* </Link> */}
             </CardBody>
         </Card>

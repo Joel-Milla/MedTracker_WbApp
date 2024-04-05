@@ -25,9 +25,11 @@ function CurrentPatient() {
 
   // Handles the change of users
   const handleSelectionChange = (key: Key) => {
+
     const selectedKeyTab = key.toString();
     dispatch(setSelectedUser(selectedKeyTab));
     dispatch(setPatientData(selectedKeyTab));
+
   };
   return (
     <>

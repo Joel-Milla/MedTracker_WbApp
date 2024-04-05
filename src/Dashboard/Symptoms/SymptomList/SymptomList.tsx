@@ -1,5 +1,5 @@
 // External libaries
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // External components
 import { Listbox, ListboxItem } from "@nextui-org/react";
 // Redux connection
@@ -10,7 +10,8 @@ import SymptomCard from './SymptomCard';
 import { setSelectedSymptoms } from "../../../state/uiSlice";
 
 function SymptomList() {
-    // Obtain the current user symptoms and search text from the autocomplete
+    // Obtain the current patient, the symptoms and search text from the autocomplete
+    const selectedPatient = useSelector((state: RootState) => state.user.selectedPatient);
     const symptoms = useSelector((state: RootState) => state.user.patientData.symptoms);
     const searchText = useSelector((state: RootState) => state.ui.searchText);
     // Save the selected key and its initial state
@@ -19,6 +20,10 @@ function SymptomList() {
     // Use this hook to dispatch actions to redux
     const dispatch = useDispatch();
 
+    // When tthe current patient changes, reset the selected keys of the list
+    useEffect(() => {
+        setSelectedKeys(new Set());
+    }, [selectedPatient]);
 
     // Handles the selectedKeys based on the selection
     const handleSelectionChange = (keys: Set<string> | any) => {
