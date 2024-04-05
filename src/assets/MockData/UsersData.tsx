@@ -204,7 +204,7 @@ const USERS = [
         "email": "joel@mail.com",
         "rol": "Paciente",
         "sexo": "Masculino",
-        "antecedentes": "5",
+        "antecedentes": "Hello, my name is Joel",
         "nombreCompleto": "Joel",
         "fechaNacimiento": {
             "seconds": 1038005760,
@@ -218,7 +218,7 @@ const USERS = [
                 "idDocFirebase": "189D70BE-CC59-45E7-8E41-E43CBC6CD8CD",
                 "id": "189D70BE-CC59-45E7-8E41-E43CBC6CD8CD",
                 "unidades": "",
-                "description": "6",
+                "description": "Numero de pasos que he dado",
                 "color": "#007AFF",
                 "activo": false,
                 "fecha": {
@@ -227,7 +227,7 @@ const USERS = [
                 },
                 "notificacion": "",
                 "cuantitativo": false,
-                "nombre": "Test6t",
+                "nombre": "Pasos diarios",
                 "icon": "44.square.fill"
             },
             {
@@ -242,7 +242,7 @@ const USERS = [
                 "id": "1E284C31-33F0-4112-B9C0-0C43AED4EBE6",
                 "description": "Cuant",
                 "notificacion": "",
-                "nombre": "Test8",
+                "nombre": "Fatiga",
                 "activo": false,
                 "color": "#007AFF"
             },
@@ -260,11 +260,11 @@ const USERS = [
                 "unidades": "",
                 "cuantitativo": false,
                 "description": "12",
-                "nombre": "Test7"
+                "nombre": "Peso"
             },
             {
                 "idDocFirebase": "36FEEA09-3A63-4A48-B595-B9CCA47A3C40",
-                "nombre": "Test5",
+                "nombre": "Dolor de cabeza",
                 "icon": "plus.viewfinder",
                 "description": "5",
                 "cuantitativo": false,
@@ -286,12 +286,12 @@ const USERS = [
                     "seconds": 1705619554,
                     "nanoseconds": 98453000
                 },
-                "nombre": "Test4",
+                "nombre": "Test5",
                 "icon": "plus.viewfinder",
                 "unidades": "",
                 "color": "#007AFF",
                 "notificacion": "",
-                "description": "Test4",
+                "description": "Cansancio",
                 "activo": false
             },
             {
@@ -302,7 +302,7 @@ const USERS = [
                     "nanoseconds": 256026000
                 },
                 "unidades": "",
-                "nombre": "Test3",
+                "nombre": "Pesadez en el corazon",
                 "description": "3",
                 "color": "#007AFF",
                 "icon": "plus.viewfinder",
@@ -312,72 +312,73 @@ const USERS = [
             }
         ],
         "registers": [
-            {
-                "idDocFirebase": "3D42F5A7-6B6F-4633-BB0F-56F443F81060",
-                "id": "3D42F5A7-6B6F-4633-BB0F-56F443F81060",
-                "notas": "",
-                "cantidad": 0,
-                "idSymptom": "189D70BE-CC59-45E7-8E41-E43CBC6CD8CD",
-                "fecha": {
-                    "seconds": 1707681092,
-                    "nanoseconds": 183495000
-                }
-            },
-            {
-                "idDocFirebase": "6A35B7B9-35B3-40AF-B20A-906A4FFA6D8B",
-                "fecha": {
-                    "seconds": 1708993739,
-                    "nanoseconds": 216163000
+            // Use an array function to generate an array of x length with mock data
+            ...Array.from({ length: 365 }, (_, i) => ({
+                idDocFirebase: `Register_Test1_${i}`,
+                id: `Register_Test1_${i}`,
+                notas: 'Numero de pasos diarios',
+                cantidad: Math.floor(Math.random() * 10000), // Example value
+                idSymptom: "189D70BE-CC59-45E7-8E41-E43CBC6CD8CD", // Symptom ID
+                fecha: {
+                    seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                    nanoseconds: 0,
                 },
-                "cantidad": 43,
-                "idSymptom": "1E284C31-33F0-4112-B9C0-0C43AED4EBE6",
-                "id": "6A35B7B9-35B3-40AF-B20A-906A4FFA6D8B",
-                "notas": ""
-            },
-            {
-                "idDocFirebase": "6EF2B458-5639-4520-9E6F-7609292788B2",
-                "cantidad": 0,
-                "idSymptom": "CA2F8094-E00C-4FDA-893E-271B6D1DA1A5",
-                "id": "6EF2B458-5639-4520-9E6F-7609292788B2",
-                "fecha": {
-                    "seconds": 1706124960,
-                    "nanoseconds": 0
+            })),
+            ...Array.from({ length: 365 }, (_, i) => ({
+                idDocFirebase: `Register_Test2_${i}`,
+                id: `Register_Test2_${i}`,
+                notas: `Fatiga durante el dia`,
+                cantidad: Math.floor(Math.random() * 100), // Example value
+                idSymptom: "1E284C31-33F0-4112-B9C0-0C43AED4EBE6", // Symptom ID
+                fecha: {
+                    seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                    nanoseconds: 0,
                 },
-                "notas": ""
-            },
-            {
-                "idDocFirebase": "7C8825EC-2BDB-402A-880E-8665265DAF58",
-                "id": "7C8825EC-2BDB-402A-880E-8665265DAF58",
-                "notas": "",
-                "cantidad": 58.72657012939453,
-                "idSymptom": "1FC6C98A-D827-413A-8183-FD25A0771810",
-                "fecha": {
-                    "seconds": 1708993676,
-                    "nanoseconds": 188878000
-                }
-            },
-            {
-                "idDocFirebase": "DE3A88E3-DBE0-4095-B65B-ABB432BE4392",
-                "cantidad": 0,
-                "idSymptom": "36FEEA09-3A63-4A48-B595-B9CCA47A3C40",
-                "id": "DE3A88E3-DBE0-4095-B65B-ABB432BE4392",
-                "fecha": {
-                    "seconds": 1707681021,
-                    "nanoseconds": 180688000
+            })),
+            ...Array.from({ length: 365 }, (_, i) => ({
+                idDocFirebase: `Register_Test3_${i}`,
+                id: `Register_Test3_${i}`,
+                notas: `Peso`,
+                cantidad: Math.floor(Math.random() * (60 - 55 + 1)) + 55, // Example value
+                idSymptom: "1FC6C98A-D827-413A-8183-FD25A0771810", // Symptom ID
+                fecha: {
+                    seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                    nanoseconds: 0,
                 },
-                "notas": ""
-            },
-            {
-                "idDocFirebase": "EDA9D89C-6C36-4DC7-86DC-53BE3D25B334",
-                "idSymptom": "44E5A71C-198B-489D-9CA7-F68F04044C36",
-                "fecha": {
-                    "seconds": 1707506340,
-                    "nanoseconds": 0
+            })),
+            ...Array.from({ length: 365 }, (_, i) => ({
+                idDocFirebase: `Register_Test4_${i}`,
+                id: `Register_Test4_${i}`,
+                notas: 'Dolor de cabeza',
+                cantidad: Math.floor(Math.random() * 100), // Example value
+                idSymptom: "36FEEA09-3A63-4A48-B595-B9CCA47A3C40", // Symptom ID
+                fecha: {
+                    seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                    nanoseconds: 0,
                 },
-                "notas": "",
-                "cantidad": 0,
-                "id": "EDA9D89C-6C36-4DC7-86DC-53BE3D25B334"
-            }
+            })),
+            ...Array.from({ length: 365 }, (_, i) => ({
+                idDocFirebase: `Register_Test5_${i}`,
+                id: `Register_Test5_${i}`,
+                notas: 'Cansancio',
+                cantidad: Math.floor(Math.random() * 100), // Example value
+                idSymptom: "44E5A71C-198B-489D-9CA7-F68F04044C36", // Symptom ID
+                fecha: {
+                    seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                    nanoseconds: 0,
+                },
+            })),
+            ...Array.from({ length: 365 }, (_, i) => ({
+                idDocFirebase: `Register_Test6_${i}`,
+                id: `Register_Test6_${i}`,
+                notas: 'Pesadez en el corazon',
+                cantidad: Math.floor(Math.random() * 100), // Example value
+                idSymptom: "CA2F8094-E00C-4FDA-893E-271B6D1DA1A5", // Symptom ID
+                fecha: {
+                    seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                    nanoseconds: 0,
+                },
+            })),
         ]
     },
     {

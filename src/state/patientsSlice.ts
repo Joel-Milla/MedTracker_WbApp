@@ -5,7 +5,9 @@ import { mockData } from "../Models/Patients";
 
 export const patientsSlice = createSlice({
     name: 'patients',
-    initialState: mockData,
+    initialState: {
+        pacientes: mockData,
+    },
     reducers: {
         loadData: (state) => {
             return state;

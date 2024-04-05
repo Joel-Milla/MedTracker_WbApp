@@ -11,7 +11,7 @@ import { setSelectedSymptoms } from "../../../state/uiSlice";
 
 function SymptomList() {
     // Obtain the current user symptoms and search text from the autocomplete
-    const symptoms = useSelector((state: RootState) => state.user.symptoms);
+    const symptoms = useSelector((state: RootState) => state.user.patientData.symptoms);
     const searchText = useSelector((state: RootState) => state.ui.searchText);
     // Save the selected key and its initial state
     const initialSelection = symptoms.length > 0 ? new Set([]) : new Set([]);

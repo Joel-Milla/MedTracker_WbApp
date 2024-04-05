@@ -7,7 +7,7 @@ import Title from "./Title/Title";
 
 function Header() {
     // Obtain the current user symptoms
-    const symptoms = useSelector((state: RootState) => state.user.symptoms);
+    const symptoms = useSelector((state: RootState) => state.user.patientData.symptoms);
 
     return (
         // Flex to expand the div 100% of container and align items as a column with multiple rows

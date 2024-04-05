@@ -6,8 +6,8 @@ import { useSelector } from "react-redux";
 
 function CurrentPatient() {
   // Obtain the current users and selected user
-  const patients = useSelector((state: RootState) => state.patients);
-  const selectedUser = useSelector((state: RootState) => state.ui.selectedUser);
+  const patients = useSelector((state: RootState) => state.patients.pacientes);
+  const selectedUser = useSelector((state: RootState) => state.user.selectedPatient);
 
   // Transform data into format require by autocomplete
   const names = patients.map(patient => {

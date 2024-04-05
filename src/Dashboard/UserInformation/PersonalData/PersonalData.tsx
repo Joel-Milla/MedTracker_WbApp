@@ -3,9 +3,14 @@ import { List, ListItem } from '@tremor/react';
 // Redux connection
 import { RootState } from "../../../state/store";
 import { useSelector } from "react-redux";
+// Utils functions
+import { timestampToDate, dateToString } from '../../../Utils/Utils';
 
 function PersonalData() {
-    const user = useSelector((state: RootState) => state.user);
+    // Obtain the current user
+    const user = useSelector((state: RootState) => state.user.patientData);
+    const birthDate = dateToString(timestampToDate(user.fechaNacimiento));
+
     return (
         <>
         {/* Use listItem of tremor and show the metadata of the user */}
@@ -36,7 +41,7 @@ function PersonalData() {
                 </ListItem>
                 <ListItem key="fechaNacimiento">
                     <span>Fecha de Nacimiento: </span>
-                    <span>27 Feb 2023</span>
+                    <span>{birthDate}</span>
                 </ListItem>
             </List>
         </>
