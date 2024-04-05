@@ -3,6 +3,7 @@ import { RootState } from "../../state/store";
 import { useSelector } from "react-redux";
 // Own components
 import CurrentPatient from "./CurrentPatient/CurrentPatient";
+import UserInformation from "../../Pacientes/UserInformation";
 import Title from "./Title/Title";
 
 function Header() {
@@ -13,8 +14,9 @@ function Header() {
         // Flex to expand the div 100% of container and align items as a column with multiple rows
         <div className="flex flex-col">
             {/* Add margins to clearly define the current user. Set same width as symptoms list based on screen size*/}
-            <div className="md:w-1/3 2xl:w-1/4 mt-5 mb-9">
+            <div className="flex items-center gap-3 mt-5 mb-9">
                 <CurrentPatient />
+                <UserInformation />
             </div>
             {/* Because of flex properties, expand the full width of container */}
             <div>
