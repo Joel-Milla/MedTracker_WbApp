@@ -28,8 +28,8 @@ function PersonalData() {
                     <span>{user.sexo}</span>
                 </ListItem>
                 <ListItem key="estatura">
-                    <span>Estatura: </span>
-                    <span>{user.estatura} metro</span>
+                    <span>Estatura (en metros): </span>
+                    <span>{user.estatura}</span>
                 </ListItem>
                 <ListItem key="nombreCompleto">
                     <span>Nombre Completo: </span>

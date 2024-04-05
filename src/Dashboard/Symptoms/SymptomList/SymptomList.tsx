@@ -36,6 +36,7 @@ function SymptomList() {
                 selectedKeys={selectedKeys}
                 onSelectionChange={handleSelectionChange}
                 disallowEmptySelection={false}
+                emptyContent="No hay datos registrados"
             >
                 {/* First filter if the symptoms includes the search text and then show them on the view */}
                 {symptoms

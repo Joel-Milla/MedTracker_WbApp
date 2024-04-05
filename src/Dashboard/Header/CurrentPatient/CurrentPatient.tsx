@@ -28,7 +28,9 @@ function CurrentPatient() {
         placeholder="Escoge al usuario"
       >
         {/* Map the names as an item to be shown and selected */}
-        {(name) => <AutocompleteItem key={name.value}>{name.label}</AutocompleteItem>}
+        {(name) =>
+          <AutocompleteItem key={name.value}>{name.label}</AutocompleteItem>
+        }
       </Autocomplete>
     </>
   )

@@ -1,5 +1,5 @@
 // External components for routing
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // Components to interact with redux
 import { useDispatch } from "react-redux";
 import { setSelectedUser, setPatientData } from '../state/userSlice';
@@ -9,6 +9,7 @@ import CircleIcon from "@mui/icons-material/Circle";
 import { ListItem, List, } from "@mui/material";
 // Own components
 import BlueDot from "../Dashboard/Symptoms/SymptomList/BlueDot";
+import { useEffect, useState } from 'react';
 
 interface TarjetaPacienteProps {
     idDocFirebase: string,
@@ -21,11 +22,24 @@ interface TarjetaPacienteProps {
 function TarjetaPaciente(props: TarjetaPacienteProps) {
     // Use this hook to dispatch actions to redux
     const dispatch = useDispatch();
+    // Logic to handle redirection of the user
+    const [readyToNavigate, setReadyToNavigate] = useState(false);
+    const navigate = useNavigate();
+
+    
     // Function to handle the onPress of the button
     const handleOnPress = () => {
         dispatch(setSelectedUser(props.email));
         dispatch(setPatientData(props.email));
+
+        // After dispatching the actions, navigate to dashboard
+        setReadyToNavigate(true);
     }
+    useEffect(() => {
+        if (readyToNavigate) {
+            navigate('/dashboard');
+        }
+    }, [readyToNavigate, navigate]);
     return (
         <Card className=' p-2'>
             <CardHeader className="flex">
@@ -42,7 +56,7 @@ function TarjetaPaciente(props: TarjetaPacienteProps) {
                 <div>
                     <p className="text-xl font-bold">{props.name}</p>
                     <p className="text-base text-gray-400  ">
-                        {props.ultimoRegistro}
+                       Ultimo registro: {props.ultimoRegistro}
                     </p>
                 </div>
             </CardHeader>
@@ -59,7 +73,7 @@ function TarjetaPaciente(props: TarjetaPacienteProps) {
                         value={props.telefono}
                     />
                 </List>
-                <Link to='/dashboard'>
+                {/* <Link to='/dashboard'> */}
                     {/* Add full width to span all the button even when are inside a link */}
                     <Button
                         color="primary" 
@@ -68,7 +82,7 @@ function TarjetaPaciente(props: TarjetaPacienteProps) {
                         >
                         <strong>Ver detalles</strong>
                     </Button>
-                </Link>
+                {/* </Link> */}
             </CardBody>
         </Card>
     );

@@ -3,16 +3,16 @@
 const USERS = [
     {
         "idDocFirebase": "diego@mail.com",
-        "telefono": "",
+        "telefono": "8126311946",
         "rol": "Paciente",
-        "sexo": "",
-        "estatura": "",
+        "sexo": "Masculino",
+        "estatura": "1.5",
         "nombreCompleto": "Diego",
         "arregloDoctor": [
             "doctor@mail.com"
         ],
         "email": "diego@mail.com",
-        "antecedentes": "",
+        "antecedentes": "Hipertension",
         "id": "mDxafjggi1SLjnLj0T4Cf4fW0At1",
         "fechaNacimiento": {
             "seconds": 1708992787,
@@ -22,7 +22,7 @@ const USERS = [
             {
                 "idDocFirebase": "473F4CC9-B0E2-459E-B6DA-880D6798D694",
                 "description": "3",
-                "nombre": "3",
+                "nombre": "Dolor estomacal",
                 "notificacion": "",
                 "activo": true,
                 "fecha": {
@@ -42,7 +42,7 @@ const USERS = [
                 "description": "5",
                 "activo": true,
                 "cuantitativo": false,
-                "nombre": "5",
+                "nombre": "Dolor de cabeza",
                 "color": "#007AFF",
                 "unidades": "",
                 "id": "B611D2AA-1B49-4DEE-AC97-BAD4FE4904C0",
@@ -61,84 +61,47 @@ const USERS = [
                 "unidades": "",
                 "description": "6",
                 "cuantitativo": true,
-                "nombre": "6",
+                "nombre": "Pesadez del corazon",
                 "fecha": {
                     "seconds": 1705621772,
                     "nanoseconds": 790177000
                 }
             },
-            {
-                "idDocFirebase": "E932624D-91D2-4B48-9FE9-FD9F39F4D210",
-                "cuantitativo": true,
-                "notificacion": "",
-                "activo": true,
-                "description": "7",
-                "nombre": "7",
-                "icon": "plus.viewfinder",
-                "unidades": "",
-                "fecha": {
-                    "seconds": 1705621798,
-                    "nanoseconds": 441668000
-                },
-                "id": "E932624D-91D2-4B48-9FE9-FD9F39F4D210",
-                "color": "#007AFF"
-            },
-            {
-                "idDocFirebase": "ECC75AA2-3A0F-41D5-B026-1C584873BD42",
-                "cuantitativo": true,
-                "notificacion": "",
-                "activo": true,
-                "description": "8",
-                "color": "#007AFF",
-                "unidades": "",
-                "nombre": "8",
-                "id": "ECC75AA2-3A0F-41D5-B026-1C584873BD42",
-                "fecha": {
-                    "seconds": 1705622318,
-                    "nanoseconds": 370666000
-                },
-                "icon": "plus.viewfinder"
-            },
-            {
-                "idDocFirebase": "FBD13725-DDAE-46E3-BCD1-9A798305D1AF",
-                "id": "FBD13725-DDAE-46E3-BCD1-9A798305D1AF",
-                "activo": true,
-                "cuantitativo": false,
-                "icon": "plus.viewfinder",
-                "notificacion": "",
-                "fecha": {
-                    "seconds": 1705621319,
-                    "nanoseconds": 881031000
-                },
-                "color": "#007AFF",
-                "description": "4",
-                "unidades": "",
-                "nombre": "4"
-            }
         ],
         "registers": [
-            {
-                "idDocFirebase": "127AB9D0-33E7-4054-B9CA-3297F12EA5DA",
-                "id": "127AB9D0-33E7-4054-B9CA-3297F12EA5DA",
-                "fecha": {
-                    "seconds": 1705621034,
-                    "nanoseconds": 115237000
+            ...Array.from({ length: 365 }, (_, i) => ({
+                "idDocFirebase": "127AB9D0-33E7-4054-B9CA-3297F12EA5DA"+i,
+                "id": "127AB9D0-33E7-4054-B9CA-3297F12EA5DA"+i,
+                notas: 'Dolor estomacal',
+                cantidad: Math.floor(Math.random() * 100), // Example value
+                idSymptom: "473F4CC9-B0E2-459E-B6DA-880D6798D694", // Symptom ID
+                fecha: {
+                    seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                    nanoseconds: 0,
                 },
-                "cantidad": 45,
-                "notas": "",
-                "idSymptom": "473F4CC9-B0E2-459E-B6DA-880D6798D694"
-            },
-            {
-                "idDocFirebase": "8F4D3884-025F-443C-82C2-4D98C9BA9EC5",
-                "id": "8F4D3884-025F-443C-82C2-4D98C9BA9EC5",
-                "fecha": {
-                    "seconds": 1705621801,
-                    "nanoseconds": 705366000
+            })),
+            ...Array.from({ length: 365 }, (_, i) => ({
+                "idDocFirebase": "8F4D3884-025F-443C-82C2-4D98C9BA9EC5"+i,
+                "id": "8F4D3884-025F-443C-82C2-4D98C9BA9EC5"+i,
+                notas: 'Dolor de cabeza',
+                cantidad: Math.floor(Math.random() * 100), // Example value
+                "idSymptom": "E932624D-91D2-4B48-9FE9-FD9F39F4D210", // Symptom ID
+                fecha: {
+                    seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                    nanoseconds: 0,
                 },
-                "notas": "",
-                "idSymptom": "E932624D-91D2-4B48-9FE9-FD9F39F4D210",
-                "cantidad": 7
-            },
+            })),
+            ...Array.from({ length: 365 }, (_, i) => ({
+                "idDocFirebase": "9E912BB1-6CE1-4A2D-AE0F-0F5EFEBCE3AF"+i,
+                "id": "9E912BB1-6CE1-4A2D-AE0F-0F5EFEBCE3AF"+i,
+                notas: 'Pesadez del corazon',
+                cantidad: Math.floor(Math.random() * 100), // Example value
+                "idSymptom": "B611D2AA-1B49-4DEE-AC97-BAD4FE4904C0", // Symptom ID
+                fecha: {
+                    seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                    nanoseconds: 0,
+                },
+            })),
             {
                 "idDocFirebase": "9E912BB1-6CE1-4A2D-AE0F-0F5EFEBCE3AF",
                 "fecha": {
@@ -210,7 +173,7 @@ const USERS = [
             "seconds": 1038005760,
             "nanoseconds": 0
         },
-        "telefono": "5",
+        "telefono": "8126111953",
         "estatura": "1",
         "id": "cy8BtBlf3fSH3d5fFqozX7FhXF03",
         "symptoms": [
@@ -391,11 +354,11 @@ const USERS = [
         "nombreCompleto": "Manu",
         "sexo": "Masculino",
         "estatura": "2",
-        "telefono": "100",
+        "telefono": "0446111946",
         "email": "manu@mail.com",
         "id": "dAzf4feLyxabbwQUdSlBRFmbMXV2",
         "rol": "Paciente",
-        "antecedentes": "",
+        "antecedentes": "No aplica",
         "symptoms": [],
         "registers": []
     },
@@ -403,9 +366,9 @@ const USERS = [
         "idDocFirebase": "mario@mail.com",
         "telefono": "20",
         "id": "oU7plxXqVZOeOgT70RanfY6FYp52",
-        "estatura": "1",
+        "estatura": "1.7",
         "sexo": "Masculino",
-        "antecedentes": "",
+        "antecedentes": "-",
         "email": "mario@mail.com",
         "rol": "Paciente",
         "fechaNacimiento": {
@@ -421,7 +384,7 @@ const USERS = [
                 "id": "0DD4BAE3-12EB-4BAB-BB6C-0FB2CCFCE019",
                 "notificacion": "",
                 "unidades": "",
-                "nombre": "23",
+                "nombre": "Cansancio",
                 "color": "#007AFF",
                 "description": "23",
                 "cuantitativo": false,
@@ -432,7 +395,19 @@ const USERS = [
                 "activo": true
             }
         ],
-        "registers": []
+        "registers": [
+            ...Array.from({ length: 365 }, (_, i) => ({
+                "idDocFirebase": "9DD4BAE3-12EB-4BAB-BB6C-0FB2CCFCE019"+i,
+                "id": "9DD4BAE3-12EB-4BAB-BB6C-0FB2CCFCE019"+i,
+                notas: 'Cansancio',
+                cantidad: Math.floor(Math.random() * 100), // Example value
+                idSymptom: "0DD4BAE3-12EB-4BAB-BB6C-0FB2CCFCE019", // Symptom ID
+                fecha: {
+                    seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                    nanoseconds: 0,
+                },
+            })),
+        ]
     }
 ]
 

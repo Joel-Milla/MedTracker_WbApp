@@ -33,14 +33,11 @@ export const userSlice = createSlice({
     },
     reducers: {
         setSelectedUser: (state, action: PayloadAction<string>) => {
-            console.log(action.payload);
             state.selectedPatient = action.payload;
         },
         setPatientData: (state, action: PayloadAction<string>) => {
-            console.log(action.payload);
             USERS.forEach((user) => {
                 if (user.email == action.payload) {
-                    console.log(user);
                     state.patientData = user;
                 }
             });
