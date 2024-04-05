@@ -1,8 +1,11 @@
 // External components
 import { Autocomplete, AutocompleteItem } from "@nextui-org/react";
+// External methods
+import { Key } from "react";
 // Redux connection
 import { RootState } from "../../../state/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedUser, setPatientData } from "../../../state/userSlice";
 
 function CurrentPatient() {
   // Obtain the current users and selected user
@@ -16,6 +19,16 @@ function CurrentPatient() {
       label: patient.name
     }
   });
+
+  // Use this hook to dispatch actions to redux
+  const dispatch = useDispatch();
+
+  // Handles the change of users
+  const handleSelectionChange = (key: Key) => {
+    const selectedKeyTab = key.toString();
+    dispatch(setSelectedUser(selectedKeyTab));
+    dispatch(setPatientData(selectedKeyTab));
+  };
   return (
     <>
       {/* Use the autocomplete of nextUI to select from all the mock users */}
@@ -26,6 +39,7 @@ function CurrentPatient() {
         defaultItems={names}
         defaultSelectedKey={selectedUser} //Show the selected user
         placeholder="Escoge al usuario"
+        onSelectionChange={handleSelectionChange}
       >
         {/* Map the names as an item to be shown and selected */}
         {(name) =>

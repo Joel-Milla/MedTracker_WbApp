@@ -410,6 +410,322 @@ const USERS = [
         ]
     },
     {
+        "idDocFirebase": "diego2@mail.com",
+        "telefono": "8126311946",
+        "rol": "Paciente",
+        "sexo": "Masculino",
+        "estatura": "1.5",
+        "nombreCompleto": "Diego",
+        "arregloDoctor": [
+            "doctor@mail.com"
+        ],
+        "email": "diego2@mail.com",
+        "antecedentes": "Hipertension",
+        "id": "mDxafjggi1SLjnLj0T4Cf4fW0At1",
+        "fechaNacimiento": {
+            "seconds": 1708992787,
+            "nanoseconds": 175516000
+        },
+        "symptoms": [
+            {
+                "idDocFirebase": "473F4CC9-B0E2-459E-B6DA-880D6798D694",
+                "description": "3",
+                "nombre": "Dolor estomacal",
+                "notificacion": "",
+                "activo": true,
+                "fecha": {
+                    "seconds": 1705619897,
+                    "nanoseconds": 944797000
+                },
+                "icon": "plus.viewfinder",
+                "cuantitativo": true,
+                "unidades": "",
+                "id": "473F4CC9-B0E2-459E-B6DA-880D6798D694",
+                "color": "#007AFF"
+            },
+            {
+                "idDocFirebase": "B611D2AA-1B49-4DEE-AC97-BAD4FE4904C0",
+                "icon": "plus.viewfinder",
+                "notificacion": "",
+                "description": "5",
+                "activo": true,
+                "cuantitativo": false,
+                "nombre": "Dolor de cabeza",
+                "color": "#007AFF",
+                "unidades": "",
+                "id": "B611D2AA-1B49-4DEE-AC97-BAD4FE4904C0",
+                "fecha": {
+                    "seconds": 1705621751,
+                    "nanoseconds": 251857000
+                }
+            },
+            {
+                "idDocFirebase": "CF908A71-B78F-4D8B-9FAC-56ADD5EA45E1",
+                "color": "#007AFF",
+                "notificacion": "",
+                "activo": true,
+                "id": "CF908A71-B78F-4D8B-9FAC-56ADD5EA45E1",
+                "icon": "plus.viewfinder",
+                "unidades": "",
+                "description": "6",
+                "cuantitativo": true,
+                "nombre": "Pesadez del corazon",
+                "fecha": {
+                    "seconds": 1705621772,
+                    "nanoseconds": 790177000
+                }
+            },
+        ],
+        "registers": [
+            ...Array.from({ length: 365 }, (_, i) => ({
+                "idDocFirebase": "127AB9D0-33E7-4054-B9CA-3297F12EA5DA"+i,
+                "id": "127AB9D0-33E7-4054-B9CA-3297F12EA5DA"+i,
+                notas: 'Dolor estomacal',
+                cantidad: Math.floor(Math.random() * 100), // Example value
+                idSymptom: "473F4CC9-B0E2-459E-B6DA-880D6798D694", // Symptom ID
+                fecha: {
+                    seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                    nanoseconds: 0,
+                },
+            })),
+            ...Array.from({ length: 365 }, (_, i) => ({
+                "idDocFirebase": "8F4D3884-025F-443C-82C2-4D98C9BA9EC5"+i,
+                "id": "8F4D3884-025F-443C-82C2-4D98C9BA9EC5"+i,
+                notas: 'Dolor de cabeza',
+                cantidad: Math.floor(Math.random() * 100), // Example value
+                "idSymptom": "E932624D-91D2-4B48-9FE9-FD9F39F4D210", // Symptom ID
+                fecha: {
+                    seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                    nanoseconds: 0,
+                },
+            })),
+            ...Array.from({ length: 365 }, (_, i) => ({
+                "idDocFirebase": "9E912BB1-6CE1-4A2D-AE0F-0F5EFEBCE3AF"+i,
+                "id": "9E912BB1-6CE1-4A2D-AE0F-0F5EFEBCE3AF"+i,
+                notas: 'Pesadez del corazon',
+                cantidad: Math.floor(Math.random() * 100), // Example value
+                "idSymptom": "B611D2AA-1B49-4DEE-AC97-BAD4FE4904C0", // Symptom ID
+                fecha: {
+                    seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                    nanoseconds: 0,
+                },
+            })),
+            {
+                "idDocFirebase": "9E912BB1-6CE1-4A2D-AE0F-0F5EFEBCE3AF",
+                "fecha": {
+                    "seconds": 1705621754,
+                    "nanoseconds": 267099000
+                },
+                "idSymptom": "B611D2AA-1B49-4DEE-AC97-BAD4FE4904C0",
+                "cantidad": 0,
+                "notas": "",
+                "id": "9E912BB1-6CE1-4A2D-AE0F-0F5EFEBCE3AF"
+            },
+            {
+                "idDocFirebase": "ADF41663-518D-47DA-8C4C-02B99029F211",
+                "notas": "",
+                "idSymptom": "FBD13725-DDAE-46E3-BCD1-9A798305D1AF",
+                "cantidad": 0,
+                "fecha": {
+                    "seconds": 1705621322,
+                    "nanoseconds": 517066000
+                },
+                "id": "ADF41663-518D-47DA-8C4C-02B99029F211"
+            },
+            {
+                "idDocFirebase": "C0F48E46-00CE-4000-80DC-80546422C5A7",
+                "fecha": {
+                    "seconds": 1705622321,
+                    "nanoseconds": 820037000
+                },
+                "id": "C0F48E46-00CE-4000-80DC-80546422C5A7",
+                "notas": "",
+                "cantidad": 5,
+                "idSymptom": "ECC75AA2-3A0F-41D5-B026-1C584873BD42"
+            },
+            {
+                "idDocFirebase": "DDD652BF-BA3D-4F45-94E4-FBAB089D73F0",
+                "idSymptom": "CF908A71-B78F-4D8B-9FAC-56ADD5EA45E1",
+                "fecha": {
+                    "seconds": 1705621775,
+                    "nanoseconds": 789538000
+                },
+                "id": "DDD652BF-BA3D-4F45-94E4-FBAB089D73F0",
+                "cantidad": 5,
+                "notas": ""
+            },
+            {
+                "idDocFirebase": "FB7300F5-D237-4FFA-996B-03BAF664AFA9",
+                "id": "FB7300F5-D237-4FFA-996B-03BAF664AFA9",
+                "idSymptom": "ECC75AA2-3A0F-41D5-B026-1C584873BD42",
+                "cantidad": 6,
+                "notas": "",
+                "fecha": {
+                    "seconds": 1705622324,
+                    "nanoseconds": 823567000
+                }
+            }
+        ]
+    },
+    {
+        "idDocFirebase": "diego3@mail.com",
+        "telefono": "8126311946",
+        "rol": "Paciente",
+        "sexo": "Masculino",
+        "estatura": "1.5",
+        "nombreCompleto": "Diego",
+        "arregloDoctor": [
+            "doctor@mail.com"
+        ],
+        "email": "diego3@mail.com",
+        "antecedentes": "Hipertension",
+        "id": "mDxafjggi1SLjnLj0T4Cf4fW0At1",
+        "fechaNacimiento": {
+            "seconds": 1708992787,
+            "nanoseconds": 175516000
+        },
+        "symptoms": [
+            {
+                "idDocFirebase": "473F4CC9-B0E2-459E-B6DA-880D6798D694",
+                "description": "3",
+                "nombre": "Dolor estomacal",
+                "notificacion": "",
+                "activo": true,
+                "fecha": {
+                    "seconds": 1705619897,
+                    "nanoseconds": 944797000
+                },
+                "icon": "plus.viewfinder",
+                "cuantitativo": true,
+                "unidades": "",
+                "id": "473F4CC9-B0E2-459E-B6DA-880D6798D694",
+                "color": "#007AFF"
+            },
+            {
+                "idDocFirebase": "B611D2AA-1B49-4DEE-AC97-BAD4FE4904C0",
+                "icon": "plus.viewfinder",
+                "notificacion": "",
+                "description": "5",
+                "activo": true,
+                "cuantitativo": false,
+                "nombre": "Dolor de cabeza",
+                "color": "#007AFF",
+                "unidades": "",
+                "id": "B611D2AA-1B49-4DEE-AC97-BAD4FE4904C0",
+                "fecha": {
+                    "seconds": 1705621751,
+                    "nanoseconds": 251857000
+                }
+            },
+            {
+                "idDocFirebase": "CF908A71-B78F-4D8B-9FAC-56ADD5EA45E1",
+                "color": "#007AFF",
+                "notificacion": "",
+                "activo": true,
+                "id": "CF908A71-B78F-4D8B-9FAC-56ADD5EA45E1",
+                "icon": "plus.viewfinder",
+                "unidades": "",
+                "description": "6",
+                "cuantitativo": true,
+                "nombre": "Pesadez del corazon",
+                "fecha": {
+                    "seconds": 1705621772,
+                    "nanoseconds": 790177000
+                }
+            },
+        ],
+        "registers": [
+            ...Array.from({ length: 365 }, (_, i) => ({
+                "idDocFirebase": "127AB9D0-33E7-4054-B9CA-3297F12EA5DA"+i,
+                "id": "127AB9D0-33E7-4054-B9CA-3297F12EA5DA"+i,
+                notas: 'Dolor estomacal',
+                cantidad: Math.floor(Math.random() * 100), // Example value
+                idSymptom: "473F4CC9-B0E2-459E-B6DA-880D6798D694", // Symptom ID
+                fecha: {
+                    seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                    nanoseconds: 0,
+                },
+            })),
+            ...Array.from({ length: 365 }, (_, i) => ({
+                "idDocFirebase": "8F4D3884-025F-443C-82C2-4D98C9BA9EC5"+i,
+                "id": "8F4D3884-025F-443C-82C2-4D98C9BA9EC5"+i,
+                notas: 'Dolor de cabeza',
+                cantidad: Math.floor(Math.random() * 100), // Example value
+                "idSymptom": "E932624D-91D2-4B48-9FE9-FD9F39F4D210", // Symptom ID
+                fecha: {
+                    seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                    nanoseconds: 0,
+                },
+            })),
+            ...Array.from({ length: 365 }, (_, i) => ({
+                "idDocFirebase": "9E912BB1-6CE1-4A2D-AE0F-0F5EFEBCE3AF"+i,
+                "id": "9E912BB1-6CE1-4A2D-AE0F-0F5EFEBCE3AF"+i,
+                notas: 'Pesadez del corazon',
+                cantidad: Math.floor(Math.random() * 100), // Example value
+                "idSymptom": "B611D2AA-1B49-4DEE-AC97-BAD4FE4904C0", // Symptom ID
+                fecha: {
+                    seconds: 1712165044 - (i * 86400), // Example timestamp, the first element is the current data obtained by Math.floor(Date.now() / 1000)
+                    nanoseconds: 0,
+                },
+            })),
+            {
+                "idDocFirebase": "9E912BB1-6CE1-4A2D-AE0F-0F5EFEBCE3AF",
+                "fecha": {
+                    "seconds": 1705621754,
+                    "nanoseconds": 267099000
+                },
+                "idSymptom": "B611D2AA-1B49-4DEE-AC97-BAD4FE4904C0",
+                "cantidad": 0,
+                "notas": "",
+                "id": "9E912BB1-6CE1-4A2D-AE0F-0F5EFEBCE3AF"
+            },
+            {
+                "idDocFirebase": "ADF41663-518D-47DA-8C4C-02B99029F211",
+                "notas": "",
+                "idSymptom": "FBD13725-DDAE-46E3-BCD1-9A798305D1AF",
+                "cantidad": 0,
+                "fecha": {
+                    "seconds": 1705621322,
+                    "nanoseconds": 517066000
+                },
+                "id": "ADF41663-518D-47DA-8C4C-02B99029F211"
+            },
+            {
+                "idDocFirebase": "C0F48E46-00CE-4000-80DC-80546422C5A7",
+                "fecha": {
+                    "seconds": 1705622321,
+                    "nanoseconds": 820037000
+                },
+                "id": "C0F48E46-00CE-4000-80DC-80546422C5A7",
+                "notas": "",
+                "cantidad": 5,
+                "idSymptom": "ECC75AA2-3A0F-41D5-B026-1C584873BD42"
+            },
+            {
+                "idDocFirebase": "DDD652BF-BA3D-4F45-94E4-FBAB089D73F0",
+                "idSymptom": "CF908A71-B78F-4D8B-9FAC-56ADD5EA45E1",
+                "fecha": {
+                    "seconds": 1705621775,
+                    "nanoseconds": 789538000
+                },
+                "id": "DDD652BF-BA3D-4F45-94E4-FBAB089D73F0",
+                "cantidad": 5,
+                "notas": ""
+            },
+            {
+                "idDocFirebase": "FB7300F5-D237-4FFA-996B-03BAF664AFA9",
+                "id": "FB7300F5-D237-4FFA-996B-03BAF664AFA9",
+                "idSymptom": "ECC75AA2-3A0F-41D5-B026-1C584873BD42",
+                "cantidad": 6,
+                "notas": "",
+                "fecha": {
+                    "seconds": 1705622324,
+                    "nanoseconds": 823567000
+                }
+            }
+        ]
+    },
+    {
         "idDocFirebase": "diego4@mail.com",
         "telefono": "8126311946",
         "rol": "Paciente",
