@@ -6,7 +6,7 @@ function Graph() {
     return (
         <>
             {/* Show two things on the graph, the chart and then the selected data when the user click on the graph */}
-            <div>
+            <div className='flex flex-col gap-2'>
                 <div className='flex justify-end'>
                     <ModalButton />
                 </div>

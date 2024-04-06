@@ -13,7 +13,7 @@ function SymptomCard({ symptom }: {symptom: Symptom}) {
             {/* Multiple rows using flex and align items to the start */}
             <CardHeader className="flex flex-col items-start">
                 {/* Change size and color of text */}
-                <h2 className="text-sm text-gray-500">Ultimo Registro: Feb 27</h2>
+                <h2 className="text-sm text-gray-400">Ultimo Registro: Feb 27</h2>
                 <h1 className="text-2xl font-semibold">{symptom.nombre}</h1>
             </CardHeader>
             <Divider />
