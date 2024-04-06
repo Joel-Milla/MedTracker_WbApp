@@ -65,8 +65,8 @@ function Chart() {
     const selectedDateFilter = useSelector((state: RootState) => state.ui.selectedDateFilter);
     const selectedChart = useSelector((state: RootState) => state.ui.selectedChart);
     // Obtain the current user data
-    const registers = useSelector((state: RootState) => state.user.registers);
-    const symptoms = useSelector((state: RootState) => state.user.symptoms);
+    const registers = useSelector((state: RootState) => state.user.patientData.registers);
+    const symptoms = useSelector((state: RootState) => state.user.patientData.symptoms);
     // Get the current selected sypmtoms
     const selectedSymptoms = useSelector((state: RootState) => state.ui.selectedSymptoms);
     const selectedSymptomNames = selectedSymptoms.map((symptomId) => getSymptomName(symptoms, symptomId));

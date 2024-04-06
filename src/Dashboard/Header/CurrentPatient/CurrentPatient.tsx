@@ -1,18 +1,28 @@
 // External components
-import { Autocomplete, AutocompleteItem } from "@nextui-org/react";
+import { Autocomplete, AutocompleteItem, Avatar } from "@nextui-org/react";
+// External methods
+import { Key } from "react";
 // Redux connection
 import { RootState } from "../../../state/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedUser, setPatientData } from "../../../state/userSlice";
 
 function CurrentPatient() {
-  // Obtain the current users
-  const patients = useSelector((state: RootState) => state.patients);
-  const names = patients.map(patient => {
-    return {
-      value: patient.email,
-      label: patient.name
-    }
-  });
+  // Obtain the current users and selected user
+  const patients = useSelector((state: RootState) => state.patients.pacientes);
+  const selectedUser = useSelector((state: RootState) => state.user.selectedPatient);
+
+  // Use this hook to dispatch actions to redux
+  const dispatch = useDispatch();
+
+  // Handles the change of users
+  const handleSelectionChange = (key: Key) => {
+
+    const selectedKeyTab = key.toString();
+    dispatch(setSelectedUser(selectedKeyTab));
+    dispatch(setPatientData(selectedKeyTab));
+
+  };
   return (
     <>
       {/* Use the autocomplete of nextUI to select from all the mock users */}
@@ -20,11 +30,37 @@ function CurrentPatient() {
         color="primary"
         label="Buscar"
         variant="bordered" // This element makes the search bar transparent
-        defaultItems={names}
+        defaultItems={patients}
+        defaultSelectedKey={selectedUser} //Show the selected user
         placeholder="Escoge al usuario"
+        onSelectionChange={handleSelectionChange}
       >
-        {/* Map the names as an item to be shown and selected */}
-        {(name) => <AutocompleteItem key={name.value}>{name.label}</AutocompleteItem>}
+        {/* Obtain the array from defaultItems and iterate though it to show the custom autocomplete */}
+        {(patient) =>
+          // <AutocompleteItem key={name.value}>{name.label}</AutocompleteItem>
+          <AutocompleteItem key={patient.email} textValue={patient.name
+          }>
+            <div className="flex justify-between items-center">
+              <div className="flex gap-2 items-center">
+                <Avatar
+                  alt={patient.name}
+                  className="flex-shrink-0"
+                  size="sm"
+                  src=''
+                  // Show the initials of the name
+                  name={patient.name}
+                  showFallback
+                  color='primary'
+                />
+                <div className="flex flex-col">
+                  <span className="text-small">
+                    {patient.name}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </AutocompleteItem>
+        }
       </Autocomplete>
     </>
   )

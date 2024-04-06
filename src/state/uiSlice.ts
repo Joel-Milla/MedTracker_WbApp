@@ -11,12 +11,12 @@ const selectedDataPoint: any = {
 };
 const selectedDateFilter: string = "30d";
 const selectedChart: string = "line";
-const searchText: string ="";
+const searchText: string = "";
 const patientSearchText: string = "";
 export const uiSlice = createSlice({
     name: 'ui',
     initialState: {
-        // Selected symptoms are the symptomst that the doctor selects on the dasboard
+        // Selection of data that the user makes
         selectedSymptoms: selectedSymptoms,
         selectedDataPoint: selectedDataPoint,
         selectedDateFilter: selectedDateFilter,
@@ -27,11 +27,15 @@ export const uiSlice = createSlice({
     reducers: {
         // Receive as payload a set that contains all the keys of the selected symptoms on the list (which are the symptoms ids)
         setSelectedSymptoms: (state, action: PayloadAction<string[]>) => {
-            const symptomsId = []
-            for (const symptomId of action.payload) {
-                symptomsId.push(symptomId);
+            if (action.payload.length == 0) {
+                state.selectedSymptoms = [];
+            } else {
+                const symptomsId = []
+                for (const symptomId of action.payload) {
+                    symptomsId.push(symptomId);
+                }
+                state.selectedSymptoms = symptomsId;
             }
-            state.selectedSymptoms = symptomsId;
         },
         setSelectedDataPoint: (state, action: PayloadAction<any>) => {
             // Handle both cases when the user selects a point and when it is unslected

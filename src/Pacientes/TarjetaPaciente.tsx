@@ -1,25 +1,46 @@
 // External components for routing
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+// Components to interact with redux
+import { useDispatch } from "react-redux";
+import { setSelectedUser, setPatientData } from '../state/userSlice';
 // External components
 import { Button, Card, CardBody, CardHeader, Avatar } from "@nextui-org/react";
 import CircleIcon from "@mui/icons-material/Circle";
-import {
-    ListItem,
-    List,
-} from "@mui/material";
+import { ListItem, List, } from "@mui/material";
 // Own components
 import BlueDot from "../Dashboard/Symptoms/SymptomList/BlueDot";
+import { useEffect, useState } from 'react';
 
 interface TarjetaPacienteProps {
-    id: number;
-    imagen: string;
-    nombre: string;
-    fechaUltimoRegistro: string;
-    email: string;
-    celular: string;
+    idDocFirebase: string,
+    email: string,
+    name: string,
+    telefono: string,
+    ultimoRegistro: string,
 }
 
 function TarjetaPaciente(props: TarjetaPacienteProps) {
+    // Use this hook to dispatch actions to redux
+    const dispatch = useDispatch();
+    // Logic to handle redirection of the user
+    const [readyToNavigate, setReadyToNavigate] = useState(false);
+    const navigate = useNavigate();
+
+
+    // Function to handle the onPress of the button
+    const handleOnPress = () => {
+        // Set the current user to show it on the graph
+        dispatch(setSelectedUser(props.email));
+        dispatch(setPatientData(props.email));
+
+        // After dispatching the actions, navigate to dashboard
+        setReadyToNavigate(true);
+    }
+    useEffect(() => {
+        if (readyToNavigate) {
+            navigate('/dashboard');
+        }
+    }, [readyToNavigate, navigate]);
     return (
         <Card className=' p-2'>
             <CardHeader className="flex">
@@ -29,14 +50,14 @@ function TarjetaPaciente(props: TarjetaPacienteProps) {
                     src=''
                     className="m-4"
                     // Show the initials of the name
-                    name={props.nombre}
+                    name={props.name}
                     showFallback
                     color='primary'
                 />
                 <div>
-                    <p className="text-xl font-bold">{props.nombre}</p>
+                    <p className="text-xl font-bold">{props.name}</p>
                     <p className="text-base text-gray-400  ">
-                        {props.fechaUltimoRegistro}
+                        Ultimo registro: {props.ultimoRegistro}
                     </p>
                 </div>
             </CardHeader>
@@ -50,15 +71,19 @@ function TarjetaPaciente(props: TarjetaPacienteProps) {
                     <ListItemElement
                         icon={CircleIcon}
                         text="Teléfono: "
-                        value={props.celular}
+                        value={props.telefono}
                     />
                 </List>
-                <Link to='/dashboard'>
-                    {/* Add full width to span all the button even when are inside a link */}
-                    <Button color="primary" fullWidth>
-                        <strong>Ver detalles</strong>
-                    </Button>
-                </Link>
+                {/* <Link to='/dashboard'> */}
+                {/* Add full width to span all the button even when are inside a link */}
+                <Button
+                    color="primary"
+                    fullWidth
+                    onPress={handleOnPress}
+                >
+                    <strong>Ver detalles</strong>
+                </Button>
+                {/* </Link> */}
             </CardBody>
         </Card>
     );

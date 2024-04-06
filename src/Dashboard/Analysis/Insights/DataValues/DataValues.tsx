@@ -6,8 +6,8 @@ import { getSymptomName, getInisightsValues, filterRegistersByDate } from "../..
 
 function DataValues({symptom}: {symptom: string}) {
     // Obtain the current user data
-    const registers = useSelector((state: RootState) => state.user.registers);
-    const symptoms = useSelector((state: RootState) => state.user.symptoms);
+    const registers = useSelector((state: RootState) => state.user.patientData.registers);
+    const symptoms = useSelector((state: RootState) => state.user.patientData.symptoms);
     // Obtain the selected tab of DateFilter
     const selectedDateFilter = useSelector((state: RootState) => state.ui.selectedDateFilter);
 

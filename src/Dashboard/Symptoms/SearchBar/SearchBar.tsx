@@ -7,7 +7,7 @@ import { setSearchText } from "../../../state/uiSlice";
 
 function SearchBar() {
     // Mock data to obtain the list of symptoms from user
-    const symptoms = useSelector((state: RootState) => state.user.symptoms);
+    const symptoms = useSelector((state: RootState) => state.user.patientData.symptoms);
     // Use this hook to dispatch actions to redux
     const dispatch = useDispatch();
 

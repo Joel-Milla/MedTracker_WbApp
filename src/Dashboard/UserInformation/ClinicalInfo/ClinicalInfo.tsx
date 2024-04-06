@@ -5,7 +5,7 @@ import { RootState } from "../../../state/store";
 import { useSelector } from "react-redux";
 
 function ClinicalInfo() {
-    const user = useSelector((state: RootState) => state.user);
+    const user = useSelector((state: RootState) => state.user.patientData);
     return (
         <>
         {/* Show a read only text area with the clinical records of the patient */}
@@ -14,7 +14,7 @@ function ClinicalInfo() {
                 label="Antecedentes"
                 variant="bordered"
                 labelPlacement="outside"
-                placeholder="Enter your description"
+                placeholder=""
                 color="primary"
                 defaultValue={user.antecedentes}
             />
