@@ -1,11 +1,7 @@
 // Own components
 import Title from "../Dashboard/Header/Title/Title";
 
-interface HeaderProps {
-  cantidadPacientes: number;
-}
-
-function Header({ cantidadPacientes }: HeaderProps) {
+function Header() {
   return (
     // Flex to expand the div 100% of container and align items as a column with multiple rows
     <div className="flex flex-col">
