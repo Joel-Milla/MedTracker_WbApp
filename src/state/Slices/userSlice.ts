@@ -32,7 +32,7 @@ export const userSlice = createSlice({
     patientData: patientDataInitialState,
   },
   reducers: {
-    setSelectedUser: (state, action: PayloadAction<string>) => {
+    setSelectedPatient: (state, action: PayloadAction<string>) => {
       state.selectedPatient = action.payload;
     },
     setPatientData: (state, action: PayloadAction<string>) => {
@@ -45,6 +45,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setSelectedUser, setPatientData } = userSlice.actions;
+export const { setSelectedPatient, setPatientData } = userSlice.actions;
 
 export default userSlice.reducer;

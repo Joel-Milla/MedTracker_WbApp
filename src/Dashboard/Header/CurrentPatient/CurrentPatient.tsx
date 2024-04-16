@@ -6,7 +6,7 @@ import { Key } from "react";
 import { RootState } from "../../../state/store";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  setSelectedUser,
+  setSelectedPatient,
   setPatientData,
 } from "../../../state/Slices/userSlice";
 
@@ -23,7 +23,7 @@ function CurrentPatient() {
   // Handles the change of users
   const handleSelectionChange = (key: Key) => {
     const selectedKeyTab = key.toString();
-    dispatch(setSelectedUser(selectedKeyTab));
+    dispatch(setSelectedPatient(selectedKeyTab));
     dispatch(setPatientData(selectedKeyTab));
   };
   return (
