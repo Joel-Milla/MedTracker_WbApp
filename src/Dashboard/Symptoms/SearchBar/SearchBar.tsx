@@ -15,7 +15,6 @@ function SearchBar() {
 
   // Handle the change of search text
   const handleInputChange = (text: string) => {
-    console.log(text);
     dispatch(setSearchText(text));
   };
   // Convert the current symptoms to the required format to show them on autocomplete

@@ -15,7 +15,6 @@ function SearchBar() {
 
   // Handle the change of search text
   const handleInputChange = (text: string) => {
-    console.log(text);
     dispatch(setPatientSearchText(text));
   };
 
@@ -29,31 +28,7 @@ function SearchBar() {
       defaultItems={patients}
       onKeyDown={(e: any) => e.continuePropagation()} // stops an error from loggin on the console about 'stopPropagation'.
       onInputChange={handleInputChange}
-      // listboxProps={{
-      //     hideSelectedIcon: true,
-      //     itemClasses: {
-      //         base: [
-      //             "rounded-medium",
-      //             "text-default-500",
-      //             "transition-opacity",
-      //             "data-[hover=true]:text-foreground",
-      //             "dark:data-[hover=true]:bg-default-50",
-      //             "data-[pressed=true]:opacity-70",
-      //             "data-[hover=true]:bg-default-200",
-      //             "data-[selectable=true]:focus:bg-default-100",
-      //             "data-[focus-visible=true]:ring-default-500",
-      //         ],
-      //     },
-      // }}
       aria-label="Selecciona a un paciente"
-      // popoverProps={{
-      //     offset: 10,
-      //     classNames: {
-      //         base: "rounded-large",
-      //         content:
-      //             "p-1 border-small border-default-100 bg-background",
-      //     },
-      // }}
     >
       {(patient) => (
         <AutocompleteItem key={patient.email} textValue={patient.name}>
