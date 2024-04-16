@@ -13,6 +13,8 @@ function ProfilePage() {
   const [phonePlaceholder, setPhonePlaceholder] = useState("Teléfono");
   const [editable, setEditable] = useState(false);
 
+  // Cuando se editan los campos, se guarda en los placeholders el valor actual
+  // para que le sirva de referencia al usuario
   const handleEdit = () => {
     setNamePlaceholder(name);
     setEmailPlaceholder(email);
@@ -20,6 +22,9 @@ function ProfilePage() {
     setEditable(true);
   };
 
+  // Cuando se guarda los cambios, se verifica si los campos están vacíos, de
+  // estarlos, se asigna el valor del placeholder, que era el valor previo a la
+  // edición. Si no, se asigna el valor actual. Se vuelven los
   const handleSave = () => {
     const newName = name === "" ? namePlaceholder : name;
     const newEmail = email === "" ? emailPlaceholder : email;
