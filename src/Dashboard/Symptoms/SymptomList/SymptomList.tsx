@@ -1,10 +1,10 @@
 // External libaries
 import { useEffect, useState } from "react";
-// External components
-import { Listbox, ListboxItem } from "@nextui-org/react";
 // Redux connection
 import { RootState } from "../../../state/store";
 import { useDispatch, useSelector } from "react-redux";
+// External components
+import { Listbox, ListboxItem, Skeleton } from "@nextui-org/react";
 // Components
 import SymptomCard from "./SymptomCard";
 import { setSelectedSymptoms } from "../../../state/Slices/uiSlice";
@@ -18,6 +18,9 @@ function SymptomList() {
     (state: RootState) => state.user.patientData.symptoms
   );
   const searchText = useSelector((state: RootState) => state.ui.searchText);
+  // Loading state
+  const isLoading = useSelector((state: RootState) => state.user.isLoading);
+
   // Save the selected key and its initial state
   const initialSelection = symptoms.length > 0 ? new Set([]) : new Set([]);
   const [selectedKeys, setSelectedKeys] = useState(initialSelection);
@@ -60,8 +63,13 @@ function SymptomList() {
                 color="primary"
                 textValue={symptom.nombre}
               >
-                {/* Show a symptom card as the value */}
-                <SymptomCard symptom={symptom} />
+                <Skeleton
+                  isLoaded={!isLoading}
+                  className="rounded-lg bg-persian-green-500"
+                >
+                  {/* Show a symptom card as the value */}
+                  <SymptomCard symptom={symptom} />
+                </Skeleton>
               </ListboxItem>
             );
           })}
