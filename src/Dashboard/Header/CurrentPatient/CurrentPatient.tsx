@@ -11,7 +11,7 @@ import {
 } from "../../../state/Slices/userSlice";
 
 function CurrentPatient() {
-  // Obtain the current users and selected user
+  // Obtain the current patients
   const patients = useSelector((state: RootState) => state.patients.pacientes);
   const selectedUser = useSelector(
     (state: RootState) => state.user.selectedPatient
