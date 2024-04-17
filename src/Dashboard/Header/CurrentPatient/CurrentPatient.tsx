@@ -5,23 +5,26 @@ import { Key } from "react";
 // Redux connection
 import { RootState } from "../../../state/store";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedUser, setPatientData } from "../../../state/userSlice";
+import {
+  setSelectedPatient,
+  fetchPatientInformation,
+} from "../../../state/Slices/userSlice";
 
 function CurrentPatient() {
-  // Obtain the current users and selected user
+  // Obtain the current patients
   const patients = useSelector((state: RootState) => state.patients.pacientes);
-  const selectedUser = useSelector((state: RootState) => state.user.selectedPatient);
+  const selectedUser = useSelector(
+    (state: RootState) => state.user.selectedPatient
+  );
 
   // Use this hook to dispatch actions to redux
   const dispatch = useDispatch();
 
   // Handles the change of users
   const handleSelectionChange = (key: Key) => {
-
     const selectedKeyTab = key.toString();
-    dispatch(setSelectedUser(selectedKeyTab));
-    dispatch(setPatientData(selectedKeyTab));
-
+    dispatch(setSelectedPatient(selectedKeyTab));
+    dispatch(fetchPatientInformation(selectedKeyTab));
   };
   return (
     <>
@@ -36,34 +39,31 @@ function CurrentPatient() {
         onSelectionChange={handleSelectionChange}
       >
         {/* Obtain the array from defaultItems and iterate though it to show the custom autocomplete */}
-        {(patient) =>
+        {(patient) => (
           // <AutocompleteItem key={name.value}>{name.label}</AutocompleteItem>
-          <AutocompleteItem key={patient.email} textValue={patient.name
-          }>
+          <AutocompleteItem key={patient.email} textValue={patient.name}>
             <div className="flex justify-between items-center">
               <div className="flex gap-2 items-center">
                 <Avatar
                   alt={patient.name}
                   className="flex-shrink-0"
                   size="sm"
-                  src=''
+                  src=""
                   // Show the initials of the name
                   name={patient.name}
                   showFallback
-                  color='primary'
+                  color="primary"
                 />
                 <div className="flex flex-col">
-                  <span className="text-small">
-                    {patient.name}
-                  </span>
+                  <span className="text-small">{patient.name}</span>
                 </div>
               </div>
             </div>
           </AutocompleteItem>
-        }
+        )}
       </Autocomplete>
     </>
-  )
+  );
 }
 
 export default CurrentPatient;
