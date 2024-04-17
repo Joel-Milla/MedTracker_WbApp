@@ -2,7 +2,10 @@
 import { useNavigate } from "react-router-dom";
 // Components to interact with redux
 import { useDispatch } from "react-redux";
-import { setSelectedPatient, setPatientData } from "../state/Slices/userSlice";
+import {
+  setSelectedPatient,
+  fetchPatientInformation,
+} from "../state/Slices/userSlice";
 // External components
 import { Button, Card, CardBody, CardHeader, Avatar } from "@nextui-org/react";
 import CircleIcon from "@mui/icons-material/Circle";
@@ -30,7 +33,7 @@ function TarjetaPaciente(props: TarjetaPacienteProps) {
   const handleOnPress = () => {
     // Set the current user to show it on the graph
     dispatch(setSelectedPatient(props.email));
-    dispatch(setPatientData(props.email));
+    dispatch(fetchPatientInformation(props.email));
 
     // After dispatching the actions, navigate to dashboard
     setReadyToNavigate(true);

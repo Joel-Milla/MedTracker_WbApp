@@ -5,14 +5,12 @@ import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { createAsyncThunk, PayloadAction, createSlice } from "@reduxjs/toolkit";
 // Import types/models
 import { User } from "../../Models/User";
-// Import data
-import USERS from "../../assets/MockData/UsersData";
+// Import models
 import { Register, Symptom } from "../../Models/Symptom_Register";
 
 export const fetchPatientInformation = createAsyncThunk(
   "user/fetchPatientInformation",
-  async () => {
-    const email = "joel@mail.com";
+  async (email: string) => {
     let patient: User;
     const symptomsCollectionRef = collection(db, "Users", email, "symptoms");
     const registersCollectionRef = collection(db, "Users", email, "registers");
@@ -144,13 +142,6 @@ export const userSlice = createSlice({
     setSelectedPatient: (state, action: PayloadAction<string>) => {
       state.selectedPatient = action.payload;
     },
-    setPatientData: (state, action: PayloadAction<string>) => {
-      USERS.forEach((user) => {
-        if (user.email == action.payload) {
-          state.patientData = user;
-        }
-      });
-    },
   },
 
   extraReducers: (builder) => {
@@ -171,6 +162,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setSelectedPatient, setPatientData } = userSlice.actions;
+export const { setSelectedPatient } = userSlice.actions;
 
 export default userSlice.reducer;

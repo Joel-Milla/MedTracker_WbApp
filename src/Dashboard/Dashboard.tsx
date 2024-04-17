@@ -1,5 +1,6 @@
 // Redux connection
-import { useDispatch } from "react-redux";
+import { RootState } from "../state/store";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchPatientInformation } from "../state/Slices/userSlice";
 // Components
 import Header from "./Header/Header";
@@ -9,9 +10,12 @@ import UserInformation from "./UserInformation/UserInformation";
 import { useEffect } from "react";
 
 function Dashboard() {
+  const selectedPatient = useSelector(
+    (state: RootState) => state.user.selectedPatient
+  );
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchPatientInformation());
+    dispatch(fetchPatientInformation(selectedPatient));
   });
 
   return (
