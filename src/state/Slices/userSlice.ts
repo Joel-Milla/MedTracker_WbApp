@@ -1,6 +1,13 @@
 // This code is for calling the patients of the doctor
 import { db } from "../FirebaseConfig/config";
-import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+  query,
+  orderBy,
+} from "firebase/firestore";
 // External libaries
 import { createAsyncThunk, PayloadAction, createSlice } from "@reduxjs/toolkit";
 // Import types/models
@@ -15,9 +22,18 @@ export const fetchPatientInformation = createAsyncThunk(
     const symptomsCollectionRef = collection(db, "Users", email, "symptoms");
     const registersCollectionRef = collection(db, "Users", email, "registers");
     const patientsCollectionRef = doc(db, "Users", email);
+
+    const querySymtpoms = query(
+      symptomsCollectionRef,
+      orderBy("creationDate", "desc")
+    );
+    const queryRegister = query(
+      registersCollectionRef,
+      orderBy("date", "desc")
+    );
     try {
       // Get the symptoms of the user
-      const symptomsQuerySnapshot = await getDocs(symptomsCollectionRef);
+      const symptomsQuerySnapshot = await getDocs(querySymtpoms);
       const symptoms: Symptom[] = symptomsQuerySnapshot.docs.map((doc) => ({
         idDocFirebase: doc.id,
         fecha: doc.data().creationDate || { seconds: 0, nanoseconds: 0 },
@@ -33,7 +49,7 @@ export const fetchPatientInformation = createAsyncThunk(
       }));
 
       // Get the register of the user
-      const registersQuerySnapshot = await getDocs(registersCollectionRef);
+      const registersQuerySnapshot = await getDocs(queryRegister);
       const registers: Register[] = registersQuerySnapshot.docs.map((doc) => ({
         idDocFirebase: doc.id,
         fecha: doc.data().date || { seconds: 0, nanoseconds: 0 },

@@ -57,10 +57,7 @@ function TarjetaPaciente(props: TarjetaPacienteProps) {
           color="primary"
         />
         <div>
-          <p className="text-xl font-bold">{props.name}</p>
-          <p className="text-base text-gray-400  ">
-            Ultimo registro: {props.ultimoRegistro}
-          </p>
+          <p className="text-3xl font-bold">{props.name}</p>
         </div>
       </CardHeader>
       <CardBody>
