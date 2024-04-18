@@ -17,7 +17,7 @@ import { Register, Symptom } from "../../Models/Symptom_Register";
 
 export const fetchPatientInformation = createAsyncThunk(
   "user/fetchPatientInformation",
-  async (email: string) => {
+  async (email: string): Promise<User> => {
     let patient: User;
     const symptomsCollectionRef = collection(db, "Users", email, "symptoms");
     const registersCollectionRef = collection(db, "Users", email, "registers");

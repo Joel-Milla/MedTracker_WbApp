@@ -7,7 +7,7 @@ import { Patient } from "../../Models/Patients";
 
 export const loadPatients = createAsyncThunk(
   "patients/fetchDoctorPatients",
-  async () => {
+  async (): Promise<Patient[]> => {
     const patientsCollectionRef = collection(
       db,
       "Doctors-Patients",
