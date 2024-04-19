@@ -7,7 +7,10 @@ interface EditButtonProps {
 
 function EditButton({ onClick, value }: EditButtonProps) {
     return (
-        <Button onClick={onClick} style={{ backgroundColor: "white" }}>
+        <Button
+            onClick={onClick}
+            className="bg-primary text-white font-semibold"
+        >
             {value}
         </Button>
     );
