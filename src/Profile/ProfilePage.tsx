@@ -1,7 +1,7 @@
 // Components
 import HeaderProfile from "./HeaderProfile";
 import ProfileField from "./ProfileField";
-import ProfileButton from "./ProfileButon/ProfileButton";
+import ProfileButton from "./ProfileButton";
 
 // Hooks
 import { useState } from "react";
@@ -94,12 +94,22 @@ function ProfilePage() {
                     editable={editable}
                 />
                 <div className="grid grid-cols-2 gap-4">
-                    <ProfileButton value="Editar datos" onClick={handleEdit} />
+                    <ProfileButton
+                        value="Editar datos"
+                        bgColor="bg-primary"
+                        onClick={handleEdit}
+                    />
                     <ProfileButton
                         value="Guardar cambios"
+                        bgColor="bg-primary"
                         onClick={handleSave}
                     />
                 </div>
+                <ProfileButton
+                    value="Cerrar sesión"
+                    bgColor="bg-red-500"
+                    onClick={() => alert("Cerrando sesión...")}
+                />
             </div>
         </div>
     );
