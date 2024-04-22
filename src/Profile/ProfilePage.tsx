@@ -1,15 +1,36 @@
+// Components
 import HeaderProfile from "./HeaderProfile";
 import ProfileField from "./ProfileField";
 import ProfileButton from "./ProfileButon/ProfileButton";
 
+// Hooks
 import { useState } from "react";
 
+// Redux connection
+import { RootState } from "../state/store";
+import { useSelector, useDispatch } from "react-redux";
+import {
+    selectName,
+    selectPhone,
+    selectEmail,
+    setName,
+    setEmail,
+    setPhone,
+} from "../state/Slices/doctorSlice";
+
+import { Input } from "@nextui-org/react";
+
 function ProfilePage() {
-    const [name, setName] = useState("Nombre");
+    const name = useSelector((state: RootState) => selectName(state));
+    const email = useSelector((state: RootState) => selectEmail(state));
+    const phone = useSelector((state: RootState) => selectPhone(state));
+    const dispatch = useDispatch();
+
+    const [currentName, setCurrentName] = useState(name);
     const [namePlaceholder, setNamePlaceholder] = useState("Nombre");
-    const [email, setEmail] = useState("Correo");
+    const [currentEmail, setCurrentEmail] = useState(email);
     const [emailPlaceholder, setEmailPlaceholder] = useState("Correo");
-    const [phone, setPhone] = useState("Teléfono");
+    const [currentPhone, setCurrentPhone] = useState(phone);
     const [phonePlaceholder, setPhonePlaceholder] = useState("Teléfono");
     const [editable, setEditable] = useState(false);
 
@@ -29,15 +50,20 @@ function ProfilePage() {
     // edición. Si no, se asigna el valor actual. Se vuelven los
     const handleSave = () => {
         if (editable) {
-            const newName = name === "" ? namePlaceholder : name;
-            const newEmail = email === "" ? emailPlaceholder : email;
-            const newPhone = phone === "" ? phonePlaceholder : phone;
+            const newName = currentName === "" ? namePlaceholder : currentName;
+            const newEmail =
+                currentEmail === "" ? emailPlaceholder : currentEmail;
+            const newPhone =
+                currentPhone === "" ? phonePlaceholder : currentPhone;
 
-            setName(newName);
-            setEmail(newEmail);
-            setPhone(newPhone);
+            setCurrentName(newName);
+            setCurrentEmail(newEmail);
+            setCurrentPhone(newPhone);
 
-            console.log(newName, newEmail, newPhone);
+            dispatch(setName(newName));
+            dispatch(setEmail(newEmail));
+            dispatch(setPhone(newPhone));
+
             setEditable(false);
         }
     };
@@ -48,23 +74,23 @@ function ProfilePage() {
             <div className="grid grid-rows-4 gap-4">
                 <ProfileField
                     label="Nombre"
-                    value={name}
+                    value={currentName}
                     placeholder={namePlaceholder}
-                    setValue={setName}
+                    setValue={setCurrentName}
                     editable={editable}
                 />
                 <ProfileField
                     label="Correo"
-                    value={email}
+                    value={currentEmail}
                     placeholder={emailPlaceholder}
-                    setValue={setEmail}
+                    setValue={setCurrentEmail}
                     editable={editable}
                 />
                 <ProfileField
                     label="Teléfono"
-                    value={phone}
+                    value={currentPhone}
                     placeholder={phonePlaceholder}
-                    setValue={setPhone}
+                    setValue={setCurrentPhone}
                     editable={editable}
                 />
                 <div className="grid grid-cols-2 gap-4">
