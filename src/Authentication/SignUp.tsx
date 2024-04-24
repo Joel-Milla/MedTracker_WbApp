@@ -71,12 +71,12 @@ function SignUp() {
       setError("");
       setLoading(true);
       await createUserWithEmailAndPassword(auth, email, password);
+      console.log;
     } catch (error) {
       const errorMessage = error.code;
       setError(errorMessage);
     }
     setLoading(false);
-    checkCurrentUser();
   };
   return (
     <>

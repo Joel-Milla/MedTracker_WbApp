@@ -10,7 +10,6 @@ import {
   DropdownMenu,
   DropdownItem,
   Avatar,
-  Button,
 } from "@nextui-org/react";
 
 // Show the possible selections that the doctor can make
@@ -21,7 +20,7 @@ function UserInformation() {
     signOut(auth);
   };
   return (
-    <Dropdown>
+    <Dropdown backdrop="blur">
       <DropdownTrigger>
         <Avatar
           isBordered
@@ -35,11 +34,11 @@ function UserInformation() {
           size="lg"
         />
       </DropdownTrigger>
-      <DropdownMenu aria-label="Static Actions">
+      <DropdownMenu aria-label="Static Actions" onAction={handleClick}>
         {/* <DropdownItem key="perfil">Perfil</DropdownItem>
                 <DropdownItem key="notificaciones">Notificaciones</DropdownItem> */}
         <DropdownItem key="delete" className="text-danger" color="danger">
-          <Button onClick={handleClick}>Cerrar sesión</Button>
+          Cerrar sesión
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>
