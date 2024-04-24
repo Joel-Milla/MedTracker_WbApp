@@ -3,7 +3,7 @@ import { RootState } from "../state/store";
 import { useDispatch, useSelector } from "react-redux";
 // External functions
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link as LinkRoute } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -12,7 +12,9 @@ import {
 import { auth } from "../state/FirebaseConfig/config";
 import { setCurrentUser } from "../state/Slices/currentUserSlice";
 // External components
-import { Card, Input, Button } from "@nextui-org/react";
+import { Card, Input, Button, Link } from "@nextui-org/react";
+// Own Logo
+import MedTrackerIcon from "../assets/logo_medtracker.svg";
 
 // Function that saves when a new user creates an account
 function SignUp() {
@@ -80,7 +82,8 @@ function SignUp() {
     <>
       <Card className="flex flex-col gap-4 items-center mx-auto mt-5 p-4 w-96">
         {/* <CardBody> */}
-        <h2 className="text-center mb-4">Sign up</h2>
+        <img src={MedTrackerIcon} alt="MedTracker logo" className="w-1/3" />
+        <h2 className="text-3xl font-semibold text-center mb-4">Sign Up</h2>
         <Input
           isRequired
           type="text"
@@ -126,8 +129,11 @@ function SignUp() {
         </div>
         {/* </CardBody> */}
       </Card>
-      <div className="w-full text-center mt-2">
-        Aready have an account? Log In
+      <div className="flex gap-3 justify-center mt-5">
+        Aready have an account?
+        <Link>
+          <LinkRoute to="/login">Log In</LinkRoute>
+        </Link>
       </div>
     </>
   );

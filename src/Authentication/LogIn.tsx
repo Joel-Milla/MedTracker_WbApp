@@ -1,12 +1,14 @@
+// External libaries
+import { Link as LinkRoute } from "react-router-dom";
 // External components
-import { Card, Input } from "@nextui-org/react";
+import { Card, Input, Button, Link } from "@nextui-org/react";
 import { useState } from "react";
+// Own Logo
+import MedTrackerIcon from "../assets/logo_medtracker.svg";
 
 function LogIn() {
-  const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [confirmationPassword, setConfirmationPassword] = useState<string>("");
 
   const [loading, setLoading] = useState(false);
 
@@ -14,15 +16,8 @@ function LogIn() {
     <>
       <Card className="flex flex-col gap-4 items-center mx-auto mt-5 p-4 w-96">
         {/* <CardBody> */}
-        <h2 className="text-center mb-4">Sign up</h2>
-        <Input
-          isRequired
-          type="text"
-          label="Name"
-          value={name}
-          onValueChange={setName}
-          className="w-full"
-        />
+        <img src={MedTrackerIcon} alt="MedTracker logo" className="w-1/3" />
+        <h2 className="text-3xl font-semibold text-center mb-4">Log In</h2>
         <Input
           isRequired
           type="email"
@@ -39,22 +34,17 @@ function LogIn() {
           onValueChange={setPassword}
           className="w-full"
         />
-        <Input
-          isRequired
-          type="password"
-          label="Password"
-          value={confirmationPassword}
-          onValueChange={setConfirmationPassword}
-          className="w-full"
-        />
         <Button color="primary" isLoading={loading} className="w-full">
           Sign Up
         </Button>
         <div className="text-red-600"></div>
         {/* </CardBody> */}
       </Card>
-      <div className="w-full text-center mt-2">
-        Aready have an account? Log In
+      <div className="flex gap-3 justify-center mt-5">
+        Aready have an account?
+        <Link>
+          <LinkRoute to="/signup">Sign Up</LinkRoute>
+        </Link>
       </div>
     </>
   );
