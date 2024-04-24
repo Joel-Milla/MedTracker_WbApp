@@ -14,12 +14,17 @@ import Root from "./GlobalNavigation/Root";
 import ErrorPage from "./ErrorPage";
 import Pacientes from "./Pacientes/Pacientes";
 import Dashboard from "./Dashboard/Dashboard";
+import SignUp from "./Authentication/SignUp";
+import LogIn from "./Authentication/LogIn";
 
 // create router with JSX Route elements
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
-      <Route index element={<Pacientes />} />
+      {/* Use navigate to render signup as the default page */}
+      <Route index element={<SignUp />} />
+      <Route path="signup" element={<SignUp />} />
+      <Route path="login" element={<LogIn />} />
       <Route path="pacientes" element={<Pacientes />} />
       <Route path="dashboard" element={<Dashboard />} />
       <Route path="notificaciones" element={<Pacientes />} />
@@ -30,10 +35,10 @@ const appRouter = createBrowserRouter(
 );
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadPatients());
-  });
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(loadPatients());
+  // });
 
   return <RouterProvider router={appRouter} />;
 }

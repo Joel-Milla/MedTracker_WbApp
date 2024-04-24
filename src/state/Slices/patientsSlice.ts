@@ -32,15 +32,7 @@ export const loadPatients = createAsyncThunk(
   }
 );
 
-const patients: Patient[] = [
-  {
-    idDocFirebase: "",
-    email: "",
-    name: "",
-    telefono: "",
-    ultimoRegistro: "",
-  },
-];
+const patients: Patient[] = [];
 export const patientsSlice = createSlice({
   name: "patients",
   initialState: {

@@ -1,11 +1,13 @@
 // External libraries
 import { configureStore } from "@reduxjs/toolkit"; // To create the store of redux
+import currentUserReducer from "./Slices/currentUserSlice";
 import patientsReducer from "./Slices/patientsSlice";
 import userReducer from "./Slices/userSlice";
 import uiReducer from "./Slices/uiSlice";
 
 export const store = configureStore({
   reducer: {
+    currentUser: currentUserReducer,
     patients: patientsReducer,
     user: userReducer,
     ui: uiReducer,
