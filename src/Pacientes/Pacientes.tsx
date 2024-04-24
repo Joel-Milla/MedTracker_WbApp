@@ -14,15 +14,15 @@ import HeaderPacientes from "./HeaderPacientes";
 
 function Pacientes() {
   // Get the current logged user
-  const currentUser = useSelector(
-    (state: RootState) => state.currentUser.currentUser
+  const currentUserEmail = useSelector(
+    (state: RootState) => state.currentUser.currentUserEmail
   );
   // To dispatch actions to the store
   const dispatch = useDispatch();
   // Initialize the navigate function
   useEffect(() => {
-    dispatch(loadPatients(currentUser));
-  }, [currentUser, dispatch]);
+    dispatch(loadPatients(currentUserEmail));
+  }, [currentUserEmail, dispatch]);
 
   // Obtain the patients of the doctor
   const patients = useSelector((state: RootState) => state.patients.pacientes);

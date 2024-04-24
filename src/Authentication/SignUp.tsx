@@ -1,7 +1,11 @@
 // External functions
 import { useState } from "react";
 import { Link as LinkRoute } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  updateProfile,
+} from "firebase/auth";
 // Own functions
 import { auth } from "../state/FirebaseConfig/config";
 // External components
@@ -30,7 +34,16 @@ function SignUp() {
     try {
       setError("");
       setLoading(true);
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      // Update the display name of the profile
+      await updateProfile(user, {
+        displayName: name,
+      });
     } catch (error) {
       const errorMessage = error.code;
       setError(errorMessage);

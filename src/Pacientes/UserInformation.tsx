@@ -1,6 +1,8 @@
+// Redux connection
+import { RootState } from "../state/store";
+import { useSelector } from "react-redux";
 // External functions
 import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 // Own funcitons
 import { auth } from "../state/FirebaseConfig/config";
 // External components
@@ -14,11 +16,15 @@ import {
 
 // Show the possible selections that the doctor can make
 function UserInformation() {
-  const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/");
     signOut(auth);
   };
+
+  // Get the current logged user
+  const currentUserEmail = useSelector(
+    (state: RootState) => state.currentUser.currentUserEmail
+  );
+
   return (
     <Dropdown backdrop="blur">
       <DropdownTrigger>
@@ -28,7 +34,7 @@ function UserInformation() {
           src=""
           className="hover:cursor-pointer"
           // Show the initials of the name
-          name="Doctor Oscar"
+          name={currentUserEmail}
           showFallback
           color="primary"
           size="lg"

@@ -1,19 +1,25 @@
 // External libaries
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-const currentUser = "";
+const currentUserEmailInitialState = "";
+const currentUserNameInitialState = "";
 export const currentUserSlice = createSlice({
   name: "currentUser",
   initialState: {
-    currentUser: currentUser,
+    currentUserEmail: currentUserEmailInitialState,
+    currentUserName: currentUserNameInitialState,
   },
   reducers: {
-    setCurrentUser: (state, action: PayloadAction<string>) => {
-      state.currentUser = action.payload;
+    setCurrentUserEmail: (state, action: PayloadAction<string>) => {
+      state.currentUserEmail = action.payload;
+    },
+    setCurrentUserName: (state, action: PayloadAction<string>) => {
+      state.currentUserName = action.payload;
     },
   },
 });
 
-export const { setCurrentUser } = currentUserSlice.actions;
+export const { setCurrentUserEmail, setCurrentUserName } =
+  currentUserSlice.actions;
 
 export default currentUserSlice.reducer;
