@@ -1,16 +1,9 @@
-// Redux connection
-import { RootState } from "../state/store";
-import { useDispatch, useSelector } from "react-redux";
 // External functions
-import { useEffect, useState } from "react";
-import { useNavigate, Link as LinkRoute } from "react-router-dom";
-import {
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
+import { useState } from "react";
+import { Link as LinkRoute } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 // Own functions
 import { auth } from "../state/FirebaseConfig/config";
-import { setCurrentUser } from "../state/Slices/currentUserSlice";
 // External components
 import { Card, Input, Button, Link } from "@nextui-org/react";
 // Own Logo
@@ -18,9 +11,6 @@ import MedTrackerIcon from "../assets/logo_medtracker.svg";
 
 // Function that saves when a new user creates an account
 function SignUp() {
-  const currentUser = useSelector(
-    (state: RootState) => state.currentUser.currentUser
-  );
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -28,36 +18,6 @@ function SignUp() {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
-  // Initialize the navigate function
-  const navigate = useNavigate();
-  // Use this hook to dispatch actions to redux
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const unsubscribe = checkCurrentUser();
-    return unsubscribe;
-  });
-  const checkCurrentUser = () => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log(user);
-        // User is signed in
-        dispatch(setCurrentUser(user.email ?? ""));
-        navigate("/pacientes");
-      } else {
-        // User is signed out
-        console.log(user);
-        dispatch(setCurrentUser(""));
-      }
-      return unsubscribe;
-    });
-  };
-
-  // navigate when there is a current user
-  if (currentUser) {
-    checkCurrentUser();
-  }
 
   const handleSubmit = async () => {
     if (!(name || email || password || confirmationPassword)) {
@@ -71,7 +31,6 @@ function SignUp() {
       setError("");
       setLoading(true);
       await createUserWithEmailAndPassword(auth, email, password);
-      console.log;
     } catch (error) {
       const errorMessage = error.code;
       setError(errorMessage);

@@ -1,8 +1,4 @@
-// Redux connection
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { loadPatients } from "./state/Slices/patientsSlice";
-// React-router-dom imports
+// External functions
 import {
   Route,
   RouterProvider,
@@ -35,11 +31,6 @@ const appRouter = createBrowserRouter(
 );
 
 function App() {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(loadPatients());
-  // });
-
   return <RouterProvider router={appRouter} />;
 }
 

@@ -1,57 +1,20 @@
-// Redux connection
-import { RootState } from "../state/store";
-import { useDispatch, useSelector } from "react-redux";
 // External functions
-import { useNavigate, Link as LinkRoute } from "react-router-dom";
-import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { Link as LinkRoute } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
 // Own functions
 import { auth } from "../state/FirebaseConfig/config";
-import { setCurrentUser } from "../state/Slices/currentUserSlice";
 // Own components
 import { Card, Input, Button, Link } from "@nextui-org/react";
 // Own Logo
 import MedTrackerIcon from "../assets/logo_medtracker.svg";
 
 function LogIn() {
-  const currentUser = useSelector(
-    (state: RootState) => state.currentUser.currentUser
-  );
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
-  // Initialize the navigate function
-  const navigate = useNavigate();
-  // Use this hook to dispatch actions to redux
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const unsubscribe = checkCurrentUser();
-    return unsubscribe;
-  });
-  const checkCurrentUser = () => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log(user);
-        // User is signed in
-        dispatch(setCurrentUser(user.email ?? ""));
-        navigate("/pacientes");
-      } else {
-        // User is signed out
-        console.log(user);
-        dispatch(setCurrentUser(""));
-      }
-      return unsubscribe;
-    });
-  };
-
-  // navigate when there is a current user
-  if (currentUser) {
-    checkCurrentUser();
-  }
 
   const handleSubmit = async () => {
     if (!(email || password)) {
@@ -67,7 +30,6 @@ function LogIn() {
       setError(errorMessage);
     }
     setLoading(false);
-    checkCurrentUser();
   };
   return (
     <>
