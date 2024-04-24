@@ -12,6 +12,7 @@ import Pacientes from "./Pacientes/Pacientes";
 import Dashboard from "./Dashboard/Dashboard";
 import SignUp from "./Authentication/SignUp";
 import LogIn from "./Authentication/LogIn";
+import CurrentUser from "./temp";
 
 // create router with JSX Route elements
 const appRouter = createBrowserRouter(
@@ -24,7 +25,7 @@ const appRouter = createBrowserRouter(
       <Route path="pacientes" element={<Pacientes />} />
       <Route path="dashboard" element={<Dashboard />} />
       <Route path="notificaciones" element={<Pacientes />} />
-      <Route path="perfil" element={<Dashboard />} />
+      <Route path="perfil" element={<CurrentUser />} />
       <Route path="ajustes" element={<Pacientes />} />
     </Route>
   )

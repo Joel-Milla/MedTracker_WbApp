@@ -59,7 +59,7 @@ function LogIn() {
           onClick={handleSubmit}
           className="w-full"
         >
-          Sign Up
+          Log In
         </Button>
         <div className="text-red-600">
           {error ? <h1>{error}</h1> : <h1></h1>}

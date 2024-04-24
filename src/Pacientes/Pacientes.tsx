@@ -22,7 +22,7 @@ function Pacientes() {
   // Initialize the navigate function
   useEffect(() => {
     dispatch(loadPatients(currentUser));
-  }, []);
+  }, [currentUser, dispatch]);
 
   // Obtain the patients of the doctor
   const patients = useSelector((state: RootState) => state.patients.pacientes);
