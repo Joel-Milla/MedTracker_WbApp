@@ -4,6 +4,7 @@ import currentUserReducer from "./Slices/currentUserSlice";
 import patientsReducer from "./Slices/patientsSlice";
 import userReducer from "./Slices/userSlice";
 import uiReducer from "./Slices/uiSlice";
+import doctorReducer from "./Slices/doctorSlice";
 
 export const store = configureStore({
   reducer: {
