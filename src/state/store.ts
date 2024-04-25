@@ -3,13 +3,15 @@ import { configureStore } from "@reduxjs/toolkit"; // To create the store of red
 import patientsReducer from "./Slices/patientsSlice";
 import userReducer from "./Slices/userSlice";
 import uiReducer from "./Slices/uiSlice";
+import doctorReducer from "./Slices/doctorSlice";
 
 export const store = configureStore({
-  reducer: {
-    patients: patientsReducer,
-    user: userReducer,
-    ui: uiReducer,
-  },
+    reducer: {
+        patients: patientsReducer,
+        user: userReducer,
+        ui: uiReducer,
+        doctor: doctorReducer,
+    },
 });
 
 // Get the type of state store so it can be access easily through the app
