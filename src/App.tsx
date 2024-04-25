@@ -1,11 +1,12 @@
-// External functions
+import React, { useContext } from "react";
 import {
   Route,
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-// Own components
+import { AuthContext } from "./Authentication/AuthUser"; 
+
 import Root from "./GlobalNavigation/Root";
 import ErrorPage from "./ErrorPage";
 import Pacientes from "./Pacientes/Pacientes";
@@ -14,12 +15,14 @@ import SignUp from "./Authentication/SignUp";
 import LogIn from "./Authentication/LogIn";
 import CurrentUser from "./temp";
 
-// create router with JSX Route elements
-const appRouter = createBrowserRouter(
-  createRoutesFromElements(
+function App() {
+  const { user } = useContext(AuthContext); // Use useContext within the functional component
+
+  // Define the routes based on authentication status
+  const routes = (
     <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
       {/* Use navigate to render signup as the default page */}
-      <Route index element={<SignUp />} />
+      <Route index element={user ? <Dashboard /> : <SignUp />} />
       <Route path="signup" element={<SignUp />} />
       <Route path="login" element={<LogIn />} />
       <Route path="pacientes" element={<Pacientes />} />
@@ -28,10 +31,11 @@ const appRouter = createBrowserRouter(
       <Route path="perfil" element={<CurrentUser />} />
       <Route path="ajustes" element={<Pacientes />} />
     </Route>
-  )
-);
+  );
 
-function App() {
+  // Create the router with the defined routes
+  const appRouter = createBrowserRouter(createRoutesFromElements(routes));
+
   return <RouterProvider router={appRouter} />;
 }
 

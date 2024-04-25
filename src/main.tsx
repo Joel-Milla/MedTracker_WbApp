@@ -14,8 +14,12 @@ import './output.css'
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 
+// Import AuthProvider
+import { AuthProvider } from './Authentication/AuthUser';
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+    <AuthProvider>
     <NextUIProvider>
       <main className='light'>
         <ThemeProvider theme={theme}>
@@ -26,5 +30,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </ThemeProvider>
       </main>
     </NextUIProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )
