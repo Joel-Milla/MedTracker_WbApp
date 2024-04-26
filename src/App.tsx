@@ -13,6 +13,8 @@ import Dashboard from "./Dashboard/Dashboard";
 import SignUp from "./Authentication/SignUp";
 import LogIn from "./Authentication/LogIn";
 import CurrentUser from "./temp";
+import ProfilePage from "./Profile/ProfilePage";
+import ProfilePage2 from "./Profile/ProfilePage2";
 
 // create router with JSX Route elements
 const appRouter = createBrowserRouter(
@@ -25,7 +27,7 @@ const appRouter = createBrowserRouter(
       <Route path="pacientes" element={<Pacientes />} />
       <Route path="dashboard" element={<Dashboard />} />
       <Route path="notificaciones" element={<Pacientes />} />
-      <Route path="perfil" element={<CurrentUser />} />
+      <Route path="perfil" element={<ProfilePage2 />} />
       <Route path="ajustes" element={<Pacientes />} />
     </Route>
   )
