@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link as LinkRoute } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
-  getAuth,
+  // getAuth,
   updateProfile,
 } from "firebase/auth";
 // Own functions
@@ -12,6 +12,10 @@ import { auth } from "../state/FirebaseConfig/config";
 import { Card, Input, Button, Link } from "@nextui-org/react";
 // Own Logo
 import MedTrackerIcon from "../assets/logo_medtracker.svg";
+
+interface FirebaseError extends Error {
+  code?: string;
+}
 
 // Function that saves when a new user creates an account
 function SignUp() {
@@ -45,7 +49,15 @@ function SignUp() {
         displayName: name,
       });
     } catch (error) {
-      const errorMessage = error.code;
+      let errorMessage = "Ocurrió un error";
+      if (typeof error === "object" && error !== null) {
+        const fbError = error as FirebaseError;
+        if (fbError.code) {
+          errorMessage = `Firebase error: ${fbError.code}`;
+        } else if (fbError.message) {
+          errorMessage = fbError.message;
+        }
+      }
       setError(errorMessage);
     }
     setLoading(false);

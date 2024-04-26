@@ -1,6 +1,5 @@
 // Redux connection
-// Redux connection
-import { RootState } from "../state/store";
+import { RootState, AppDispatch } from "../state/store";
 import { useDispatch, useSelector } from "react-redux";
 // External functions
 import { useEffect } from "react";
@@ -18,7 +17,7 @@ function Pacientes() {
     (state: RootState) => state.currentUser.currentUserEmail
   );
   // To dispatch actions to the store
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   // Initialize the navigate function
   useEffect(() => {
     dispatch(loadPatients(currentUserEmail));

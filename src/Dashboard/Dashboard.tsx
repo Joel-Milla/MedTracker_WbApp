@@ -1,5 +1,5 @@
 // Redux connection
-import { RootState } from "../state/store";
+import { RootState, AppDispatch } from "../state/store";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPatientInformation } from "../state/Slices/userSlice";
 // Components
@@ -13,7 +13,7 @@ function Dashboard() {
   const selectedPatient = useSelector(
     (state: RootState) => state.user.selectedPatient
   );
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(fetchPatientInformation(selectedPatient));
   });

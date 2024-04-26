@@ -9,6 +9,10 @@ import { Card, Input, Button, Link } from "@nextui-org/react";
 // Own Logo
 import MedTrackerIcon from "../assets/logo_medtracker.svg";
 
+interface FirebaseError extends Error {
+  code?: string;
+}
+
 function LogIn() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -26,7 +30,15 @@ function LogIn() {
       setLoading(true);
       await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
-      const errorMessage = error.code;
+      let errorMessage = "Ocurrió un error";
+      if (typeof error === "object" && error !== null) {
+        const fbError = error as FirebaseError;
+        if (fbError.code) {
+          errorMessage = `Firebase error: ${fbError.code}`;
+        } else if (fbError.message) {
+          errorMessage = fbError.message;
+        }
+      }
       setError(errorMessage);
     }
     setLoading(false);

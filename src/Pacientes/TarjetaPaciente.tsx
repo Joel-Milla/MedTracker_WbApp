@@ -1,11 +1,12 @@
-// External components for routing
-import { useNavigate } from "react-router-dom";
-// Components to interact with redux
+// Redux Connection
+import { AppDispatch } from "../state/store";
 import { useDispatch } from "react-redux";
 import {
   setSelectedPatient,
   fetchPatientInformation,
 } from "../state/Slices/userSlice";
+// External components for routing
+import { useNavigate } from "react-router-dom";
 // External components
 import { Button, Card, CardBody, CardHeader, Avatar } from "@nextui-org/react";
 import CircleIcon from "@mui/icons-material/Circle";
@@ -24,7 +25,7 @@ interface TarjetaPacienteProps {
 
 function TarjetaPaciente(props: TarjetaPacienteProps) {
   // Use this hook to dispatch actions to redux
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   // Logic to handle redirection of the user
   const [readyToNavigate, setReadyToNavigate] = useState(false);
   const navigate = useNavigate();

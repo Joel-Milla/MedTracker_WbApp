@@ -12,8 +12,8 @@ import Pacientes from "./Pacientes/Pacientes";
 import Dashboard from "./Dashboard/Dashboard";
 import SignUp from "./Authentication/SignUp";
 import LogIn from "./Authentication/LogIn";
-import CurrentUser from "./temp";
-import ProfilePage from "./Profile/ProfilePage";
+// import CurrentUser from "./temp";
+// import ProfilePage from "./Profile/ProfilePage";
 import ProfilePage2 from "./Profile/ProfilePage2";
 
 // create router with JSX Route elements

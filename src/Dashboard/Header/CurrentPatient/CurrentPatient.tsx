@@ -1,14 +1,14 @@
-// External components
-import { Autocomplete, AutocompleteItem, Avatar } from "@nextui-org/react";
-// External methods
-import { Key } from "react";
 // Redux connection
-import { RootState } from "../../../state/store";
+import { RootState, AppDispatch } from "../../../state/store";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setSelectedPatient,
   fetchPatientInformation,
 } from "../../../state/Slices/userSlice";
+// External components
+import { Autocomplete, AutocompleteItem, Avatar } from "@nextui-org/react";
+// External methods
+import { Key } from "react";
 
 function CurrentPatient() {
   // Obtain the current patients
@@ -18,7 +18,7 @@ function CurrentPatient() {
   );
 
   // Use this hook to dispatch actions to redux
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   // Handles the change of users
   const handleSelectionChange = (key: Key) => {
